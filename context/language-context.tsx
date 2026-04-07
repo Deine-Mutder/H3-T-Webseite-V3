@@ -242,6 +242,7 @@ export const translations = {
       social: "Social",
       rights: "Alle Rechte vorbehalten.",
       poweredBy: "Powered by TruckersMP",
+      builtByPrefix: "Website erstellt von",
     },
   },
   en: {
@@ -420,6 +421,7 @@ export const translations = {
       social: "Social",
       rights: "All rights reserved.",
       poweredBy: "Powered by TruckersMP",
+      builtByPrefix: "Website created by",
     },
   },
   sl: {
@@ -598,6 +600,7 @@ export const translations = {
       social: "Druzbena omrezja",
       rights: "Vse pravice pridrzane.",
       poweredBy: "Powered by TruckersMP",
+      builtByPrefix: "Spletno stran je ustvaril",
     },
   },
   fr: {
@@ -776,6 +779,7 @@ export const translations = {
       social: "Social",
       rights: "Tous droits reserves.",
       poweredBy: "Powered by TruckersMP",
+      builtByPrefix: "Site cree par",
     },
   },
   es: {
@@ -954,6 +958,7 @@ export const translations = {
       social: "Social",
       rights: "Todos los derechos reservados.",
       poweredBy: "Powered by TruckersMP",
+      builtByPrefix: "Sitio web creado por",
     },
   },
   it: {
@@ -1132,6 +1137,7 @@ export const translations = {
       social: "Social",
       rights: "Tutti i diritti riservati.",
       poweredBy: "Powered by TruckersMP",
+      builtByPrefix: "Sito web creato da",
     },
   },
 } as const

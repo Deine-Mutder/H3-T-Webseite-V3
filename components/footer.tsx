@@ -25,10 +25,15 @@ export function Footer() {
         <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-3">
           <div>
             <div className="mb-4 flex items-center gap-2">
-              <span className="text-2xl font-bold text-primary">H3°T</span>
+              <span className="text-2xl font-bold text-primary">
+                H3{"\u00B0"}T
+              </span>
               <span className="text-sm text-muted-foreground">VTC</span>
             </div>
             <p className="max-w-xs text-sm text-muted-foreground">{t.footer.description}</p>
+            <p className="led-credit mt-3 text-sm">
+              {t.footer.builtByPrefix} <span className="led-credit-name">The real Plumz</span>
+            </p>
           </div>
 
           <div>
@@ -59,7 +64,9 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
-          <p className="text-sm text-muted-foreground">© 2026 H3°T VTC. {t.footer.rights}</p>
+          <p className="text-sm text-muted-foreground">
+            {"\u00A9"} 2026 H3{"\u00B0"}T VTC. {t.footer.rights}
+          </p>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Truck className="h-4 w-4" />
             <span>{t.footer.poweredBy}</span>
