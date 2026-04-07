@@ -2,8 +2,8 @@
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
 
-export type Language = "de" | "en" | "sl" | "fr" | "es" | "it"
-type FlagVariant = "horizontal" | "vertical" | "uk"
+export type Language = "de" | "en" | "sl" | "fr" | "es" | "it" | "tr" | "zh" | "ru"
+type FlagVariant = "horizontal" | "vertical" | "uk" | "china" | "turkey"
 
 export const languageOptions: Array<{
   code: Language
@@ -61,6 +61,30 @@ export const languageOptions: Array<{
     flagColors: ["#009246", "#FFFFFF", "#CE2B37"],
     flagVariant: "vertical",
   },
+  {
+    code: "tr",
+    name: "Turkce",
+    nativeName: "Türkçe",
+    locale: "tr-TR",
+    flagColors: ["#E30A17", "#FFFFFF", "#E30A17"],
+    flagVariant: "turkey",
+  },
+  {
+    code: "zh",
+    name: "Chinese",
+    nativeName: "中文",
+    locale: "zh-CN",
+    flagColors: ["#DE2910", "#FFDE00", "#DE2910"],
+    flagVariant: "china",
+  },
+  {
+    code: "ru",
+    name: "Russian",
+    nativeName: "Русский",
+    locale: "ru-RU",
+    flagColors: ["#FFFFFF", "#0039A6", "#D52B1E"],
+    flagVariant: "horizontal",
+  },
 ]
 
 const supportedLanguages = languageOptions.map((option) => option.code)
@@ -77,6 +101,7 @@ export const translations = {
     header: {
       cta: "Beitreten",
       clockLabel: "Uhr",
+      backToMenu: "Zurueck zum Hauptmenue",
     },
     nav: {
       home: "Home",
@@ -256,6 +281,7 @@ export const translations = {
     header: {
       cta: "Join",
       clockLabel: "Time",
+      backToMenu: "Back to main menu",
     },
     nav: {
       home: "Home",
@@ -435,6 +461,7 @@ export const translations = {
     header: {
       cta: "Pridruzi se",
       clockLabel: "Ura",
+      backToMenu: "Nazaj v glavni meni",
     },
     nav: {
       home: "Domov",
@@ -614,6 +641,7 @@ export const translations = {
     header: {
       cta: "Rejoindre",
       clockLabel: "Heure",
+      backToMenu: "Retour au menu principal",
     },
     nav: {
       home: "Accueil",
@@ -793,6 +821,7 @@ export const translations = {
     header: {
       cta: "Unirse",
       clockLabel: "Hora",
+      backToMenu: "Volver al menu principal",
     },
     nav: {
       home: "Inicio",
@@ -972,6 +1001,7 @@ export const translations = {
     header: {
       cta: "Unisciti",
       clockLabel: "Ora",
+      backToMenu: "Torna al menu principale",
     },
     nav: {
       home: "Home",
@@ -1138,6 +1168,546 @@ export const translations = {
       rights: "Tutti i diritti riservati.",
       poweredBy: "Powered by TruckersMP",
       builtByPrefix: "Sito web creato da",
+    },
+  },
+  tr: {
+    meta: {
+      locale: "tr-TR",
+    },
+    splash: {
+      title: "Dilini sec",
+      subtitle: "Tum web sitesi sectigin dile gore degisecek.",
+    },
+    header: {
+      cta: "Katil",
+      clockLabel: "Saat",
+      backToMenu: "Ana menuye don",
+    },
+    nav: {
+      home: "Ana sayfa",
+      about: "Hakkimizda",
+      features: "Ozellikler",
+      team: "Ekip",
+      contact: "Iletisim",
+      join: "Katil",
+    },
+    hero: {
+      badge: "YENI",
+      title: "Hos geldin",
+      subtitle:
+        "TruckersMP icin yeni Virtual Trucking Company'n. Avrupa yollarinda birlikteyiz - profesyonel, samimi ve eglenceli.",
+      joinBtn: "Simdi katil",
+      learnMore: "Daha fazlasini ogren",
+      online: "Cevrim ici",
+      tours: "Yapilan seferler",
+      drivers: "Suruculer",
+      kilometers: "Yapilan kilometre",
+      scroll: "Kaydir",
+    },
+    status: {
+      label: "Surucu durumu",
+      onTitle: "ON",
+      onDesc: "H3°T icin gorevde",
+      offTitle: "OFF",
+      offDesc: "Ozel surus / mola",
+    },
+    about: {
+      eyebrow: "Hakkimizda",
+      title: "Bu H3°T",
+      subtitle:
+        "H3°T, TruckersMP icin yeni kurulmus bir Virtual Trucking Company'dir. Birlikte surmeyi seven ve buyuyen bir toplulugun parcasi olmak isteyen suruculer ariyoruz.",
+      values: [
+        {
+          title: "Guvenlik",
+          description: "Kurallara gore suruyor ve her konvoyda guvenli suruse onem veriyoruz.",
+        },
+        {
+          title: "Topluluk",
+          description: "Bizde takim ruhu once gelir. Herkes hos karsilanir.",
+        },
+        {
+          title: "Uzmanligimiz",
+          description: "Uzmanligimiz triple trailer surmektir. Biz sadece triple trailer suruyoruz.",
+        },
+        {
+          title: "Esneklik",
+          description: "Zorunlu etkinlik yok. Ne zaman vaktin ve istegin varsa sur.",
+        },
+      ],
+    },
+    features: {
+      eyebrow: "Ozellikler",
+      title: "Neler sunuyoruz",
+      subtitle:
+        "H3°T'de sadece birlikte surmekten daha fazlasini bulursun. Bircok ozellige sahip duzenli bir toplulugun parcasi ol.",
+      items: [
+        {
+          title: "Triple Trailer",
+          description: "TMP'de sadece triple trailer suruyoruz. Eger her zaman triple trailer surmek istemezsen, tag durumumuzu acikca gosterir: ON VTC gorevinde oldugunu, OFF ise gorevde olmadigini belirtir.",
+        },
+        {
+          title: "Discord Toplulugu",
+          description: "Sohbet etmek, plan yapmak ve vakit gecirmek icin aktif bir Discord sunucusu.",
+        },
+        {
+          title: "Konfigurasyon ve Save Edit",
+          description: "Truck, trailer ve ozellikle triple trailer araclarini ozel olarak ayarliyoruz. Save edit ve local modding ile trailer duzenleyebilir, neredeyse tum yukleri kullanabilir ve DLC'den bagimsiz kurulumlar yapabiliriz.",
+        },
+      ],
+    },
+    team: {
+      eyebrow: "Ekip",
+      title: "Ekibimiz",
+      subtitle: "Hala buyuyoruz. Kurucu ekibe katil ve H3°T'yi en bastan birlikte sekillendir.",
+      interest: "Ekipte bir rol mu istiyorsun?",
+      contactLink: "Bize ulas",
+      members: [
+        {
+          name: "The real Plumz",
+          role: "Owner",
+          description: "H3°T'yi yonetir ve VTC'nin en onemli kararlarini alir.",
+        },
+        {
+          name: "eaglefire1231 (Riley)",
+          role: "Co-Owner",
+          description: "Yonetimi destekler ve organizasyon ile yonetime yardim eder.",
+        },
+        {
+          name: "Rollin Noodle",
+          role: "Trusted Member",
+          description: "H3°T'nin guvenilir uyelerinden biridir.",
+        },
+        {
+          name: "Ruxery",
+          role: "Trusted Member",
+          description: "H3°T'nin guvenilir uyelerinden biridir.",
+        },
+        {
+          name: "Longyin",
+          role: "Trusted Member",
+          description: "H3°T'nin guvenilir uyelerinden biridir.",
+        },
+        {
+          name: "Red Hornet4953",
+          role: "Trusted Member",
+          description: "H3°T'nin guvenilir uyelerinden biridir.",
+        },
+        {
+          name: "Emme [GCGS]",
+          role: "Trusted Member",
+          description: "H3°T'nin guvenilir uyelerinden biridir.",
+        },
+        {
+          name: "VankataTruckerBG",
+          role: "Trusted Member",
+          description: "H3°T'nin guvenilir uyelerinden biridir.",
+        },
+        {
+          name: "Itzz_mxx",
+          role: "Trusted Member",
+          description: "H3°T'nin guvenilir uyelerinden biridir.",
+        },
+        {
+          name: "Sheldom_C",
+          role: "Trusted Member",
+          description: "H3°T'nin guvenilir uyelerinden biridir.",
+        },
+        {
+          name: "Snotra",
+          role: "Trusted Member",
+          description: "H3°T'nin guvenilir uyelerinden biridir.",
+        },
+        {
+          name: "_TBF_",
+          role: "Trusted Member",
+          description: "H3°T'nin guvenilir uyelerinden biridir.",
+        },
+        {
+          name: "damiangamer19",
+          role: "Trusted Member",
+          description: "H3°T'nin guvenilir uyelerinden biridir.",
+        },
+      ],
+    },
+    contact: {
+      eyebrow: "Iletisim",
+      title: "H3°T'ye katil",
+      subtitle:
+        "Katilmak mi istiyorsun ya da sorularin mi var? Discord uzerinden bize ulas veya TruckersMP profilimizi ziyaret et.",
+      discord: "Discord'a katil",
+      discordConfirmTitle: "Sadece VTC uyeleri icin",
+      discordConfirmText: "Discord sunucusuna katilmak istediginden emin misin? Bu sunucu sadece VTC uyeleri icindir.",
+      discordConfirmOpen: "Yine de Discord'u ac",
+      discordConfirmCancel: "Iptal",
+      truckersmp: "TruckersMP Profili",
+    },
+    footer: {
+      description: "TruckersMP icin bir Virtual Trucking Company. Avrupa yollarinda birlikteyiz.",
+      navigation: "Navigasyon",
+      social: "Sosyal",
+      rights: "Tum haklari saklidir.",
+      poweredBy: "Powered by TruckersMP",
+      builtByPrefix: "Web sitesi su kisi tarafindan yapildi",
+    },
+  },
+  zh: {
+    meta: {
+      locale: "zh-CN",
+    },
+    splash: {
+      title: "选择你的语言",
+      subtitle: "整个网站都会切换到你选择的语言。",
+    },
+    header: {
+      cta: "加入",
+      clockLabel: "时间",
+      backToMenu: "返回主菜单",
+    },
+    nav: {
+      home: "首页",
+      about: "关于我们",
+      features: "特色",
+      team: "团队",
+      contact: "联系",
+      join: "加入",
+    },
+    hero: {
+      badge: "全新",
+      title: "欢迎来到",
+      subtitle:
+        "你在 TruckersMP 的全新虚拟运输公司。一起驰骋欧洲公路，专业、友好而且充满乐趣。",
+      joinBtn: "立即加入",
+      learnMore: "了解更多",
+      online: "在线",
+      tours: "已完成运输",
+      drivers: "司机",
+      kilometers: "已行驶公里",
+      scroll: "滚动",
+    },
+    status: {
+      label: "司机状态",
+      onTitle: "ON",
+      onDesc: "正在为 H3°T 执勤",
+      offTitle: "OFF",
+      offDesc: "私人驾驶 / 休息中",
+    },
+    about: {
+      eyebrow: "关于我们",
+      title: "这就是 H3°T",
+      subtitle:
+        "H3°T 是一家为 TruckersMP 新成立的虚拟运输公司。我们正在寻找喜欢一起驾驶并希望加入成长中社区的司机。",
+      values: [
+        {
+          title: "安全",
+          description: "我们遵守规则行驶，并在每次车队活动中重视安全驾驶。",
+        },
+        {
+          title: "社区",
+          description: "团队精神始终放在第一位，欢迎每一个人加入。",
+        },
+        {
+          title: "我们的专长",
+          description: "我们的专长是驾驶 Triple Trailer。我们只驾驶 Triple Trailer。",
+        },
+        {
+          title: "灵活性",
+          description: "没有强制活动。你有时间和兴趣时再来驾驶。",
+        },
+      ],
+    },
+    features: {
+      eyebrow: "特色",
+      title: "我们提供什么",
+      subtitle:
+        "在 H3°T，你得到的不只是一起开车。你会成为一个拥有许多功能的有组织社区的一部分。",
+      items: [
+        {
+          title: "Triple Trailer",
+          description: "在 TMP 中，我们只驾驶 Triple Trailer。如果你不想一直开 Triple Trailer，我们的标签会清楚显示状态：ON 表示正在为 VTC 执勤，OFF 表示不在执勤中。",
+        },
+        {
+          title: "Discord 社区",
+          description: "一个活跃的 Discord 服务器，用于聊天、计划和交流。",
+        },
+        {
+          title: "配置与 Save Edit",
+          description: "我们会个性化配置卡车、挂车，尤其是 Triple Trailer。通过 Save Edit 和 Local Modding，我们可以编辑挂车、使用几乎所有货物，并创建不受 DLC 限制的配置。",
+        },
+      ],
+    },
+    team: {
+      eyebrow: "团队",
+      title: "我们的团队",
+      subtitle: "我们仍在成长。加入创始团队，从一开始就一起塑造 H3°T。",
+      interest: "你对团队职位感兴趣吗？",
+      contactLink: "联系我们",
+      members: [
+        {
+          name: "The real Plumz",
+          role: "Owner",
+          description: "负责领导 H3°T，并做出 VTC 最重要的决定。",
+        },
+        {
+          name: "eaglefire1231 (Riley)",
+          role: "Co-Owner",
+          description: "协助管理层，并帮助处理组织与管理工作。",
+        },
+        {
+          name: "Rollin Noodle",
+          role: "Trusted Member",
+          description: "H3°T 的可信成员。",
+        },
+        {
+          name: "Ruxery",
+          role: "Trusted Member",
+          description: "H3°T 的可信成员。",
+        },
+        {
+          name: "Longyin",
+          role: "Trusted Member",
+          description: "H3°T 的可信成员。",
+        },
+        {
+          name: "Red Hornet4953",
+          role: "Trusted Member",
+          description: "H3°T 的可信成员。",
+        },
+        {
+          name: "Emme [GCGS]",
+          role: "Trusted Member",
+          description: "H3°T 的可信成员。",
+        },
+        {
+          name: "VankataTruckerBG",
+          role: "Trusted Member",
+          description: "H3°T 的可信成员。",
+        },
+        {
+          name: "Itzz_mxx",
+          role: "Trusted Member",
+          description: "H3°T 的可信成员。",
+        },
+        {
+          name: "Sheldom_C",
+          role: "Trusted Member",
+          description: "H3°T 的可信成员。",
+        },
+        {
+          name: "Snotra",
+          role: "Trusted Member",
+          description: "H3°T 的可信成员。",
+        },
+        {
+          name: "_TBF_",
+          role: "Trusted Member",
+          description: "H3°T 的可信成员。",
+        },
+        {
+          name: "damiangamer19",
+          role: "Trusted Member",
+          description: "H3°T 的可信成员。",
+        },
+      ],
+    },
+    contact: {
+      eyebrow: "联系",
+      title: "加入 H3°T",
+      subtitle:
+        "你想加入我们或有问题吗？可以通过 Discord 联系我们，或者访问我们的 TruckersMP 主页。",
+      discord: "加入 Discord",
+      discordConfirmTitle: "仅限 VTC 成员",
+      discordConfirmText: "你确定要加入 Discord 服务器吗？该服务器仅供 VTC 成员使用。",
+      discordConfirmOpen: "仍然打开 Discord",
+      discordConfirmCancel: "取消",
+      truckersmp: "TruckersMP 主页",
+    },
+    footer: {
+      description: "TruckersMP 的虚拟运输公司。我们一起驰骋在欧洲公路上。",
+      navigation: "导航",
+      social: "社交",
+      rights: "保留所有权利。",
+      poweredBy: "Powered by TruckersMP",
+      builtByPrefix: "网站制作人",
+    },
+  },
+  ru: {
+    meta: {
+      locale: "ru-RU",
+    },
+    splash: {
+      title: "Выбери свой язык",
+      subtitle: "Весь сайт переключится на выбранный тобой язык.",
+    },
+    header: {
+      cta: "Присоединиться",
+      clockLabel: "Время",
+      backToMenu: "Назад в главное меню",
+    },
+    nav: {
+      home: "Главная",
+      about: "О нас",
+      features: "Особенности",
+      team: "Команда",
+      contact: "Контакт",
+      join: "Присоединиться",
+    },
+    hero: {
+      badge: "НОВОЕ",
+      title: "Добро пожаловать в",
+      subtitle:
+        "Твоя новая Virtual Trucking Company в TruckersMP. Вместе по дорогам Европы - профессионально, дружелюбно и с удовольствием.",
+      joinBtn: "Присоединиться сейчас",
+      learnMore: "Узнать больше",
+      online: "Онлайн",
+      tours: "Выполненные рейсы",
+      drivers: "Водители",
+      kilometers: "Пройденные километры",
+      scroll: "Прокрутка",
+    },
+    status: {
+      label: "Статус водителя",
+      onTitle: "ON",
+      onDesc: "На службе для H3°T",
+      offTitle: "OFF",
+      offDesc: "Личная поездка / перерыв",
+    },
+    about: {
+      eyebrow: "О нас",
+      title: "Это H3°T",
+      subtitle:
+        "H3°T - это новая Virtual Trucking Company для TruckersMP. Мы ищем водителей, которым нравится ездить вместе и которые хотят стать частью растущего сообщества.",
+      values: [
+        {
+          title: "Безопасность",
+          description: "Мы ездим по правилам и уделяем внимание безопасному вождению в каждой колонне.",
+        },
+        {
+          title: "Сообщество",
+          description: "Командный дух для нас на первом месте. Здесь каждому рады.",
+        },
+        {
+          title: "Наша специализация",
+          description: "Наша специализация - это езда с Triple Trailer. Мы ездим только с Triple Trailer.",
+        },
+        {
+          title: "Гибкость",
+          description: "Никаких обязательных мероприятий. Езди, когда у тебя есть время и желание.",
+        },
+      ],
+    },
+    features: {
+      eyebrow: "Особенности",
+      title: "Что мы предлагаем",
+      subtitle:
+        "В H3°T ты получаешь больше, чем просто совместные поездки. Стань частью организованного сообщества с множеством возможностей.",
+      items: [
+        {
+          title: "Triple Trailer",
+          description: "В TMP мы ездим только с Triple Trailer. Если тебе не хочется постоянно ездить с Triple Trailer, наш тег четко показывает статус: ON означает службу для VTC, OFF означает, что ты не на службе.",
+        },
+        {
+          title: "Discord сообщество",
+          description: "Активный Discord сервер для общения, планирования и совместного времяпрепровождения.",
+        },
+        {
+          title: "Настройка и Save Edit",
+          description: "Мы индивидуально настраиваем грузовики, прицепы и особенно Triple Trailer. С помощью Save Edit и Local Modding мы можем редактировать прицепы, использовать почти любые грузы и создавать сборки независимо от DLC.",
+        },
+      ],
+    },
+    team: {
+      eyebrow: "Команда",
+      title: "Наша команда",
+      subtitle: "Мы все еще растем. Присоединяйся к команде основателей и помогай формировать H3°T с самого начала.",
+      interest: "Интересует роль в команде?",
+      contactLink: "Свяжись с нами",
+      members: [
+        {
+          name: "The real Plumz",
+          role: "Owner",
+          description: "Руководит H3°T и принимает самые важные решения в VTC.",
+        },
+        {
+          name: "eaglefire1231 (Riley)",
+          role: "Co-Owner",
+          description: "Поддерживает руководство и помогает с организацией и управлением.",
+        },
+        {
+          name: "Rollin Noodle",
+          role: "Trusted Member",
+          description: "Надежный участник H3°T.",
+        },
+        {
+          name: "Ruxery",
+          role: "Trusted Member",
+          description: "Надежный участник H3°T.",
+        },
+        {
+          name: "Longyin",
+          role: "Trusted Member",
+          description: "Надежный участник H3°T.",
+        },
+        {
+          name: "Red Hornet4953",
+          role: "Trusted Member",
+          description: "Надежный участник H3°T.",
+        },
+        {
+          name: "Emme [GCGS]",
+          role: "Trusted Member",
+          description: "Надежный участник H3°T.",
+        },
+        {
+          name: "VankataTruckerBG",
+          role: "Trusted Member",
+          description: "Надежный участник H3°T.",
+        },
+        {
+          name: "Itzz_mxx",
+          role: "Trusted Member",
+          description: "Надежный участник H3°T.",
+        },
+        {
+          name: "Sheldom_C",
+          role: "Trusted Member",
+          description: "Надежный участник H3°T.",
+        },
+        {
+          name: "Snotra",
+          role: "Trusted Member",
+          description: "Надежный участник H3°T.",
+        },
+        {
+          name: "_TBF_",
+          role: "Trusted Member",
+          description: "Надежный участник H3°T.",
+        },
+        {
+          name: "damiangamer19",
+          role: "Trusted Member",
+          description: "Надежный участник H3°T.",
+        },
+      ],
+    },
+    contact: {
+      eyebrow: "Контакт",
+      title: "Присоединяйся к H3°T",
+      subtitle:
+        "Хочешь присоединиться или у тебя есть вопросы? Свяжись с нами через Discord или открой наш профиль TruckersMP.",
+      discord: "Вступить в Discord",
+      discordConfirmTitle: "Только для участников VTC",
+      discordConfirmText: "Ты уверен, что хочешь зайти на Discord сервер? Сервер предназначен только для участников VTC.",
+      discordConfirmOpen: "Все равно открыть Discord",
+      discordConfirmCancel: "Отмена",
+      truckersmp: "Профиль TruckersMP",
+    },
+    footer: {
+      description: "Virtual Trucking Company для TruckersMP. Вместе на дорогах Европы.",
+      navigation: "Навигация",
+      social: "Соцсети",
+      rights: "Все права защищены.",
+      poweredBy: "Powered by TruckersMP",
+      builtByPrefix: "Сайт создан",
     },
   },
 } as const

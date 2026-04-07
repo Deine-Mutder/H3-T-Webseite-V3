@@ -15,8 +15,8 @@ export function Footer() {
   ]
 
   const socialLinks = [
-    { label: "Discord", href: "#" },
-    { label: "TruckersMP", href: "#" },
+    { label: "Discord", href: "#contact" },
+    { label: "TruckersMP", href: "https://truckersmp.com/vtc/83043", external: true },
   ]
 
   return (
@@ -54,7 +54,12 @@ export function Footer() {
             <ul className="space-y-2">
               {socialLinks.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                  <a
+                    href={link.href}
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noreferrer" : undefined}
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
                     {link.label}
                   </a>
                 </li>

@@ -9,7 +9,7 @@ function FlagBackground({
   flagVariant,
 }: {
   flagColors: string[]
-  flagVariant: "horizontal" | "vertical" | "uk"
+  flagVariant: "horizontal" | "vertical" | "uk" | "china" | "turkey"
 }) {
   if (flagVariant === "uk") {
     return (
@@ -18,13 +18,43 @@ function FlagBackground({
         <div className="absolute inset-0">
           <div className="absolute left-1/2 top-1/2 h-4 w-[200%] -translate-x-1/2 -translate-y-1/2 rotate-[26deg] bg-white" />
           <div className="absolute left-1/2 top-1/2 h-4 w-[200%] -translate-x-1/2 -translate-y-1/2 -rotate-[26deg] bg-white" />
-          <div className="absolute left-1/2 top-1/2 h-2 w-[200%] -translate-x-1/2 -translate-y-1/2 rotate-[26deg]" style={{ backgroundColor: flagColors[1] }} />
-          <div className="absolute left-1/2 top-1/2 h-2 w-[200%] -translate-x-1/2 -translate-y-1/2 -rotate-[26deg]" style={{ backgroundColor: flagColors[1] }} />
+          <div
+            className="absolute left-1/2 top-1/2 h-2 w-[200%] -translate-x-1/2 -translate-y-1/2 rotate-[26deg]"
+            style={{ backgroundColor: flagColors[1] }}
+          />
+          <div
+            className="absolute left-1/2 top-1/2 h-2 w-[200%] -translate-x-1/2 -translate-y-1/2 -rotate-[26deg]"
+            style={{ backgroundColor: flagColors[1] }}
+          />
         </div>
         <div className="absolute bottom-0 left-1/2 top-0 w-6 -translate-x-1/2 bg-white" />
         <div className="absolute left-0 right-0 top-1/2 h-6 -translate-y-1/2 bg-white" />
         <div className="absolute bottom-0 left-1/2 top-0 w-3 -translate-x-1/2" style={{ backgroundColor: flagColors[1] }} />
         <div className="absolute left-0 right-0 top-1/2 h-3 -translate-y-1/2" style={{ backgroundColor: flagColors[1] }} />
+      </div>
+    )
+  }
+
+  if (flagVariant === "china") {
+    return (
+      <div className="absolute inset-0 overflow-hidden rounded-xl opacity-25">
+        <div className="absolute inset-0 bg-[#DE2910]" />
+        <div className="absolute left-[11%] top-[10%] text-[3.4rem] leading-none text-[#FFDE00]">{"\u2605"}</div>
+        <div className="absolute left-[36%] top-[15%] rotate-[18deg] text-base leading-none text-[#FFDE00]">{"\u2605"}</div>
+        <div className="absolute left-[42%] top-[27%] rotate-[38deg] text-sm leading-none text-[#FFDE00]">{"\u2605"}</div>
+        <div className="absolute left-[41%] top-[40%] -rotate-[10deg] text-sm leading-none text-[#FFDE00]">{"\u2605"}</div>
+        <div className="absolute left-[33%] top-[51%] rotate-[15deg] text-base leading-none text-[#FFDE00]">{"\u2605"}</div>
+      </div>
+    )
+  }
+
+  if (flagVariant === "turkey") {
+    return (
+      <div className="absolute inset-0 overflow-hidden rounded-xl opacity-25">
+        <div className="absolute inset-0 bg-[#E30A17]" />
+        <div className="absolute left-[18%] top-1/2 h-14 w-14 -translate-y-1/2 rounded-full bg-white" />
+        <div className="absolute left-[23%] top-1/2 h-11 w-11 -translate-y-1/2 rounded-full bg-[#E30A17]" />
+        <div className="absolute left-[42%] top-[33%] text-2xl leading-none text-white">{"\u2605"}</div>
       </div>
     )
   }
@@ -77,11 +107,11 @@ export function SplashScreen() {
       <div className="relative z-10 flex max-w-6xl flex-col items-center px-4">
         <div className="mb-8 flex items-center gap-3">
           <div className="relative">
-            <div className="absolute inset-0 rounded-full bg-primary/20 blur-xl animate-pulse" />
+            <div className="absolute inset-0 animate-pulse rounded-full bg-primary/20 blur-xl" />
             <Truck className="relative h-16 w-16 text-primary" />
           </div>
           <h1 className="text-5xl font-bold tracking-tight md:text-7xl">
-            <span className="text-primary">H3°T</span>
+            <span className="text-primary">H3{"\u00B0"}T</span>
           </h1>
         </div>
 
@@ -121,7 +151,10 @@ export function SplashScreen() {
 
               {hoveredLang === lang.code && (
                 <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-xl">
-                  <div className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-primary/30 to-transparent" style={{ backgroundSize: "200% 100%" }} />
+                  <div
+                    className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+                    style={{ backgroundSize: "200% 100%" }}
+                  />
                 </div>
               )}
             </button>

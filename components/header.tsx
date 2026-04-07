@@ -1,7 +1,7 @@
 "use client"
 
 import { useCallback, useState } from "react"
-import { Menu, X } from "lucide-react"
+import { ArrowRight, Menu, X } from "lucide-react"
 import { useLanguage } from "@/context/language-context"
 import { Button } from "@/components/ui/button"
 import { LiveClock } from "./live-clock"
@@ -30,9 +30,21 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <button onClick={() => resetLanguage()} className="flex items-center gap-2">
-          <span className="text-2xl font-bold text-primary">H3°T</span>
-          <span className="hidden text-sm text-muted-foreground sm:inline">VTC</span>
+        <button onClick={() => resetLanguage()} className="group flex items-center gap-3">
+          <span className="header-led-text hidden items-center gap-2 lg:inline-flex">
+            <span>{t.header.backToMenu}</span>
+            <ArrowRight className="header-led-arrow h-4 w-4 shrink-0" />
+          </span>
+
+          <span className="header-logo-wrap">
+            <span className="header-logo-snake" />
+            <span className="relative z-10 flex items-center gap-2 rounded-full bg-background/95 px-3 py-1.5">
+              <span className="text-2xl font-bold text-primary">
+                H3{"\u00B0"}T
+              </span>
+              <span className="hidden text-sm text-muted-foreground sm:inline">VTC</span>
+            </span>
+          </span>
         </button>
 
         <nav className="hidden items-center gap-6 md:flex">
