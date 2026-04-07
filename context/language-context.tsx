@@ -102,15 +102,15 @@ export const translations = {
     status: {
       label: "Fahrer Status",
       onTitle: "ON",
-      onDesc: "Im Dienst fuer H3Â°T unterwegs",
+      onDesc: "Im Dienst fuer H3°T unterwegs",
       offTitle: "OFF",
       offDesc: "Privat unterwegs / Pause",
     },
     about: {
       eyebrow: "Ueber uns",
-      title: "Das ist H3Â°T",
+      title: "Das ist H3°T",
       subtitle:
-        "H3Â°T ist eine neu gegruendete Virtual Trucking Company fuer TruckersMP. Wir suchen Fahrer, die Spass am gemeinsamen Fahren haben und Teil einer wachsenden Community werden wollen.",
+        "H3°T ist eine neu gegruendete Virtual Trucking Company fuer TruckersMP. Wir suchen Fahrer, die Spass am gemeinsamen Fahren haben und Teil einer wachsenden Community werden wollen.",
       values: [
         {
           title: "Sicherheit",
@@ -134,7 +134,7 @@ export const translations = {
       eyebrow: "Features",
       title: "Was wir bieten",
       subtitle:
-        "Bei H3Â°T bekommst du mehr als nur gemeinsames Fahren. Werde Teil einer organisierten Community mit vielen Features.",
+        "Bei H3°T bekommst du mehr als nur gemeinsames Fahren. Werde Teil einer organisierten Community mit vielen Features.",
       items: [
         {
           title: "Triple Trailer",
@@ -153,7 +153,7 @@ export const translations = {
     team: {
       eyebrow: "Team",
       title: "Unser Team",
-      subtitle: "Wir sind noch am Aufbau. Werde Teil des Gruendungsteams und gestalte H3Â°T von Anfang an mit.",
+      subtitle: "Wir sind noch am Aufbau. Werde Teil des Gruendungsteams und gestalte H3°T von Anfang an mit.",
       interest: "Interesse an einer Position im Team?",
       contactLink: "Kontaktiere uns",
       members: [
@@ -226,7 +226,7 @@ export const translations = {
     },
     contact: {
       eyebrow: "Kontakt",
-      title: "Werde Teil von H3Â°T",
+      title: "Werde Teil von H3°T",
       subtitle:
         "Du moechtest beitreten oder hast Fragen? Kontaktiere uns ueber Discord oder besuche unser TruckersMP Profil.",
       discord: "Discord beitreten",
@@ -280,15 +280,15 @@ export const translations = {
     status: {
       label: "Driver Status",
       onTitle: "ON",
-      onDesc: "On duty for H3Â°T",
+      onDesc: "On duty for H3°T",
       offTitle: "OFF",
       offDesc: "Driving privately / taking a break",
     },
     about: {
       eyebrow: "About Us",
-      title: "This is H3Â°T",
+      title: "This is H3°T",
       subtitle:
-        "H3Â°T is a newly founded Virtual Trucking Company for TruckersMP. We are looking for drivers who enjoy driving together and want to become part of a growing community.",
+        "H3°T is a newly founded Virtual Trucking Company for TruckersMP. We are looking for drivers who enjoy driving together and want to become part of a growing community.",
       values: [
         {
           title: "Safety",
@@ -312,7 +312,7 @@ export const translations = {
       eyebrow: "Features",
       title: "What We Offer",
       subtitle:
-        "At H3Â°T you get more than just shared driving. Become part of an organized community with plenty of features.",
+        "At H3°T you get more than just shared driving. Become part of an organized community with plenty of features.",
       items: [
         {
           title: "Triple Trailers",
@@ -331,7 +331,7 @@ export const translations = {
     team: {
       eyebrow: "Team",
       title: "Our Team",
-      subtitle: "We are still building. Join the founding team and help shape H3Â°T from the very beginning.",
+      subtitle: "We are still building. Join the founding team and help shape H3°T from the very beginning.",
       interest: "Interested in a team position?",
       contactLink: "Contact us",
       members: [
@@ -404,7 +404,7 @@ export const translations = {
     },
     contact: {
       eyebrow: "Contact",
-      title: "Join H3Â°T",
+      title: "Join H3°T",
       subtitle:
         "Would you like to join or do you have questions? Contact us via Discord or visit our TruckersMP profile.",
       discord: "Join Discord",
@@ -458,15 +458,15 @@ export const translations = {
     status: {
       label: "Status voznika",
       onTitle: "ON",
-      onDesc: "Na dolznosti za H3Â°T",
+      onDesc: "Na dolznosti za H3°T",
       offTitle: "OFF",
       offDesc: "Zasebna voznja / odmor",
     },
     about: {
       eyebrow: "O nas",
-      title: "To je H3Â°T",
+      title: "To je H3°T",
       subtitle:
-        "H3Â°T je novo ustanovljeno virtualno prevoznisko podjetje za TruckersMP. Iscemo voznike, ki uzivajo v skupni voznji in zelijo postati del rastoce skupnosti.",
+        "H3°T je novo ustanovljeno virtualno prevoznisko podjetje za TruckersMP. Iscemo voznike, ki uzivajo v skupni voznji in zelijo postati del rastoce skupnosti.",
       values: [
         {
           title: "Varnost",
@@ -490,7 +490,7 @@ export const translations = {
       eyebrow: "Funkcije",
       title: "Kaj ponujamo",
       subtitle:
-        "Pri H3Â°T dobis vec kot le skupno voznjo. Postani del organizirane skupnosti z veliko funkcijami.",
+        "Pri H3°T dobis vec kot le skupno voznjo. Postani del organizirane skupnosti z veliko funkcijami.",
       items: [
         {
           title: "Triple Trailer",
@@ -509,7 +509,7 @@ export const translations = {
     team: {
       eyebrow: "Ekipa",
       title: "Nasa ekipa",
-      subtitle: "Se vedno rastemo. Pridruzi se ustanovni ekipi in pomagaj oblikovati H3Â°T od samega zacetka.",
+      subtitle: "Se vedno rastemo. Pridruzi se ustanovni ekipi in pomagaj oblikovati H3°T od samega zacetka.",
       interest: "Te zanima mesto v ekipi?",
       contactLink: "Kontaktiraj nas",
       members: [
@@ -582,7 +582,7 @@ export const translations = {
     },
     contact: {
       eyebrow: "Kontakt",
-      title: "Pridruzi se H3Â°T",
+      title: "Pridruzi se H3°T",
       subtitle:
         "Bi se rad pridruzil ali imas vprasanja? Kontaktiraj nas prek Discorda ali obisci nas TruckersMP profil.",
       discord: "Pridruzi se Discordu",
@@ -636,15 +636,15 @@ export const translations = {
     status: {
       label: "Statut du chauffeur",
       onTitle: "ON",
-      onDesc: "En service pour H3Â°T",
+      onDesc: "En service pour H3°T",
       offTitle: "OFF",
       offDesc: "Conduite privee / pause",
     },
     about: {
       eyebrow: "A propos",
-      title: "Voici H3Â°T",
+      title: "Voici H3°T",
       subtitle:
-        "H3Â°T est une entreprise virtuelle de transport nouvellement creee pour TruckersMP. Nous recherchons des chauffeurs qui aiment rouler ensemble et rejoindre une communaute en pleine croissance.",
+        "H3°T est une entreprise virtuelle de transport nouvellement creee pour TruckersMP. Nous recherchons des chauffeurs qui aiment rouler ensemble et rejoindre une communaute en pleine croissance.",
       values: [
         {
           title: "Securite",
@@ -668,7 +668,7 @@ export const translations = {
       eyebrow: "Fonctions",
       title: "Ce que nous proposons",
       subtitle:
-        "Chez H3Â°T, tu obtiens plus que de simples trajets en commun. Rejoins une communaute organisee avec de nombreuses fonctions.",
+        "Chez H3°T, tu obtiens plus que de simples trajets en commun. Rejoins une communaute organisee avec de nombreuses fonctions.",
       items: [
         {
           title: "Triple remorque",
@@ -687,7 +687,7 @@ export const translations = {
     team: {
       eyebrow: "Equipe",
       title: "Notre equipe",
-      subtitle: "Nous sommes encore en construction. Rejoins l'equipe fondatrice et participe a l'histoire de H3Â°T des le debut.",
+      subtitle: "Nous sommes encore en construction. Rejoins l'equipe fondatrice et participe a l'histoire de H3°T des le debut.",
       interest: "Tu es interesse par un poste dans l'equipe ?",
       contactLink: "Contacte-nous",
       members: [
@@ -760,7 +760,7 @@ export const translations = {
     },
     contact: {
       eyebrow: "Contact",
-      title: "Rejoins H3Â°T",
+      title: "Rejoins H3°T",
       subtitle:
         "Tu veux nous rejoindre ou tu as des questions ? Contacte-nous sur Discord ou visite notre profil TruckersMP.",
       discord: "Rejoindre Discord",
@@ -814,15 +814,15 @@ export const translations = {
     status: {
       label: "Estado del conductor",
       onTitle: "ON",
-      onDesc: "De servicio para H3Â°T",
+      onDesc: "De servicio para H3°T",
       offTitle: "OFF",
       offDesc: "Conduccion privada / descanso",
     },
     about: {
       eyebrow: "Sobre nosotros",
-      title: "Esto es H3Â°T",
+      title: "Esto es H3°T",
       subtitle:
-        "H3Â°T es una empresa virtual de transporte recien creada para TruckersMP. Buscamos conductores que disfruten conducir juntos y quieran formar parte de una comunidad en crecimiento.",
+        "H3°T es una empresa virtual de transporte recien creada para TruckersMP. Buscamos conductores que disfruten conducir juntos y quieran formar parte de una comunidad en crecimiento.",
       values: [
         {
           title: "Seguridad",
@@ -846,7 +846,7 @@ export const translations = {
       eyebrow: "Funciones",
       title: "Lo que ofrecemos",
       subtitle:
-        "En H3Â°T obtienes mucho mas que conducir en grupo. Forma parte de una comunidad organizada con muchas funciones.",
+        "En H3°T obtienes mucho mas que conducir en grupo. Forma parte de una comunidad organizada con muchas funciones.",
       items: [
         {
           title: "Triple remolque",
@@ -865,7 +865,7 @@ export const translations = {
     team: {
       eyebrow: "Equipo",
       title: "Nuestro equipo",
-      subtitle: "Todavia estamos creciendo. Unete al equipo fundador y ayuda a dar forma a H3Â°T desde el principio.",
+      subtitle: "Todavia estamos creciendo. Unete al equipo fundador y ayuda a dar forma a H3°T desde el principio.",
       interest: "Te interesa un puesto en el equipo?",
       contactLink: "Contactanos",
       members: [
@@ -938,7 +938,7 @@ export const translations = {
     },
     contact: {
       eyebrow: "Contacto",
-      title: "Unete a H3Â°T",
+      title: "Unete a H3°T",
       subtitle:
         "Quieres unirte o tienes preguntas? Contactanos por Discord o visita nuestro perfil de TruckersMP.",
       discord: "Unirse a Discord",
@@ -992,15 +992,15 @@ export const translations = {
     status: {
       label: "Stato autista",
       onTitle: "ON",
-      onDesc: "In servizio per H3Â°T",
+      onDesc: "In servizio per H3°T",
       offTitle: "OFF",
       offDesc: "Guida privata / pausa",
     },
     about: {
       eyebrow: "Chi siamo",
-      title: "Questo e H3Â°T",
+      title: "Questo e H3°T",
       subtitle:
-        "H3Â°T e una Virtual Trucking Company appena fondata per TruckersMP. Cerchiamo autisti che amino guidare insieme e vogliano entrare in una comunita in crescita.",
+        "H3°T e una Virtual Trucking Company appena fondata per TruckersMP. Cerchiamo autisti che amino guidare insieme e vogliano entrare in una comunita in crescita.",
       values: [
         {
           title: "Sicurezza",
@@ -1024,7 +1024,7 @@ export const translations = {
       eyebrow: "Funzioni",
       title: "Cosa offriamo",
       subtitle:
-        "Con H3Â°T ottieni piu di una semplice guida di gruppo. Entra in una comunita organizzata con tante funzioni.",
+        "Con H3°T ottieni piu di una semplice guida di gruppo. Entra in una comunita organizzata con tante funzioni.",
       items: [
         {
           title: "Triple Trailer",
@@ -1043,7 +1043,7 @@ export const translations = {
     team: {
       eyebrow: "Team",
       title: "Il nostro team",
-      subtitle: "Siamo ancora in crescita. Unisciti al team fondatore e contribuisci a costruire H3Â°T fin dall'inizio.",
+      subtitle: "Siamo ancora in crescita. Unisciti al team fondatore e contribuisci a costruire H3°T fin dall'inizio.",
       interest: "Ti interessa un ruolo nel team?",
       contactLink: "Contattaci",
       members: [
@@ -1116,7 +1116,7 @@ export const translations = {
     },
     contact: {
       eyebrow: "Contatto",
-      title: "Unisciti a H3Â°T",
+      title: "Unisciti a H3°T",
       subtitle:
         "Vuoi unirti o hai domande? Contattaci su Discord oppure visita il nostro profilo TruckersMP.",
       discord: "Unisciti a Discord",
