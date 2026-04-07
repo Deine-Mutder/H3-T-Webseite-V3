@@ -196,9 +196,11 @@
   }
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
   }
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 }
 
@@ -300,6 +302,15 @@
   }
 }
 
+@keyframes headerSnakeOrbit {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .header-led-text {
   color: #ffb347;
   font-family: var(--font-mono);
@@ -322,24 +333,38 @@
   display: inline-flex;
   overflow: hidden;
   border-radius: 9999px;
-  padding: 2px;
+  padding: 3px;
 }
 
 .header-logo-snake {
   position: absolute;
-  inset: -18%;
+  inset: 0;
+  display: block;
+  padding: 3px;
   border-radius: 9999px;
   background:
     conic-gradient(
       from 0deg,
       rgba(255, 149, 0, 0) 0deg,
-      rgba(255, 149, 0, 0.12) 70deg,
-      rgba(255, 181, 72, 0.95) 135deg,
-      rgba(255, 149, 0, 0.18) 210deg,
+      rgba(255, 149, 0, 0.08) 55deg,
+      rgba(255, 190, 92, 0.98) 110deg,
+      rgba(255, 149, 0, 0.28) 165deg,
+      rgba(255, 149, 0, 0.05) 220deg,
+      rgba(255, 190, 92, 0.92) 280deg,
       rgba(255, 149, 0, 0) 360deg
     );
-  filter: blur(1px);
-  animation: headerSnakeGlow 5s linear infinite;
+  filter:
+    drop-shadow(0 0 6px rgba(255, 166, 0, 0.62))
+    drop-shadow(0 0 14px rgba(255, 166, 0, 0.32));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: headerSnakeGlow 2.4s linear infinite;
 }
 
 @keyframes teamMarqueeTrack {

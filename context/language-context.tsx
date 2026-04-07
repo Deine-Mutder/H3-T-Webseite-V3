@@ -160,6 +160,9 @@ export const translations = {
       title: "Was wir bieten",
       subtitle:
         "Bei H3°T bekommst du mehr als nur gemeinsames Fahren. Werde Teil einer organisierten Community mit vielen Features.",
+      unavailableTitle: "Hinweis",
+      unavailableText: "Dieser Bereich der Website ist momentan nicht verfuegbar.",
+      unavailableClose: "Schliessen",
       items: [
         {
           title: "Triple Trailer",
@@ -340,6 +343,9 @@ export const translations = {
       title: "What We Offer",
       subtitle:
         "At H3°T you get more than just shared driving. Become part of an organized community with plenty of features.",
+      unavailableTitle: "Notice",
+      unavailableText: "This area of the website is currently not available.",
+      unavailableClose: "Close",
       items: [
         {
           title: "Triple Trailers",
@@ -520,6 +526,9 @@ export const translations = {
       title: "Kaj ponujamo",
       subtitle:
         "Pri H3°T dobis vec kot le skupno voznjo. Postani del organizirane skupnosti z veliko funkcijami.",
+      unavailableTitle: "Obvestilo",
+      unavailableText: "Ta del spletne strani trenutno ni na voljo.",
+      unavailableClose: "Zapri",
       items: [
         {
           title: "Triple Trailer",
@@ -700,6 +709,9 @@ export const translations = {
       title: "Ce que nous proposons",
       subtitle:
         "Chez H3°T, tu obtiens plus que de simples trajets en commun. Rejoins une communaute organisee avec de nombreuses fonctions.",
+      unavailableTitle: "Information",
+      unavailableText: "Cette partie du site n'est actuellement pas disponible.",
+      unavailableClose: "Fermer",
       items: [
         {
           title: "Triple remorque",
@@ -880,6 +892,9 @@ export const translations = {
       title: "Lo que ofrecemos",
       subtitle:
         "En H3°T obtienes mucho mas que conducir en grupo. Forma parte de una comunidad organizada con muchas funciones.",
+      unavailableTitle: "Aviso",
+      unavailableText: "Esta parte del sitio web no esta disponible en este momento.",
+      unavailableClose: "Cerrar",
       items: [
         {
           title: "Triple remolque",
@@ -1060,6 +1075,9 @@ export const translations = {
       title: "Cosa offriamo",
       subtitle:
         "Con H3°T ottieni piu di una semplice guida di gruppo. Entra in una comunita organizzata con tante funzioni.",
+      unavailableTitle: "Avviso",
+      unavailableText: "Questa sezione del sito web al momento non e disponibile.",
+      unavailableClose: "Chiudi",
       items: [
         {
           title: "Triple Trailer",
@@ -1240,6 +1258,9 @@ export const translations = {
       title: "Neler sunuyoruz",
       subtitle:
         "H3°T'de sadece birlikte surmekten daha fazlasini bulursun. Bircok ozellige sahip duzenli bir toplulugun parcasi ol.",
+      unavailableTitle: "Bilgi",
+      unavailableText: "Web sitesinin bu bolumu su anda kullanilamiyor.",
+      unavailableClose: "Kapat",
       items: [
         {
           title: "Triple Trailer",
@@ -1420,6 +1441,9 @@ export const translations = {
       title: "我们提供什么",
       subtitle:
         "在 H3°T，你得到的不只是一起开车。你会成为一个拥有许多功能的有组织社区的一部分。",
+      unavailableTitle: "提示",
+      unavailableText: "网站的这个区域目前暂时不可用。",
+      unavailableClose: "关闭",
       items: [
         {
           title: "Triple Trailer",
@@ -1600,6 +1624,9 @@ export const translations = {
       title: "Что мы предлагаем",
       subtitle:
         "В H3°T ты получаешь больше, чем просто совместные поездки. Стань частью организованного сообщества с множеством возможностей.",
+      unavailableTitle: "Сообщение",
+      unavailableText: "Этот раздел сайта в данный момент недоступен.",
+      unavailableClose: "Закрыть",
       items: [
         {
           title: "Triple Trailer",

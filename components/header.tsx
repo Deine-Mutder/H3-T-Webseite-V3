@@ -4,6 +4,7 @@ import { useCallback, useState } from "react"
 import { ArrowRight, Menu, X } from "lucide-react"
 import { useLanguage } from "@/context/language-context"
 import { Button } from "@/components/ui/button"
+import { animateScrollToElement } from "@/lib/utils"
 import { LiveClock } from "./live-clock"
 import { ThemeSwitcher } from "./theme-switcher"
 
@@ -22,7 +23,7 @@ export function Header() {
   const scrollToSection = useCallback((id: string) => {
     const element = document.getElementById(id)
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      animateScrollToElement(element)
     }
     setMobileMenuOpen(false)
   }, [])
@@ -64,8 +65,8 @@ export function Header() {
             <LiveClock />
           </div>
           <ThemeSwitcher />
-          <Button asChild className="hidden sm:inline-flex" size="sm">
-            <a href="#contact">{t.header.cta}</a>
+          <Button className="hidden sm:inline-flex" size="sm" onClick={() => scrollToSection("contact")}>
+            {t.header.cta}
           </Button>
           <button className="p-2 md:hidden" onClick={() => setMobileMenuOpen((open) => !open)}>
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -85,8 +86,8 @@ export function Header() {
                 {link.label}
               </button>
             ))}
-            <Button asChild size="sm" className="mt-2 w-full">
-              <a href="#contact">{t.header.cta}</a>
+            <Button size="sm" className="mt-2 w-full" onClick={() => scrollToSection("contact")}>
+              {t.header.cta}
             </Button>
           </div>
         </nav>
