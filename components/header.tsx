@@ -1,0 +1,84 @@
+"use client"
+
+import { useCallback, useState } from "react"
+import { Menu, X } from "lucide-react"
+import { useLanguage } from "@/context/language-context"
+import { Button } from "@/components/ui/button"
+import { LiveClock } from "./live-clock"
+import { ThemeSwitcher } from "./theme-switcher"
+
+export function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { resetLanguage, t } = useLanguage()
+
+  const navLinks = [
+    { id: "home", label: t.nav.home },
+    { id: "about", label: t.nav.about },
+    { id: "features", label: t.nav.features },
+    { id: "team", label: t.nav.team },
+    { id: "contact", label: t.nav.contact },
+  ]
+
+  const scrollToSection = useCallback((id: string) => {
+    const element = document.getElementById(id)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+    setMobileMenuOpen(false)
+  }, [])
+
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <button onClick={() => resetLanguage()} className="flex items-center gap-2">
+          <span className="text-2xl font-bold text-primary">H3°T</span>
+          <span className="hidden text-sm text-muted-foreground sm:inline">VTC</span>
+        </button>
+
+        <nav className="hidden items-center gap-6 md:flex">
+          {navLinks.map((link) => (
+            <button
+              key={link.id}
+              onClick={() => scrollToSection(link.id)}
+              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              {link.label}
+            </button>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-4">
+          <div className="hidden lg:block">
+            <LiveClock />
+          </div>
+          <ThemeSwitcher />
+          <Button asChild className="hidden sm:inline-flex" size="sm">
+            <a href="#contact">{t.header.cta}</a>
+          </Button>
+          <button className="p-2 md:hidden" onClick={() => setMobileMenuOpen((open) => !open)}>
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+      </div>
+
+      {mobileMenuOpen && (
+        <nav className="border-t border-border py-4 md:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 sm:px-6 lg:px-8">
+            {navLinks.map((link) => (
+              <button
+                key={link.id}
+                onClick={() => scrollToSection(link.id)}
+                className="text-left text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </button>
+            ))}
+            <Button asChild size="sm" className="mt-2 w-full">
+              <a href="#contact">{t.header.cta}</a>
+            </Button>
+          </div>
+        </nav>
+      )}
+    </header>
+  )
+}
