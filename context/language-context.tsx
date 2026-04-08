@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
 
-export type Language = "de" | "en" | "sl" | "fr" | "es" | "it" | "tr" | "zh" | "ru"
+export type Language = "de" | "en" | "sl" | "fr" | "es" | "it" | "pl" | "tr" | "zh" | "ru"
 type FlagVariant = "horizontal" | "vertical" | "uk" | "china" | "turkey"
 
 export const languageOptions: Array<{
@@ -60,6 +60,14 @@ export const languageOptions: Array<{
     locale: "it-IT",
     flagColors: ["#009246", "#FFFFFF", "#CE2B37"],
     flagVariant: "vertical",
+  },
+  {
+    code: "pl",
+    name: "Polski",
+    nativeName: "Polish",
+    locale: "pl-PL",
+    flagColors: ["#FFFFFF", "#DC143C"],
+    flagVariant: "horizontal",
   },
   {
     code: "tr",
@@ -1552,6 +1560,189 @@ export const translations = {
       rights: "保留所有权利。",
       poweredBy: "Powered by TruckersMP",
       builtByPrefix: "网站制作人",
+    },
+  },
+  pl: {
+    meta: {
+      locale: "pl-PL",
+    },
+    splash: {
+      title: "Wybierz swój język",
+      subtitle: "Cała strona internetowa zostanie wyświetlona w wybranym przez Ciebie języku.",
+    },
+    header: {
+      cta: "Dołącz",
+      clockLabel: "Czas",
+      backToMenu: "Powrót do menu głównego",
+    },
+    nav: {
+      home: "Start",
+      about: "O nas",
+      features: "Funkcje",
+      team: "Zespół",
+      contact: "Kontakt",
+      join: "Dołącz",
+    },
+    hero: {
+      badge: "NOWE",
+      title: "Witamy w",
+      subtitle:
+        "Twoja nowa Virtual Trucking Company w TruckersMP. Razem na drogach Europy - profesjonalnie, przyjaźnie i z dużą dawką zabawy.",
+      joinBtn: "Dołącz teraz",
+      learnMore: "Dowiedz się więcej",
+      online: "Online",
+      tours: "Wykonane trasy",
+      drivers: "Kierowcy",
+      kilometers: "Przejechane kilometry",
+      scroll: "Przewiń",
+    },
+    status: {
+      label: "Status kierowcy",
+      onTitle: "ON",
+      onDesc: "Na służbie dla H3°T",
+      offTitle: "OFF",
+      offDesc: "Jazda prywatna / przerwa",
+    },
+    about: {
+      eyebrow: "O nas",
+      title: "To jest H3°T",
+      subtitle:
+        "H3°T to nowo założona Virtual Trucking Company dla TruckersMP. Szukamy kierowców, którzy lubią wspólną jazdę i chcą stać się częścią rozwijającej się społeczności.",
+      values: [
+        {
+          title: "Bezpieczeństwo",
+          description: "Jeździmy zgodnie z zasadami i dbamy o bezpieczną jazdę w każdym konwoju.",
+        },
+        {
+          title: "Społeczność",
+          description: "Najważniejsza jest dla nas wspólnota. Każdy jest mile widziany.",
+        },
+        {
+          title: "Nasza specjalność",
+          description: "Naszą specjalnością jest jazda z Triple Trailer. Jeździmy wyłącznie z Triple Trailer.",
+        },
+        {
+          title: "Elastyczność",
+          description: "Brak obowiązkowych eventów. Jeździj wtedy, kiedy masz czas i ochotę.",
+        },
+      ],
+    },
+    features: {
+      eyebrow: "Funkcje",
+      title: "Co oferujemy",
+      subtitle:
+        "W H3°T otrzymujesz więcej niż tylko wspólną jazdę. Stań się częścią zorganizowanej społeczności z wieloma funkcjami.",
+      unavailableTitle: "Informacja",
+      unavailableText: "Ta część strony internetowej jest obecnie niedostępna.",
+      unavailableClose: "Zamknij",
+      items: [
+        {
+          title: "Triple Trailer",
+          description: "W TMP jeździmy wyłącznie z Triple Trailer. Jeśli nie masz ochoty jeździć nimi cały czas, nasz tag wyraźnie pokazuje status: ON oznacza służbę dla VTC, OFF oznacza brak służby.",
+        },
+        {
+          title: "Społeczność Discord",
+          description: "Aktywny serwer Discord do rozmów, planowania i wspólnego spędzania czasu.",
+        },
+        {
+          title: "Konfiguracja i Save Edit",
+          description: "Indywidualnie konfigurujemy ciężarówki, naczepy, a szczególnie Triple Trailer. Dzięki save edit i local modding możemy dostosowywać naczepy, używać prawie każdego ładunku i tworzyć zestawy niezależne od posiadanych DLC.",
+        },
+      ],
+    },
+    team: {
+      eyebrow: "Zespół",
+      title: "Nasz zespół",
+      subtitle: "Wciąż się rozwijamy. Dołącz do zespołu założycielskiego i pomóż tworzyć H3°T od samego początku.",
+      interest: "Interesuje Cię rola w zespole?",
+      contactLink: "Skontaktuj się z nami",
+      members: [
+        {
+          name: "The real Plumz",
+          role: "Owner",
+          description: "Prowadzi H3°T i podejmuje najważniejsze decyzje dotyczące VTC.",
+        },
+        {
+          name: "eaglefire1231 (Riley)",
+          role: "Co-Owner",
+          description: "Wspiera zarząd i pomaga w organizacji oraz administracji.",
+        },
+        {
+          name: "Rollin Noodle",
+          role: "Trusted Member",
+          description: "Zaufany członek H3°T.",
+        },
+        {
+          name: "Ruxery",
+          role: "Trusted Member",
+          description: "Zaufany członek H3°T.",
+        },
+        {
+          name: "Longyin",
+          role: "Trusted Member",
+          description: "Zaufany członek H3°T.",
+        },
+        {
+          name: "Red Hornet4953",
+          role: "Trusted Member",
+          description: "Zaufany członek H3°T.",
+        },
+        {
+          name: "Emme [GCGS]",
+          role: "Trusted Member",
+          description: "Zaufany członek H3°T.",
+        },
+        {
+          name: "VankataTruckerBG",
+          role: "Trusted Member",
+          description: "Zaufany członek H3°T.",
+        },
+        {
+          name: "Itzz_mxx",
+          role: "Trusted Member",
+          description: "Zaufany członek H3°T.",
+        },
+        {
+          name: "Sheldom_C",
+          role: "Trusted Member",
+          description: "Zaufany członek H3°T.",
+        },
+        {
+          name: "Snotra",
+          role: "Trusted Member",
+          description: "Zaufany członek H3°T.",
+        },
+        {
+          name: "_TBF_",
+          role: "Trusted Member",
+          description: "Zaufany członek H3°T.",
+        },
+        {
+          name: "damiangamer19",
+          role: "Trusted Member",
+          description: "Zaufany członek H3°T.",
+        },
+      ],
+    },
+    contact: {
+      eyebrow: "Kontakt",
+      title: "Dołącz do H3°T",
+      subtitle:
+        "Chcesz dołączyć albo masz pytania? Skontaktuj się z nami przez Discord lub odwiedź nasz profil TruckersMP.",
+      discord: "Dołącz do Discorda",
+      discordConfirmTitle: "Tylko dla członków VTC",
+      discordConfirmText: "Czy na pewno chcesz dołączyć do serwera Discord? Serwer jest przeznaczony wyłącznie dla członków VTC.",
+      discordConfirmOpen: "Mimo to otwórz Discord",
+      discordConfirmCancel: "Anuluj",
+      truckersmp: "Profil TruckersMP",
+    },
+    footer: {
+      description: "Virtual Trucking Company dla TruckersMP. Razem na drogach Europy.",
+      navigation: "Nawigacja",
+      social: "Social media",
+      rights: "Wszelkie prawa zastrzeżone.",
+      poweredBy: "Powered by TruckersMP",
+      builtByPrefix: "Strona stworzona przez",
     },
   },
   ru: {
