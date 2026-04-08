@@ -90,9 +90,9 @@ export function TeamSection() {
   }, [t.team.members])
 
   return (
-    <section id="team" className="bg-secondary/30 py-24">
+    <section id="team" className="bg-secondary/30 py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 text-center">
+        <div className="mb-12 text-center lg:mb-16">
           <span className="text-sm font-medium uppercase tracking-wider text-primary">{t.team.eyebrow}</span>
           <h2 className="mt-2 mb-4 text-3xl font-bold text-foreground sm:text-4xl">{t.team.title}</h2>
           <p className="mx-auto max-w-2xl text-muted-foreground text-pretty">{t.team.subtitle}</p>

@@ -10,7 +10,7 @@ export function AboutSection() {
   const { t } = useLanguage()
 
   return (
-    <section id="about" className="relative overflow-hidden bg-secondary/30 py-24">
+    <section id="about" className="relative overflow-hidden bg-secondary/30 py-20 lg:py-24">
       <div className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 opacity-5">
         <svg width="400" height="200" viewBox="0 0 400 200" className="fill-current text-foreground">
           <rect x="10" y="80" width="180" height="80" rx="8" />
@@ -24,7 +24,7 @@ export function AboutSection() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
-          <div className="mb-16 text-center">
+          <div className="mb-12 text-center lg:mb-16">
             <span className="text-sm font-medium uppercase tracking-wider text-primary">{t.about.eyebrow}</span>
             <h2 className="mt-2 mb-4 text-3xl font-bold text-foreground sm:text-4xl">{t.about.title}</h2>
             <p className="mx-auto max-w-2xl text-muted-foreground text-pretty">{t.about.subtitle}</p>

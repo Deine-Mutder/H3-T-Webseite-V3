@@ -21,7 +21,7 @@ export function HeroSection() {
   }
 
   return (
-    <section id="home" className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16">
+    <section id="home" className="relative flex min-h-[max(100svh,42rem)] items-center justify-center overflow-hidden pt-16">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
       <div className="absolute left-1/2 top-1/4 h-[600px] w-[600px] -translate-x-1/2 animate-pulse rounded-full bg-primary/10 blur-3xl" />
 
@@ -37,9 +37,9 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-[1500px] px-4 py-10 text-center sm:px-6 lg:px-8 2xl:max-w-[1700px] 2xl:px-10">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-12 text-center sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
         <ScrollReveal delay={0}>
-          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 sm:mb-8">
             <span className="h-2 w-2 animate-pulse rounded-full bg-primary" />
             <span className="text-sm text-primary">TruckersMP VTC</span>
             <span className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
@@ -48,12 +48,12 @@ export function HeroSection() {
         </ScrollReveal>
 
         <ScrollReveal delay={100}>
-          <h1 className="mb-6 text-5xl font-bold tracking-tight text-balance text-foreground sm:text-6xl lg:text-7xl 2xl:text-[5.5rem]">
+          <h1 className="mb-6 text-[clamp(2.8rem,8vw,5.25rem)] font-bold tracking-tight text-balance text-foreground">
             <span>{t.hero.title}</span>
             <br />
             <span className="relative text-primary">
               H3{"\u00B0"}T
-              <span className="absolute -right-4 -top-2 rounded-full bg-accent px-2 py-0.5 text-xs text-accent-foreground animate-bounce">
+              <span className="absolute -right-3 -top-2 rounded-full bg-accent px-2 py-0.5 text-[10px] text-accent-foreground animate-bounce sm:-right-4 sm:text-xs">
                 {t.hero.badge}
               </span>
             </span>
@@ -61,7 +61,7 @@ export function HeroSection() {
         </ScrollReveal>
 
         <ScrollReveal delay={200}>
-          <p className="mx-auto mb-10 max-w-2xl text-lg text-muted-foreground text-pretty sm:text-xl 2xl:max-w-4xl 2xl:text-2xl">
+          <p className="mx-auto mb-8 max-w-3xl text-[clamp(1rem,2vw,1.35rem)] text-muted-foreground text-pretty sm:mb-10">
             {t.hero.subtitle}
           </p>
         </ScrollReveal>
@@ -79,37 +79,37 @@ export function HeroSection() {
         </ScrollReveal>
 
         <ScrollReveal delay={350}>
-          <div className="mb-16">
+          <div className="mb-12 sm:mb-16">
             <StatusIndicator />
           </div>
         </ScrollReveal>
 
-        <div className="mx-auto grid w-full max-w-3xl grid-cols-1 gap-6 sm:grid-cols-3 2xl:max-w-5xl 2xl:gap-8">
+        <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
           <ScrollReveal delay={400}>
-            <div className="group flex flex-col items-center rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50 2xl:p-8">
-              <Truck className="mb-3 h-8 w-8 text-primary transition-transform group-hover:scale-110 2xl:h-10 2xl:w-10" />
-              <span className="text-3xl font-bold text-foreground 2xl:text-4xl">
+            <div className="group flex flex-col items-center rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50 lg:p-7">
+              <Truck className="mb-3 h-8 w-8 text-primary transition-transform group-hover:scale-110" />
+              <span className="text-3xl font-bold text-foreground lg:text-4xl">
                 <AnimatedCounter end={500} suffix="+" />
               </span>
-              <span className="text-sm text-muted-foreground 2xl:text-base">{t.hero.tours}</span>
+              <span className="text-sm text-muted-foreground lg:text-base">{t.hero.tours}</span>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={500}>
-            <div className="group flex flex-col items-center rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50 2xl:p-8">
-              <Users className="mb-3 h-8 w-8 text-primary transition-transform group-hover:scale-110 2xl:h-10 2xl:w-10" />
-              <span className="text-3xl font-bold text-foreground 2xl:text-4xl">
+            <div className="group flex flex-col items-center rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50 lg:p-7">
+              <Users className="mb-3 h-8 w-8 text-primary transition-transform group-hover:scale-110" />
+              <span className="text-3xl font-bold text-foreground lg:text-4xl">
                 <AnimatedCounter end={8} />
               </span>
-              <span className="text-sm text-muted-foreground 2xl:text-base">{t.hero.drivers}</span>
+              <span className="text-sm text-muted-foreground lg:text-base">{t.hero.drivers}</span>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={600}>
-            <div className="group flex flex-col items-center rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50 2xl:p-8">
-              <MapPin className="mb-3 h-8 w-8 text-primary transition-transform group-hover:scale-110 2xl:h-10 2xl:w-10" />
-              <span className="text-3xl font-bold text-foreground 2xl:text-4xl">
+            <div className="group flex flex-col items-center rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50 lg:p-7">
+              <MapPin className="mb-3 h-8 w-8 text-primary transition-transform group-hover:scale-110" />
+              <span className="text-3xl font-bold text-foreground lg:text-4xl">
                 <AnimatedCounter end={100} suffix="k+" />
               </span>
-              <span className="text-sm text-muted-foreground 2xl:text-base">{t.hero.kilometers}</span>
+              <span className="text-sm text-muted-foreground lg:text-base">{t.hero.kilometers}</span>
             </div>
           </ScrollReveal>
         </div>

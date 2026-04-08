@@ -26,10 +26,10 @@ export function FeaturesSection() {
 
   return (
     <>
-      <section id="features" className="py-24">
+      <section id="features" className="py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <div className="mb-16 text-center">
+            <div className="mb-12 text-center lg:mb-16">
               <span className="text-sm font-medium uppercase tracking-wider text-primary">{t.features.eyebrow}</span>
               <h2 className="mt-2 mb-4 text-3xl font-bold text-foreground sm:text-4xl">{t.features.title}</h2>
               <p className="mx-auto max-w-2xl text-muted-foreground text-pretty">{t.features.subtitle}</p>
