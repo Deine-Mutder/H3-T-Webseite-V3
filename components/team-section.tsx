@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Crown, Shield, Star, User } from "lucide-react"
 import { useLanguage } from "@/context/language-context"
 
@@ -36,21 +36,33 @@ function getRoleStyles(role: string) {
 
 export function TeamSection() {
   const { t } = useLanguage()
+  const [showAllMembers, setShowAllMembers] = useState(false)
   const trackRef = useRef<HTMLDivElement>(null)
   const firstGroupRef = useRef<HTMLDivElement>(null)
   const frameRef = useRef<number | null>(null)
   const offsetRef = useRef(0)
   const pausedRef = useRef(false)
+  const sortedMembers = [...t.team.members].sort((a, b) => {
+    const order = { Owner: 0, "Co-Owner": 1, "Trusted Member": 2 }
+    const roleA = order[a.role as keyof typeof order] ?? 99
+    const roleB = order[b.role as keyof typeof order] ?? 99
+
+    if (roleA !== roleB) {
+      return roleA - roleB
+    }
+
+    return a.name.localeCompare(b.name)
+  })
 
   useEffect(() => {
     const track = trackRef.current
     const firstGroup = firstGroupRef.current
 
-    if (!track || !firstGroup) return
+    if (showAllMembers || !track || !firstGroup) return
 
     let lastTimestamp = 0
     let groupWidth = firstGroup.getBoundingClientRect().width
-    const speed = 42
+    const speed = 62
 
     const updateWidth = () => {
       groupWidth = firstGroup.getBoundingClientRect().width
@@ -87,7 +99,7 @@ export function TeamSection() {
         window.cancelAnimationFrame(frameRef.current)
       }
     }
-  }, [t.team.members])
+  }, [showAllMembers, t.team.members])
 
   return (
     <section id="team" className="bg-secondary/30 py-20 lg:py-24">
@@ -97,77 +109,152 @@ export function TeamSection() {
           <h2 className="mt-2 mb-4 text-3xl font-bold text-foreground sm:text-4xl">{t.team.title}</h2>
           <p className="mx-auto max-w-2xl text-muted-foreground text-pretty">{t.team.subtitle}</p>
         </div>
-      </div>
 
-      <div className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden py-4">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-secondary/95 to-transparent sm:w-28 lg:w-40" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-secondary/95 to-transparent sm:w-28 lg:w-40" />
-
-        <div
-          ref={trackRef}
-          className="flex w-max gap-6 px-4 will-change-transform sm:px-6 lg:px-8"
-          onMouseEnter={() => {
-            pausedRef.current = true
-          }}
-          onMouseLeave={() => {
-            pausedRef.current = false
-          }}
-        >
-          {[0, 1].map((groupIndex) => (
-            <div
-              key={groupIndex}
-              ref={groupIndex === 0 ? firstGroupRef : undefined}
-              className="flex flex-none gap-6 pr-6"
+        <div className="mb-8 flex justify-center">
+          <div className="inline-flex rounded-full border border-border bg-card/80 p-1 shadow-sm backdrop-blur">
+            <button
+              type="button"
+              onClick={() => setShowAllMembers(false)}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                !showAllMembers ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+              }`}
             >
-              {t.team.members.map((member, index) => {
-                const styles = getRoleStyles(member.role)
-                const RoleIcon = styles.icon
-                const isFeaturedMember = member.name === "Rollin Noodle"
-
-                return (
-                  <div
-                    key={`${groupIndex}-${member.name}-${member.role}-${index}`}
-                    className={`group relative min-h-[360px] w-[300px] shrink-0 rounded-3xl border p-7 text-center transition-transform duration-300 hover:-translate-y-1 ${styles.card} sm:min-h-[390px] sm:w-[340px] ${
-                      isFeaturedMember
-                        ? "border-primary/80 bg-[radial-gradient(circle_at_top,_rgba(255,215,90,0.24),_transparent_52%),linear-gradient(180deg,rgba(255,215,90,0.1),rgba(255,255,255,0.02))] shadow-[0_24px_90px_rgba(255,215,90,0.2)]"
-                        : ""
-                    }`}
-                  >
-                    {isFeaturedMember ? (
-                      <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
-                    ) : null}
-                    <div className="mb-5 flex items-center justify-between gap-3">
-                      <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] ${styles.badge}`}>
-                        {member.role}
-                      </span>
-                      {isFeaturedMember ? (
-                        <div className="rounded-full bg-primary/15 p-2 text-primary ring-1 ring-primary/30">
-                          <Star className="h-4 w-4 fill-current" />
-                        </div>
-                      ) : (
-                        <div className={`rounded-full p-2 ${styles.iconWrap}`}>
-                          <RoleIcon className="h-4 w-4" />
-                        </div>
-                      )}
-                    </div>
-
-                    <div
-                      className={`mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full ${styles.iconWrap} ${
-                        isFeaturedMember ? "ring-4 ring-primary/20 shadow-[0_0_40px_rgba(255,215,90,0.18)]" : ""
-                      }`}
-                    >
-                      {isFeaturedMember ? <Star className="h-11 w-11 fill-current" /> : <RoleIcon className="h-11 w-11" />}
-                    </div>
-
-                    <h3 className={`mb-2 text-xl font-semibold ${isFeaturedMember ? "text-primary" : "text-foreground"}`}>{member.name}</h3>
-                    <p className="text-sm leading-7 text-muted-foreground sm:text-base">{member.description}</p>
-                  </div>
-                )
-              })}
-            </div>
-          ))}
+              Slider
+            </button>
+            <button
+              type="button"
+              onClick={() => setShowAllMembers(true)}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                showAllMembers ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Alle anzeigen
+            </button>
+          </div>
         </div>
       </div>
+
+      {showAllMembers ? (
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {sortedMembers.map((member, index) => {
+              const styles = getRoleStyles(member.role)
+              const RoleIcon = styles.icon
+              const isFeaturedMember = member.name === "Rollin Noodle"
+
+              return (
+                <div
+                  key={`${member.name}-${member.role}-${index}`}
+                  className={`group relative min-h-[360px] rounded-3xl border p-7 text-center transition-transform duration-300 hover:-translate-y-1 ${styles.card} sm:min-h-[390px] ${
+                    isFeaturedMember
+                      ? "border-primary/80 bg-[radial-gradient(circle_at_top,_rgba(255,215,90,0.24),_transparent_52%),linear-gradient(180deg,rgba(255,215,90,0.1),rgba(255,255,255,0.02))] shadow-[0_24px_90px_rgba(255,215,90,0.2)]"
+                      : ""
+                  }`}
+                >
+                  {isFeaturedMember ? (
+                    <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+                  ) : null}
+                  <div className="mb-5 flex items-center justify-between gap-3">
+                    <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] ${styles.badge}`}>
+                      {member.role}
+                    </span>
+                    {isFeaturedMember ? (
+                      <div className="rounded-full bg-primary/15 p-2 text-primary ring-1 ring-primary/30">
+                        <Star className="h-4 w-4 fill-current" />
+                      </div>
+                    ) : (
+                      <div className={`rounded-full p-2 ${styles.iconWrap}`}>
+                        <RoleIcon className="h-4 w-4" />
+                      </div>
+                    )}
+                  </div>
+
+                  <div
+                    className={`mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full ${styles.iconWrap} ${
+                      isFeaturedMember ? "ring-4 ring-primary/20 shadow-[0_0_40px_rgba(255,215,90,0.18)]" : ""
+                    }`}
+                  >
+                    {isFeaturedMember ? <Star className="h-11 w-11 fill-current" /> : <RoleIcon className="h-11 w-11" />}
+                  </div>
+
+                  <h3 className={`mb-2 text-xl font-semibold ${isFeaturedMember ? "text-primary" : "text-foreground"}`}>{member.name}</h3>
+                  <p className="text-sm leading-7 text-muted-foreground sm:text-base">{member.description}</p>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      ) : (
+        <div className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden py-4">
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-secondary/95 to-transparent sm:w-28 lg:w-40" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-secondary/95 to-transparent sm:w-28 lg:w-40" />
+
+          <div
+            ref={trackRef}
+            className="flex w-max gap-6 px-4 will-change-transform sm:px-6 lg:px-8"
+            onMouseEnter={() => {
+              pausedRef.current = true
+            }}
+            onMouseLeave={() => {
+              pausedRef.current = false
+            }}
+          >
+            {[0, 1].map((groupIndex) => (
+              <div
+                key={groupIndex}
+                ref={groupIndex === 0 ? firstGroupRef : undefined}
+                className="flex flex-none gap-6 pr-6"
+              >
+                {sortedMembers.map((member, index) => {
+                  const styles = getRoleStyles(member.role)
+                  const RoleIcon = styles.icon
+                  const isFeaturedMember = member.name === "Rollin Noodle"
+
+                  return (
+                    <div
+                      key={`${groupIndex}-${member.name}-${member.role}-${index}`}
+                      className={`group relative min-h-[360px] w-[300px] shrink-0 rounded-3xl border p-7 text-center transition-transform duration-300 hover:-translate-y-1 ${styles.card} sm:min-h-[390px] sm:w-[340px] ${
+                        isFeaturedMember
+                          ? "border-primary/80 bg-[radial-gradient(circle_at_top,_rgba(255,215,90,0.24),_transparent_52%),linear-gradient(180deg,rgba(255,215,90,0.1),rgba(255,255,255,0.02))] shadow-[0_24px_90px_rgba(255,215,90,0.2)]"
+                          : ""
+                      }`}
+                    >
+                      {isFeaturedMember ? (
+                        <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+                      ) : null}
+                      <div className="mb-5 flex items-center justify-between gap-3">
+                        <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] ${styles.badge}`}>
+                          {member.role}
+                        </span>
+                        {isFeaturedMember ? (
+                          <div className="rounded-full bg-primary/15 p-2 text-primary ring-1 ring-primary/30">
+                            <Star className="h-4 w-4 fill-current" />
+                          </div>
+                        ) : (
+                          <div className={`rounded-full p-2 ${styles.iconWrap}`}>
+                            <RoleIcon className="h-4 w-4" />
+                          </div>
+                        )}
+                      </div>
+
+                      <div
+                        className={`mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full ${styles.iconWrap} ${
+                          isFeaturedMember ? "ring-4 ring-primary/20 shadow-[0_0_40px_rgba(255,215,90,0.18)]" : ""
+                        }`}
+                      >
+                        {isFeaturedMember ? <Star className="h-11 w-11 fill-current" /> : <RoleIcon className="h-11 w-11" />}
+                      </div>
+
+                      <h3 className={`mb-2 text-xl font-semibold ${isFeaturedMember ? "text-primary" : "text-foreground"}`}>{member.name}</h3>
+                      <p className="text-sm leading-7 text-muted-foreground sm:text-base">{member.description}</p>
+                    </div>
+                  )
+                })}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mt-12 text-center">
