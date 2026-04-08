@@ -74,8 +74,15 @@ export function SplashScreen() {
   const { setLanguage, t } = useLanguage()
   const [hoveredLang, setHoveredLang] = useState<Language | null>(null)
   const [isExiting, setIsExiting] = useState(false)
+  const [tutorialChoice, setTutorialChoice] = useState<boolean | null>(null)
 
   const handleSelectLanguage = (lang: Language) => {
+    if (tutorialChoice) {
+      localStorage.setItem("h3t-tutorial-pending", "true")
+    } else {
+      localStorage.removeItem("h3t-tutorial-pending")
+    }
+
     setIsExiting(true)
     setTimeout(() => {
       setLanguage(lang)
@@ -118,49 +125,82 @@ export function SplashScreen() {
 
           <p className="mb-8 text-center text-base text-muted-foreground sm:mb-12 sm:text-lg">Virtual Trucking Company</p>
 
-          <div className="mb-6 text-center sm:mb-8">
-            <h2 className="mb-2 text-lg text-foreground sm:text-xl">{t.splash.title}</h2>
-            <p className="mx-auto max-w-xl text-sm text-muted-foreground">{t.splash.subtitle}</p>
-          </div>
+          {tutorialChoice === null ? (
+            <div className="w-full max-w-2xl rounded-3xl border border-border bg-card/80 p-6 text-center shadow-2xl backdrop-blur-xl sm:p-8">
+              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-primary">Website Tutorial</p>
+              <h2 className="mb-4 text-2xl font-bold text-foreground sm:text-3xl">
+                Möchtest du zuerst ein kurzes Tutorial sehen?
+              </h2>
+              <p className="mx-auto mb-6 max-w-xl text-sm leading-7 text-muted-foreground sm:text-base">
+                Du kannst dir die wichtigsten Bereiche der Webseite kurz erklären lassen.
+                <br />
+                Do you want to see a quick website tutorial first?
+              </p>
 
-          <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-3">
-            {languageOptions.map((lang) => (
-              <button
-                key={lang.code}
-                onClick={() => handleSelectLanguage(lang.code)}
-                onMouseEnter={() => setHoveredLang(lang.code)}
-                onMouseLeave={() => setHoveredLang(null)}
-                className={`relative min-h-[150px] overflow-hidden rounded-xl border-2 px-6 py-6 transition-all duration-300 sm:min-h-[170px] sm:px-8 sm:py-8 lg:px-10 ${
-                  hoveredLang === lang.code
-                    ? "scale-[1.02] border-primary shadow-lg shadow-primary/20"
-                    : "border-border hover:border-primary/50"
-                }`}
-              >
-                <FlagBackground flagColors={lang.flagColors} flagVariant={lang.flagVariant} />
-                <div className="absolute inset-0 rounded-xl bg-background/70" />
-                <div
-                  className={`absolute inset-0 rounded-xl bg-primary/10 transition-opacity duration-300 ${
-                    hoveredLang === lang.code ? "opacity-100" : "opacity-0"
-                  }`}
-                />
+              <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+                <button
+                  type="button"
+                  onClick={() => setTutorialChoice(true)}
+                  className="rounded-xl bg-primary px-6 py-3 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                >
+                  Ja, Tutorial starten
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setTutorialChoice(false)}
+                  className="rounded-xl border border-border bg-background px-6 py-3 font-medium text-foreground transition-colors hover:bg-muted"
+                >
+                  Nein, direkt zur Sprache
+                </button>
+              </div>
+            </div>
+          ) : (
+            <>
+              <div className="mb-6 text-center sm:mb-8">
+                <h2 className="mb-2 text-lg text-foreground sm:text-xl">{t.splash.title}</h2>
+                <p className="mx-auto max-w-xl text-sm text-muted-foreground">{t.splash.subtitle}</p>
+              </div>
 
-                <div className="relative z-10 flex h-full flex-col items-center justify-center gap-2">
-                  <span className="text-xl font-bold text-foreground sm:text-2xl">{lang.name}</span>
-                  <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground">{lang.nativeName}</span>
-                  <span className="text-sm uppercase tracking-wider text-muted-foreground">{lang.code}</span>
-                </div>
-
-                {hoveredLang === lang.code && (
-                  <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-xl">
+              <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-3">
+                {languageOptions.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => handleSelectLanguage(lang.code)}
+                    onMouseEnter={() => setHoveredLang(lang.code)}
+                    onMouseLeave={() => setHoveredLang(null)}
+                    className={`relative min-h-[150px] overflow-hidden rounded-xl border-2 px-6 py-6 transition-all duration-300 sm:min-h-[170px] sm:px-8 sm:py-8 lg:px-10 ${
+                      hoveredLang === lang.code
+                        ? "scale-[1.02] border-primary shadow-lg shadow-primary/20"
+                        : "border-border hover:border-primary/50"
+                    }`}
+                  >
+                    <FlagBackground flagColors={lang.flagColors} flagVariant={lang.flagVariant} />
+                    <div className="absolute inset-0 rounded-xl bg-background/70" />
                     <div
-                      className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-primary/30 to-transparent"
-                      style={{ backgroundSize: "200% 100%" }}
+                      className={`absolute inset-0 rounded-xl bg-primary/10 transition-opacity duration-300 ${
+                        hoveredLang === lang.code ? "opacity-100" : "opacity-0"
+                      }`}
                     />
-                  </div>
-                )}
-              </button>
-            ))}
-          </div>
+
+                    <div className="relative z-10 flex h-full flex-col items-center justify-center gap-2">
+                      <span className="text-xl font-bold text-foreground sm:text-2xl">{lang.name}</span>
+                      <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground">{lang.nativeName}</span>
+                      <span className="text-sm uppercase tracking-wider text-muted-foreground">{lang.code}</span>
+                    </div>
+
+                    {hoveredLang === lang.code && (
+                      <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-xl">
+                        <div
+                          className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+                          style={{ backgroundSize: "200% 100%" }}
+                        />
+                      </div>
+                    )}
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
 
           <div className="relative mt-10 h-12 w-full max-w-md overflow-hidden sm:mt-16">
             <div className="absolute animate-truck-drive">
