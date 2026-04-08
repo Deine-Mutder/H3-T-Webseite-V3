@@ -334,13 +334,13 @@
   overflow: hidden;
   border-radius: 9999px;
   padding: 3px;
+  isolation: isolate;
 }
 
 .header-logo-snake {
   position: absolute;
-  inset: 0;
+  inset: -20%;
   display: block;
-  padding: 3px;
   border-radius: 9999px;
   background:
     conic-gradient(
@@ -353,17 +353,13 @@
       rgba(255, 190, 92, 0.92) 280deg,
       rgba(255, 149, 0, 0) 360deg
     );
+  opacity: 0.98;
   filter:
     drop-shadow(0 0 6px rgba(255, 166, 0, 0.62))
     drop-shadow(0 0 14px rgba(255, 166, 0, 0.32));
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  mask-composite: exclude;
+  pointer-events: none;
+  transform-origin: center;
+  will-change: transform;
   animation: headerSnakeGlow 2.4s linear infinite;
 }
 
@@ -390,8 +386,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .header-led-arrow,
-  .header-logo-snake {
+  .header-led-arrow {
     animation: none;
   }
 
