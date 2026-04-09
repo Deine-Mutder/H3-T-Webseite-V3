@@ -45,7 +45,19 @@ export function TeamSection() {
   const offsetRef = useRef(0)
   const pausedRef = useRef(false)
   const truckersMpLinks: Record<string, string> = {
+    "The real Plumz": "https://truckersmp.com/user/5814945",
+    "eaglefire1231 (Riley)": "https://truckersmp.com/user/5555520",
     "Rollin Noodle": "https://truckersmp.com/user/5917509",
+    Ruxery: "https://truckersmp.com/user/3718196",
+    Longyin: "https://truckersmp.com/user/5814798",
+    "Red Hornet4953": "https://truckersmp.com/user/5908755",
+    "Emme [GCGS]": "https://truckersmp.com/user/4550080",
+    VankataTruckerBG: "https://truckersmp.com/user/4780614",
+    Itzz_mxx: "https://truckersmp.com/user/5540080",
+    Sheldom_C: "https://truckersmp.com/user/5452054",
+    Snotra: "https://truckersmp.com/user/1591428",
+    _TBF_: "https://truckersmp.com/user/5936343",
+    damiangamer19: "https://truckersmp.com/user/3464277",
   }
   const profileText =
     language === "de"
