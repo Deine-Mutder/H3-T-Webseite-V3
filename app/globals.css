@@ -202,6 +202,40 @@
     scroll-behavior: smooth;
     overflow-x: hidden;
   }
+
+  body.tutorial-mode {
+    overflow: hidden;
+  }
+}
+
+[data-tutorial-id] {
+  transition:
+    filter 420ms ease,
+    opacity 420ms ease,
+    transform 420ms ease,
+    box-shadow 420ms ease;
+  transform-origin: center;
+}
+
+body.tutorial-mode [data-tutorial-id] {
+  opacity: 0.24;
+  filter: blur(10px) saturate(0.72);
+  transform: scale(0.985);
+  pointer-events: none;
+}
+
+body.tutorial-mode [data-tutorial-id].tutorial-active-target {
+  position: relative;
+  z-index: 95;
+  opacity: 1;
+  filter: none !important;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+body.tutorial-mode [data-tutorial-id].tutorial-active-target,
+body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
+  filter: none !important;
 }
 
 /* Custom animations */

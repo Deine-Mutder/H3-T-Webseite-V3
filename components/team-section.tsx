@@ -155,7 +155,7 @@ export function TeamSection() {
   }, [showAllMembers, t.team.members])
 
   return (
-    <section id="team" className="bg-secondary/30 py-20 lg:py-24">
+    <section id="team" data-tutorial-id="team" className="bg-secondary/30 py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center lg:mb-16">
           <span className="text-sm font-medium uppercase tracking-wider text-primary">{t.team.eyebrow}</span>
@@ -213,7 +213,7 @@ export function TeamSection() {
           <p className="mb-4 text-muted-foreground">{t.team.interest}</p>
           <a href="#contact" className="inline-flex items-center gap-2 text-primary hover:underline">
             {t.team.contactLink}
-            <span>→</span>
+            <span>{"\u2192"}</span>
           </a>
         </div>
       </div>
@@ -222,9 +222,7 @@ export function TeamSection() {
         <DialogContent className="max-h-[88vh] overflow-hidden border-border bg-card/92 p-0 shadow-2xl backdrop-blur-xl sm:max-w-6xl">
           <DialogHeader className="border-b border-border px-6 py-5">
             <DialogTitle>{t.team.title}</DialogTitle>
-            <DialogDescription>
-              Alle Team-Mitglieder auf einen Blick.
-            </DialogDescription>
+            <DialogDescription>Alle Team-Mitglieder auf einen Blick.</DialogDescription>
           </DialogHeader>
 
           <div className="max-h-[calc(88vh-5.5rem)] overflow-y-auto px-6 py-6">

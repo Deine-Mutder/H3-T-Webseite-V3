@@ -10,7 +10,7 @@ export function AboutSection() {
   const { t } = useLanguage()
 
   return (
-    <section id="about" className="relative overflow-hidden bg-secondary/30 py-20 lg:py-24">
+    <section id="about" data-tutorial-id="about" className="relative overflow-hidden bg-secondary/30 py-20 lg:py-24">
       <div className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 opacity-5">
         <svg width="400" height="200" viewBox="0 0 400 200" className="fill-current text-foreground">
           <rect x="10" y="80" width="180" height="80" rx="8" />

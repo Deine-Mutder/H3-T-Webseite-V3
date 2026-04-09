@@ -9,7 +9,7 @@ export function ContactSection() {
   const [showDiscordConfirm, setShowDiscordConfirm] = useState(false)
 
   return (
-    <section id="contact" className="py-20 lg:py-24">
+    <section id="contact" data-tutorial-id="contact" className="py-20 lg:py-24">
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
         <span className="text-sm font-medium uppercase tracking-wider text-primary">{t.contact.eyebrow}</span>
         <h2 className="mt-2 mb-4 text-3xl font-bold text-foreground sm:text-4xl">{t.contact.title}</h2>

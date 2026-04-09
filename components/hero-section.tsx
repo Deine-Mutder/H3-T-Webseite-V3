@@ -21,7 +21,11 @@ export function HeroSection() {
   }
 
   return (
-    <section id="home" className="relative flex min-h-[max(100svh,42rem)] items-center justify-center overflow-hidden pt-16">
+    <section
+      id="home"
+      data-tutorial-id="home"
+      className="relative flex min-h-[max(100svh,42rem)] items-center justify-center overflow-hidden pt-16"
+    >
       <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
       <div className="absolute left-1/2 top-1/4 h-[600px] w-[600px] -translate-x-1/2 animate-pulse rounded-full bg-primary/10 blur-3xl" />
 
