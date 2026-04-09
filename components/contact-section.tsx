@@ -30,7 +30,7 @@ export function ContactSection() {
             href="https://truckersmp.com/vtc/83043"
             target="_blank"
             rel="noreferrer"
-            className="flex items-center justify-center gap-3 rounded-xl bg-primary px-6 py-4 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="flex items-center justify-center gap-3 rounded-xl bg-[#D33A2C] px-6 py-4 font-medium text-white transition-colors hover:bg-[#B62D21]"
           >
             <ExternalLink className="h-5 w-5" />
             {t.contact.truckersmp}
