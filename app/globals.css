@@ -346,19 +346,19 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
 }
 
 .header-led-text {
-  color: #ffb347;
+  color: var(--primary);
   font-family: var(--font-mono);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-shadow:
-    0 0 6px rgba(255, 166, 0, 0.48),
-    0 0 18px rgba(255, 166, 0, 0.28);
+    0 0 6px color-mix(in oklab, var(--primary) 55%, transparent),
+    0 0 18px color-mix(in oklab, var(--primary) 28%, transparent);
 }
 
 .header-led-arrow {
-  color: #ffc46b;
+  color: color-mix(in oklab, var(--primary) 82%, white 18%);
   animation: headerArrowWobble 1.2s ease-in-out infinite;
 }
 
@@ -379,18 +379,18 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
   background:
     conic-gradient(
       from 0deg,
-      rgba(255, 149, 0, 0) 0deg,
-      rgba(255, 149, 0, 0.08) 55deg,
-      rgba(255, 190, 92, 0.98) 110deg,
-      rgba(255, 149, 0, 0.28) 165deg,
-      rgba(255, 149, 0, 0.05) 220deg,
-      rgba(255, 190, 92, 0.92) 280deg,
-      rgba(255, 149, 0, 0) 360deg
+      color-mix(in oklab, var(--primary) 0%, transparent) 0deg,
+      color-mix(in oklab, var(--primary) 8%, transparent) 55deg,
+      color-mix(in oklab, var(--primary) 96%, white 4%) 110deg,
+      color-mix(in oklab, var(--primary) 28%, transparent) 165deg,
+      color-mix(in oklab, var(--primary) 5%, transparent) 220deg,
+      color-mix(in oklab, var(--primary) 90%, white 10%) 280deg,
+      color-mix(in oklab, var(--primary) 0%, transparent) 360deg
     );
   opacity: 0.98;
   filter:
-    drop-shadow(0 0 6px rgba(255, 166, 0, 0.62))
-    drop-shadow(0 0 14px rgba(255, 166, 0, 0.32));
+    drop-shadow(0 0 6px color-mix(in oklab, var(--primary) 62%, transparent))
+    drop-shadow(0 0 14px color-mix(in oklab, var(--primary) 32%, transparent));
   pointer-events: none;
   transform-origin: center;
   will-change: transform;
