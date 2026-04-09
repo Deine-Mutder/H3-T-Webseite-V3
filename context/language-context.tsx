@@ -192,6 +192,9 @@ export const translations = {
       subtitle: "Wir sind noch am Aufbau. Werde Teil des Gruendungsteams und gestalte H3°T von Anfang an mit.",
       interest: "Interesse an einer Position im Team?",
       contactLink: "Kontaktiere uns",
+      sliderLabel: "Slider",
+      showAllLabel: "Alle anzeigen",
+      dialogDescription: "Alle Team-Mitglieder auf einen Blick.",
       members: [
         {
           name: "The real Plumz",
@@ -375,6 +378,9 @@ export const translations = {
       subtitle: "We are still building. Join the founding team and help shape H3°T from the very beginning.",
       interest: "Interested in a team position?",
       contactLink: "Contact us",
+      sliderLabel: "Slider",
+      showAllLabel: "Show all",
+      dialogDescription: "All team members at a glance.",
       members: [
         {
           name: "The real Plumz",
@@ -558,6 +564,9 @@ export const translations = {
       subtitle: "Se vedno rastemo. Pridruzi se ustanovni ekipi in pomagaj oblikovati H3°T od samega zacetka.",
       interest: "Te zanima mesto v ekipi?",
       contactLink: "Kontaktiraj nas",
+      sliderLabel: "Drsnik",
+      showAllLabel: "Prikazi vse",
+      dialogDescription: "Vsi clani ekipe na enem mestu.",
       members: [
         {
           name: "The real Plumz",
@@ -741,6 +750,9 @@ export const translations = {
       subtitle: "Nous sommes encore en construction. Rejoins l'equipe fondatrice et participe a l'histoire de H3°T des le debut.",
       interest: "Tu es interesse par un poste dans l'equipe ?",
       contactLink: "Contacte-nous",
+      sliderLabel: "Slider",
+      showAllLabel: "Tout afficher",
+      dialogDescription: "Tous les membres de l'equipe en un coup d'oeil.",
       members: [
         {
           name: "The real Plumz",
@@ -924,6 +936,9 @@ export const translations = {
       subtitle: "Todavia estamos creciendo. Unete al equipo fundador y ayuda a dar forma a H3°T desde el principio.",
       interest: "Te interesa un puesto en el equipo?",
       contactLink: "Contactanos",
+      sliderLabel: "Slider",
+      showAllLabel: "Ver todo",
+      dialogDescription: "Todos los miembros del equipo de un vistazo.",
       members: [
         {
           name: "The real Plumz",
@@ -1107,6 +1122,9 @@ export const translations = {
       subtitle: "Siamo ancora in crescita. Unisciti al team fondatore e contribuisci a costruire H3°T fin dall'inizio.",
       interest: "Ti interessa un ruolo nel team?",
       contactLink: "Contattaci",
+      sliderLabel: "Slider",
+      showAllLabel: "Mostra tutti",
+      dialogDescription: "Tutti i membri del team in un colpo d'occhio.",
       members: [
         {
           name: "The real Plumz",
@@ -1290,6 +1308,9 @@ export const translations = {
       subtitle: "Hala buyuyoruz. Kurucu ekibe katil ve H3°T'yi en bastan birlikte sekillendir.",
       interest: "Ekipte bir rol mu istiyorsun?",
       contactLink: "Bize ulas",
+      sliderLabel: "Kaydirici",
+      showAllLabel: "Hepsini goster",
+      dialogDescription: "Tum ekip uyeleri tek bakista.",
       members: [
         {
           name: "The real Plumz",
@@ -1473,6 +1494,9 @@ export const translations = {
       subtitle: "我们仍在成长。加入创始团队，从一开始就一起塑造 H3°T。",
       interest: "你对团队职位感兴趣吗？",
       contactLink: "联系我们",
+      sliderLabel: "滑动展示",
+      showAllLabel: "查看全部",
+      dialogDescription: "一眼查看所有团队成员。",
       members: [
         {
           name: "The real Plumz",
@@ -1656,6 +1680,9 @@ export const translations = {
       subtitle: "Wciąż się rozwijamy. Dołącz do zespołu założycielskiego i pomóż tworzyć H3°T od samego początku.",
       interest: "Interesuje Cię rola w zespole?",
       contactLink: "Skontaktuj się z nami",
+      sliderLabel: "Slider",
+      showAllLabel: "Pokaz wszystkich",
+      dialogDescription: "Wszyscy czlonkowie zespolu w jednym miejscu.",
       members: [
         {
           name: "The real Plumz",
@@ -1839,6 +1866,9 @@ export const translations = {
       subtitle: "Мы все еще растем. Присоединяйся к команде основателей и помогай формировать H3°T с самого начала.",
       interest: "Интересует роль в команде?",
       contactLink: "Свяжись с нами",
+      sliderLabel: "Слайдер",
+      showAllLabel: "Показать всех",
+      dialogDescription: "Все участники команды в одном окне.",
       members: [
         {
           name: "The real Plumz",

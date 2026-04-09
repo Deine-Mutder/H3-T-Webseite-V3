@@ -169,14 +169,14 @@ export function TeamSection() {
               type="button"
               className="rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground"
             >
-              Slider
+              {t.team.sliderLabel}
             </button>
             <button
               type="button"
               onClick={() => setShowAllMembers(true)}
               className="rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              Alle anzeigen
+              {t.team.showAllLabel}
             </button>
           </div>
         </div>
@@ -222,7 +222,7 @@ export function TeamSection() {
         <DialogContent className="max-h-[88vh] overflow-hidden border-border bg-card/92 p-0 shadow-2xl backdrop-blur-xl sm:max-w-6xl">
           <DialogHeader className="border-b border-border px-6 py-5">
             <DialogTitle>{t.team.title}</DialogTitle>
-            <DialogDescription>Alle Team-Mitglieder auf einen Blick.</DialogDescription>
+            <DialogDescription>{t.team.dialogDescription}</DialogDescription>
           </DialogHeader>
 
           <div className="max-h-[calc(88vh-5.5rem)] overflow-y-auto px-6 py-6">
