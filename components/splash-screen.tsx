@@ -9,8 +9,37 @@ function FlagBackground({
   flagVariant,
 }: {
   flagColors: string[]
-  flagVariant: "horizontal" | "vertical" | "uk" | "china" | "turkey"
+  flagVariant: "horizontal" | "vertical" | "uk" | "uk-us" | "china" | "turkey"
 }) {
+  if (flagVariant === "uk-us") {
+    return (
+      <div className="absolute inset-0 overflow-hidden rounded-xl opacity-25">
+        <div
+          className="absolute inset-0"
+          style={{
+            clipPath: "polygon(0 0, 100% 0, 0 100%)",
+          }}
+        >
+          <FlagBackground flagColors={flagColors} flagVariant="uk" />
+        </div>
+        <div
+          className="absolute inset-0 bg-[linear-gradient(180deg,#B22234_0%,#B22234_14.28%,#FFFFFF_14.28%,#FFFFFF_28.56%,#B22234_28.56%,#B22234_42.84%,#FFFFFF_42.84%,#FFFFFF_57.12%,#B22234_57.12%,#B22234_71.4%,#FFFFFF_71.4%,#FFFFFF_85.68%,#B22234_85.68%,#B22234_100%)]"
+          style={{
+            clipPath: "polygon(100% 0, 100% 100%, 0 100%)",
+          }}
+        >
+          <div className="absolute left-0 top-0 h-[56%] w-[55%] bg-[#3C3B6E]" />
+          <div className="absolute left-[8%] top-[8%] grid grid-cols-4 gap-x-1 gap-y-1 text-[0.42rem] leading-none text-white sm:text-[0.5rem]">
+            {Array.from({ length: 16 }).map((_, index) => (
+              <span key={index}>{"\u2605"}</span>
+            ))}
+          </div>
+        </div>
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,transparent_49.2%,rgba(255,255,255,0.95)_49.8%,rgba(255,255,255,0.95)_50.2%,transparent_50.8%)]" />
+      </div>
+    )
+  }
+
   if (flagVariant === "uk") {
     return (
       <div className="absolute inset-0 overflow-hidden rounded-xl opacity-20">

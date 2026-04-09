@@ -1,26 +1,59 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    @media (prefers-color-scheme: light) {
-      .background { fill: black; }
-      .foreground { fill: white; }
-    }
-    @media (prefers-color-scheme: dark) {
-      .background { fill: white; }
-      .foreground { fill: black; }
-    }
-  </style>
-  <g clip-path="url(#clip0_7960_43945)">
-    <rect class="background" width="180" height="180" rx="37" />
-    <g style="transform: scale(95%); transform-origin: center">
-      <path class="foreground"
-        d="M101.141 53H136.632C151.023 53 162.689 64.6662 162.689 79.0573V112.904H148.112V79.0573C148.112 78.7105 148.098 78.3662 148.072 78.0251L112.581 112.898C112.701 112.902 112.821 112.904 112.941 112.904H148.112V126.672H112.941C98.5504 126.672 86.5638 114.891 86.5638 100.5V66.7434H101.141V100.5C101.141 101.15 101.191 101.792 101.289 102.422L137.56 66.7816C137.255 66.7563 136.945 66.7434 136.632 66.7434H101.141V53Z" />
-      <path class="foreground"
-        d="M65.2926 124.136L14 66.7372H34.6355L64.7495 100.436V66.7372H80.1365V118.47C80.1365 126.278 70.4953 129.958 65.2926 124.136Z" />
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="goldFill" x1="42" y1="42" x2="196" y2="190" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF7C7" />
+      <stop offset="0.22" stop-color="#F9E39A" />
+      <stop offset="0.5" stop-color="#D5A94C" />
+      <stop offset="0.74" stop-color="#F6DE97" />
+      <stop offset="1" stop-color="#9C6421" />
+    </linearGradient>
+    <linearGradient id="goldStroke" x1="44" y1="60" x2="194" y2="184" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF2B2" />
+      <stop offset="1" stop-color="#7A4A11" />
+    </linearGradient>
+    <filter id="glow" x="24" y="58" width="208" height="120" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#F2CF72" flood-opacity="0.38" />
+    </filter>
+  </defs>
+
+  <rect width="256" height="256" rx="56" fill="#050505" />
+
+  <g filter="url(#glow)" transform="translate(6 10)">
+    <path
+      d="M28 151L44 89H62L56 113H93L99 89H117L101 151H83L89 126H52L46 151H28Z"
+      fill="url(#goldFill)"
+      stroke="url(#goldStroke)"
+      stroke-width="3"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M114 151L125 89H159C171 89 178 95 178 104C178 112 173 118 166 121C172 124 175 129 175 135C175 145 167 151 152 151H114ZM135 138H150C156 138 159 135 159 131C159 127 156 125 150 125H138L135 138ZM141 114H153C159 114 162 111 162 107C162 103 159 101 153 101H144L141 114Z"
+      fill="url(#goldFill)"
+      stroke="url(#goldStroke)"
+      stroke-width="3"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M195 151L207 101H181L184 89H244L241 101H224L212 151H195Z"
+      fill="url(#goldFill)"
+      stroke="url(#goldStroke)"
+      stroke-width="3"
+      stroke-linejoin="round"
+    />
+
+    <g transform="translate(166 72)">
+      <circle cx="16" cy="16" r="16" fill="#6E4313" />
+      <circle cx="16" cy="16" r="13.5" fill="url(#goldFill)" stroke="url(#goldStroke)" stroke-width="2" />
+      <text
+        x="16"
+        y="21"
+        text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="20"
+        font-style="italic"
+        font-weight="900"
+        fill="#5D3408"
+      >°</text>
     </g>
   </g>
-  <defs>
-    <clipPath id="clip0_7960_43945">
-      <rect width="180" height="180" fill="white" />
-    </clipPath>
-  </defs>
 </svg>

@@ -3,7 +3,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
 
 export type Language = "de" | "en" | "sl" | "fr" | "es" | "it" | "pl" | "tr" | "zh" | "ru"
-type FlagVariant = "horizontal" | "vertical" | "uk" | "china" | "turkey"
+type FlagVariant = "horizontal" | "vertical" | "uk" | "uk-us" | "china" | "turkey"
 
 export const languageOptions: Array<{
   code: Language
@@ -27,7 +27,7 @@ export const languageOptions: Array<{
     nativeName: "English",
     locale: "en-GB",
     flagColors: ["#012169", "#C8102E", "#FFFFFF"],
-    flagVariant: "uk",
+    flagVariant: "uk-us",
   },
   {
     code: "sl",
