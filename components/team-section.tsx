@@ -36,13 +36,74 @@ function getRoleStyles(role: string) {
 }
 
 export function TeamSection() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const [showAllMembers, setShowAllMembers] = useState(false)
+  const [selectedMember, setSelectedMember] = useState<(typeof t.team.members)[number] | null>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const firstGroupRef = useRef<HTMLDivElement>(null)
   const frameRef = useRef<number | null>(null)
   const offsetRef = useRef(0)
   const pausedRef = useRef(false)
+  const profileText =
+    language === "de"
+      ? {
+          openProfile: "Profil öffnen",
+          showTruckersMp: "TruckersMP Profil anzeigen",
+          missingTruckersMp: "Link folgt später",
+        }
+      : language === "sl"
+        ? {
+            openProfile: "Odpri profil",
+            showTruckersMp: "Prikazi TruckersMP profil",
+            missingTruckersMp: "Povezava sledi pozneje",
+          }
+        : language === "fr"
+          ? {
+              openProfile: "Ouvrir le profil",
+              showTruckersMp: "Afficher le profil TruckersMP",
+              missingTruckersMp: "Lien a venir plus tard",
+            }
+          : language === "es"
+            ? {
+                openProfile: "Abrir perfil",
+                showTruckersMp: "Mostrar perfil de TruckersMP",
+                missingTruckersMp: "Enlace disponible mas tarde",
+              }
+            : language === "it"
+              ? {
+                  openProfile: "Apri profilo",
+                  showTruckersMp: "Mostra profilo TruckersMP",
+                  missingTruckersMp: "Link disponibile piu tardi",
+                }
+              : language === "pl"
+                ? {
+                    openProfile: "Otworz profil",
+                    showTruckersMp: "Pokaz profil TruckersMP",
+                    missingTruckersMp: "Link zostanie dodany pozniej",
+                  }
+                : language === "tr"
+                  ? {
+                      openProfile: "Profili ac",
+                      showTruckersMp: "TruckersMP profilini goster",
+                      missingTruckersMp: "Baglanti daha sonra eklenecek",
+                    }
+                  : language === "zh"
+                    ? {
+                        openProfile: "打开资料",
+                        showTruckersMp: "查看 TruckersMP 资料",
+                        missingTruckersMp: "链接稍后添加",
+                      }
+                    : language === "ru"
+                      ? {
+                          openProfile: "Открыть профиль",
+                          showTruckersMp: "Открыть профиль TruckersMP",
+                          missingTruckersMp: "Ссылка будет добавлена позже",
+                        }
+                      : {
+                          openProfile: "Open profile",
+                          showTruckersMp: "Show TruckersMP profile",
+                          missingTruckersMp: "Link coming later",
+                        }
   const sortedMembers = [...t.team.members].sort((a, b) => {
     const order = { Owner: 0, "Co-Owner": 1, "Trusted Member": 2 }
     const roleA = order[a.role as keyof typeof order] ?? 99
@@ -67,13 +128,22 @@ export function TeamSection() {
     return (
       <div
         key={key}
+        role="button"
+        tabIndex={0}
+        onClick={() => setSelectedMember(member)}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault()
+            setSelectedMember(member)
+          }
+        }}
         className={`group relative rounded-3xl border p-7 text-center transition-transform duration-300 hover:-translate-y-1 ${styles.card} ${
           compact ? "min-h-[320px]" : "min-h-[360px]"
         } ${!compact ? "w-[300px] shrink-0 sm:min-h-[390px] sm:w-[340px]" : "sm:min-h-[360px]"} ${
           isFeaturedMember
             ? "border-primary/80 bg-[radial-gradient(circle_at_top,_rgba(255,215,90,0.24),_transparent_52%),linear-gradient(180deg,rgba(255,215,90,0.1),rgba(255,255,255,0.02))] shadow-[0_24px_90px_rgba(255,215,90,0.2)]"
             : ""
-        }`}
+        } cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50`}
       >
         {isFeaturedMember ? (
           <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
@@ -103,6 +173,9 @@ export function TeamSection() {
 
         <h3 className={`mb-2 text-xl font-semibold ${isFeaturedMember ? "text-primary" : "text-foreground"}`}>{member.name}</h3>
         <p className="text-sm leading-7 text-muted-foreground sm:text-base">{member.description}</p>
+        <div className="mt-6 inline-flex rounded-full border border-border bg-background/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground transition-colors group-hover:border-primary/40 group-hover:text-foreground">
+          {profileText.openProfile}
+        </div>
       </div>
     )
   }
@@ -230,6 +303,46 @@ export function TeamSection() {
               {sortedMembers.map((member, index) => renderMemberCard(member, `modal-${member.name}-${member.role}-${index}`, true))}
             </div>
           </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={selectedMember !== null} onOpenChange={(open) => (!open ? setSelectedMember(null) : null)}>
+        <DialogContent className="border-border bg-card/95 p-0 shadow-2xl backdrop-blur-xl sm:max-w-2xl">
+          {selectedMember ? (
+            <div className="overflow-hidden rounded-[1.75rem] border border-primary/20 bg-[radial-gradient(circle_at_top,_rgba(255,215,90,0.22),_transparent_44%),linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.01))]">
+              <div className="relative px-6 pb-8 pt-6 sm:px-8 sm:pb-10 sm:pt-8">
+                <div className="absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,_rgba(255,215,90,0.26),_transparent_65%)]" />
+
+                <div className="relative mx-auto flex max-w-md flex-col items-center text-center">
+                  <div className="mb-6 flex h-40 w-full items-center justify-center rounded-[2rem] border border-primary/25 bg-[linear-gradient(180deg,rgba(255,215,90,0.16),rgba(17,17,17,0.3))] shadow-[0_20px_60px_rgba(255,215,90,0.12)] sm:h-48">
+                    <div className="flex h-28 w-28 items-center justify-center rounded-full border border-primary/35 bg-background/70 shadow-[0_0_35px_rgba(255,215,90,0.18)] sm:h-32 sm:w-32">
+                      <Star className="h-12 w-12 text-primary sm:h-14 sm:w-14" />
+                    </div>
+                  </div>
+
+                  <h3 className="text-3xl font-bold text-foreground sm:text-4xl">{selectedMember.name}</h3>
+                  <p className="mt-3 inline-flex rounded-full border border-border bg-background/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                    {selectedMember.role}
+                  </p>
+
+                  <div className="mt-6 w-full rounded-3xl border border-border bg-background/60 p-5 text-left sm:p-6">
+                    <p className="text-base leading-8 text-muted-foreground sm:text-lg">{selectedMember.description}</p>
+                  </div>
+
+                  <div className="mt-6 w-full border-t border-border/70 pt-6">
+                    <button
+                      type="button"
+                      disabled
+                      className="w-full rounded-2xl bg-primary px-6 py-4 text-base font-semibold text-primary-foreground opacity-70"
+                    >
+                      {profileText.showTruckersMp}
+                    </button>
+                    <p className="mt-3 text-sm text-muted-foreground">{profileText.missingTruckersMp}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : null}
         </DialogContent>
       </Dialog>
     </section>
