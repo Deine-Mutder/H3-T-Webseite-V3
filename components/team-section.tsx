@@ -44,6 +44,9 @@ export function TeamSection() {
   const frameRef = useRef<number | null>(null)
   const offsetRef = useRef(0)
   const pausedRef = useRef(false)
+  const truckersMpLinks: Record<string, string> = {
+    "Rollin Noodle": "https://truckersmp.com/user/5917509",
+  }
   const profileText =
     language === "de"
       ? {
@@ -104,6 +107,7 @@ export function TeamSection() {
                           showTruckersMp: "Show TruckersMP profile",
                           missingTruckersMp: "Link coming later",
                         }
+  const selectedMemberLink = selectedMember ? truckersMpLinks[selectedMember.name] : undefined
   const sortedMembers = [...t.team.members].sort((a, b) => {
     const order = { Owner: 0, "Co-Owner": 1, "Trusted Member": 2 }
     const roleA = order[a.role as keyof typeof order] ?? 99
@@ -330,14 +334,27 @@ export function TeamSection() {
                   </div>
 
                   <div className="mt-6 w-full border-t border-border/70 pt-6">
-                    <button
-                      type="button"
-                      disabled
-                      className="w-full rounded-2xl bg-primary px-6 py-4 text-base font-semibold text-primary-foreground opacity-70"
-                    >
-                      {profileText.showTruckersMp}
-                    </button>
-                    <p className="mt-3 text-sm text-muted-foreground">{profileText.missingTruckersMp}</p>
+                    {selectedMemberLink ? (
+                      <a
+                        href={selectedMemberLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="block w-full rounded-2xl bg-primary px-6 py-4 text-center text-base font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                      >
+                        {profileText.showTruckersMp}
+                      </a>
+                    ) : (
+                      <>
+                        <button
+                          type="button"
+                          disabled
+                          className="w-full rounded-2xl bg-primary px-6 py-4 text-base font-semibold text-primary-foreground opacity-70"
+                        >
+                          {profileText.showTruckersMp}
+                        </button>
+                        <p className="mt-3 text-sm text-muted-foreground">{profileText.missingTruckersMp}</p>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
