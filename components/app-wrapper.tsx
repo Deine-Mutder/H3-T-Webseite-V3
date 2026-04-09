@@ -9,6 +9,7 @@ import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
 import { ParticleBackground } from "@/components/particle-background"
 import { TeamSection } from "@/components/team-section"
+import { WebsiteAssistant } from "@/components/website-assistant"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { useLanguage, type Language } from "@/context/language-context"
@@ -523,6 +524,7 @@ export function AppWrapper() {
         language={language}
       />
       <WebsiteTutorial active={tutorialActive} onClose={closeTutorial} language={language} />
+      <WebsiteAssistant />
       <Header />
       <main>
         <HeroSection />
