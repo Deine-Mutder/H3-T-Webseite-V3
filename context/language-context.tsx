@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
 
@@ -1978,24 +1978,14 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     setMounted(true)
-    const saved = localStorage.getItem("h3t-language") as Language | null
-    if (saved && supportedLanguages.includes(saved)) {
-      setLanguageState(saved)
-    }
   }, [])
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang)
-    if (mounted) {
-      localStorage.setItem("h3t-language", lang)
-    }
   }
 
   const resetLanguage = () => {
     setLanguageState(null)
-    if (mounted) {
-      localStorage.removeItem("h3t-language")
-    }
   }
 
   const t = language ? translations[language] : translations.en
