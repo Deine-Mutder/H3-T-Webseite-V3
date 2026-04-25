@@ -96,6 +96,7 @@ export const languageOptions: Array<{
 ]
 
 const supportedLanguages = languageOptions.map((option) => option.code)
+const LANGUAGE_STORAGE_KEY = "h3t-language"
 
 export const translations = {
   de: {
@@ -1960,7 +1961,7 @@ export const translations = {
   },
 } as const
 
-type TranslationSet = typeof translations.de
+type TranslationSet = (typeof translations)[Language]
 
 interface LanguageContextType {
   language: Language | null
@@ -1978,6 +1979,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     setMounted(true)
+    const savedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY) as Language | null
+
+    if (savedLanguage && supportedLanguages.includes(savedLanguage)) {
+      setLanguageState(savedLanguage)
+    }
   }, [])
 
   const setLanguage = (lang: Language) => {
@@ -1986,7 +1992,24 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   const resetLanguage = () => {
     setLanguageState(null)
+    localStorage.removeItem(LANGUAGE_STORAGE_KEY)
   }
+
+  useEffect(() => {
+    if (!mounted || !language) {
+      return
+    }
+
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
+  }, [language, mounted])
+
+  useEffect(() => {
+    if (!mounted || language !== null) {
+      return
+    }
+
+    localStorage.removeItem(LANGUAGE_STORAGE_KEY)
+  }, [language, mounted])
 
   const t = language ? translations[language] : translations.en
 

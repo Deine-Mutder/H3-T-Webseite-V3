@@ -18,13 +18,13 @@ export function FeaturesSection() {
       if (contactSection) animateScrollToElement(contactSection)
       return
     }
+
     setShowUnavailableModal(true)
   }
 
   return (
     <>
       <section id="features" data-tutorial-id="features" className="relative overflow-hidden py-24 lg:py-32">
-        {/* Background decoration */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div
             className="absolute right-0 top-0 h-full w-px"
@@ -33,7 +33,6 @@ export function FeaturesSection() {
         </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
           <ScrollReveal>
             <div className="mb-16">
               <div className="section-label mb-4">{t.features.eyebrow}</div>
@@ -46,7 +45,8 @@ export function FeaturesSection() {
               <div
                 className="mt-8 h-px w-full"
                 style={{
-                  background: "linear-gradient(90deg, var(--primary), color-mix(in oklab, var(--primary) 20%, transparent) 60%, transparent)",
+                  background:
+                    "linear-gradient(90deg, var(--primary), color-mix(in oklab, var(--primary) 20%, transparent) 60%, transparent)",
                 }}
               />
               <p className="mt-6 max-w-2xl text-sm font-light leading-relaxed text-muted-foreground">
@@ -55,7 +55,6 @@ export function FeaturesSection() {
             </div>
           </ScrollReveal>
 
-          {/* Feature Cards — numbered, clipped */}
           <div className="grid grid-cols-1 gap-0 gap-px lg:grid-cols-3" style={{ background: "var(--border)" }}>
             {t.features.items.map((feature, index) => {
               const Icon = featureIcons[index]
@@ -67,7 +66,6 @@ export function FeaturesSection() {
                     className="glow-card clip-card holo-card group relative flex flex-col overflow-hidden p-8 transition-all duration-300"
                     style={{ minHeight: "340px" }}
                   >
-                    {/* Big background number */}
                     <div
                       className="pointer-events-none absolute -right-4 -top-6 select-none leading-none transition-all duration-500 group-hover:-top-4 group-hover:opacity-30"
                       style={{
@@ -75,7 +73,7 @@ export function FeaturesSection() {
                         fontWeight: 900,
                         fontSize: "10rem",
                         color: "transparent",
-                        WebkitTextStroke: `1px color-mix(in oklab, var(--primary) 12%, transparent)`,
+                        WebkitTextStroke: "1px color-mix(in oklab, var(--primary) 12%, transparent)",
                         lineHeight: 1,
                         opacity: 0.18,
                       }}
@@ -83,7 +81,6 @@ export function FeaturesSection() {
                       {num}
                     </div>
 
-                    {/* Top section — number label + icon */}
                     <div className="mb-6 flex items-center justify-between">
                       <span
                         className="font-mono text-xs tracking-widest"
@@ -108,39 +105,65 @@ export function FeaturesSection() {
                       </div>
                     </div>
 
-                    {/* Title */}
-                    <h3
-                      className="display-heading relative z-10 mb-4 text-2xl text-foreground transition-colors duration-300 group-hover:text-primary sm:text-3xl"
-                    >
+                    <h3 className="display-heading relative z-10 mb-4 text-2xl text-foreground transition-colors duration-300 group-hover:text-primary sm:text-3xl">
                       {feature.title}
                     </h3>
 
-                    {/* Description */}
                     <p className="relative z-10 flex-1 text-sm font-light leading-relaxed text-muted-foreground">
                       {feature.description}
                     </p>
 
-                    {/* Bottom action */}
-                    <button
-                      type="button"
-                      onClick={() => handleFeatureAction(index)}
-                      className="btn-wipe relative z-10 mt-6 flex items-center gap-2 self-start border px-4 py-2 text-xs uppercase tracking-widest transition-all duration-300 hover:border-primary/60 hover:text-primary"
-                      style={{
-                        fontFamily: "'Barlow Condensed', sans-serif",
-                        letterSpacing: "0.2em",
-                        fontSize: "0.7rem",
-                        borderColor: "var(--border)",
-                        color: "var(--muted-foreground)",
-                        background: "transparent",
-                      }}
-                    >
-                      Explore
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
-                        <path d="M5 12H19M13 6L19 12L13 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </button>
+                    {index === 0 ? (
+                      <a
+                        href="/triple-trailers"
+                        className="btn-wipe relative z-10 mt-6 flex items-center gap-2 self-start border px-4 py-2 text-xs uppercase tracking-widest transition-all duration-300 hover:border-primary/60 hover:text-primary"
+                        style={{
+                          fontFamily: "'Barlow Condensed', sans-serif",
+                          letterSpacing: "0.2em",
+                          fontSize: "0.7rem",
+                          borderColor: "var(--border)",
+                          color: "var(--muted-foreground)",
+                          background: "transparent",
+                        }}
+                      >
+                        Explore
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                          <path
+                            d="M5 12H19M13 6L19 12L13 18"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => handleFeatureAction(index)}
+                        className="btn-wipe relative z-10 mt-6 flex items-center gap-2 self-start border px-4 py-2 text-xs uppercase tracking-widest transition-all duration-300 hover:border-primary/60 hover:text-primary"
+                        style={{
+                          fontFamily: "'Barlow Condensed', sans-serif",
+                          letterSpacing: "0.2em",
+                          fontSize: "0.7rem",
+                          borderColor: "var(--border)",
+                          color: "var(--muted-foreground)",
+                          background: "transparent",
+                        }}
+                      >
+                        Explore
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                          <path
+                            d="M5 12H19M13 6L19 12L13 18"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </button>
+                    )}
 
-                    {/* Bottom border accent */}
                     <div
                       className="absolute bottom-0 left-0 right-0 h-px scale-x-0 transition-transform duration-500 group-hover:scale-x-100"
                       style={{ background: "linear-gradient(90deg, transparent, var(--primary), transparent)" }}
@@ -153,7 +176,6 @@ export function FeaturesSection() {
         </div>
       </section>
 
-      {/* Unavailable Modal */}
       {showUnavailableModal && (
         <div className="fixed inset-0 z-[80] flex items-center justify-center bg-background/60 px-4 backdrop-blur-xl">
           <div
@@ -164,10 +186,7 @@ export function FeaturesSection() {
               boxShadow: "0 0 60px color-mix(in oklab, var(--primary) 10%, transparent)",
             }}
           >
-            <div
-              className="section-label mx-auto mb-4 w-fit"
-              style={{ justifyContent: "center" }}
-            >
+            <div className="section-label mx-auto mb-4 w-fit" style={{ justifyContent: "center" }}>
               {t.features.unavailableTitle}
             </div>
             <p className="mb-8 text-sm font-light leading-relaxed text-muted-foreground">
