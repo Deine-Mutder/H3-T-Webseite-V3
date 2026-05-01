@@ -202,48 +202,101 @@ export function TripleTrailerDlcPage({ dlcId }: { dlcId: TripleTrailerDlcId }) {
                 "radial-gradient(circle at top left, color-mix(in oklab, var(--primary) 16%, transparent), transparent 38%), var(--surface-2)",
             }}
           >
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-              <div className="max-w-3xl">
-                <p className="text-xs uppercase tracking-[0.22em] text-primary">{copy.dlcLabel}</p>
-                <h2 className="display-heading mt-3 text-3xl text-foreground sm:text-4xl">{activeDlc.label}</h2>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{activeDlc.hint}</p>
-              </div>
+            <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_28rem]">
+              <div>
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                  <div className="max-w-3xl">
+                    <p className="text-xs uppercase tracking-[0.22em] text-primary">{copy.dlcLabel}</p>
+                    <h2 className="display-heading mt-3 text-3xl text-foreground sm:text-4xl">{activeDlc.label}</h2>
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{activeDlc.hint}</p>
+                  </div>
 
-              {activeDlc.link ? (
-                <a
-                  href={activeDlc.link.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 self-start rounded-full border px-4 py-2 text-xs uppercase tracking-[0.2em] transition-colors hover:border-primary/60 hover:text-primary"
-                  style={{
-                    borderColor: "color-mix(in oklab, var(--primary) 25%, transparent)",
-                    background: "color-mix(in oklab, var(--primary) 10%, transparent)",
-                  }}
-                >
-                  {copy.openSteam}
-                  <ExternalLink className="h-3.5 w-3.5" />
-                </a>
-              ) : null}
-            </div>
-
-            <div className="mt-5 grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
-              <div
-                className="rounded-[1.2rem] border p-4"
-                style={{
-                  borderColor: "color-mix(in oklab, var(--primary) 18%, transparent)",
-                  background: "color-mix(in oklab, var(--primary) 8%, transparent)",
-                }}
-              >
-                <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-primary">
-                  <CircleAlert className="h-3.5 w-3.5" />
-                  {copy.noteLabel}
+                  {activeDlc.link ? (
+                    <a
+                      href={activeDlc.link.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 self-start rounded-full border px-4 py-2 text-xs uppercase tracking-[0.2em] transition-colors hover:border-primary/60 hover:text-primary"
+                      style={{
+                        borderColor: "color-mix(in oklab, var(--primary) 25%, transparent)",
+                        background: "color-mix(in oklab, var(--primary) 10%, transparent)",
+                      }}
+                    >
+                      {copy.openSteam}
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  ) : null}
                 </div>
-                <p className="text-sm leading-relaxed text-muted-foreground">{activeDlc.note}</p>
+
+                <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                  {activeDlc.overviewFacts.map((fact) => (
+                    <div key={`${activeDlc.id}-overview-${fact}`} className="rounded-[1rem] border border-white/10 bg-black/10 px-4 py-3">
+                      <p className="text-sm leading-relaxed text-muted-foreground">{fact}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-5 grid gap-4 lg:grid-cols-2">
+                  <div
+                    className="rounded-[1.2rem] border p-4"
+                    style={{
+                      borderColor: "color-mix(in oklab, var(--primary) 18%, transparent)",
+                      background: "color-mix(in oklab, var(--primary) 8%, transparent)",
+                    }}
+                  >
+                    <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-primary">
+                      <CircleAlert className="h-3.5 w-3.5" />
+                      {copy.noteLabel}
+                    </div>
+                    <p className="text-sm leading-relaxed text-muted-foreground">{activeDlc.note}</p>
+                  </div>
+
+                  <div className="rounded-[1.2rem] border border-white/10 bg-black/15 p-4">
+                    <p className="mb-2 text-xs uppercase tracking-[0.22em] text-primary">{copy.detailHintLabel}</p>
+                    <p className="text-sm leading-relaxed text-muted-foreground">{activeDlc.hint}</p>
+                  </div>
+                </div>
               </div>
 
-              <div className="rounded-[1.2rem] border border-white/10 bg-black/15 p-4">
-                <p className="mb-2 text-xs uppercase tracking-[0.22em] text-primary">{copy.detailHintLabel}</p>
-                <p className="text-sm leading-relaxed text-muted-foreground">{activeDlc.hint}</p>
+              <div className="relative overflow-hidden rounded-[1.4rem] border border-white/10 bg-black/20">
+                {activeDlc.overviewImage ? (
+                  <Image
+                    src={activeDlc.overviewImage.src}
+                    alt={activeDlc.overviewImage.alt}
+                    fill
+                    sizes="(max-width: 1280px) 100vw, 28rem"
+                    className="object-cover"
+                  />
+                ) : null}
+
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background: activeDlc.overviewImage
+                      ? "linear-gradient(180deg, rgba(8,8,12,0.1), rgba(8,8,12,0.75))"
+                      : "radial-gradient(circle at top left, color-mix(in oklab, var(--primary) 22%, transparent), transparent 40%), linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))",
+                  }}
+                />
+
+                <div className="relative flex min-h-[20rem] flex-col justify-between p-5">
+                  <span
+                    className="inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1 text-[0.65rem] uppercase tracking-[0.22em]"
+                    style={{
+                      borderColor: "color-mix(in oklab, var(--primary) 25%, transparent)",
+                      color: "var(--primary)",
+                      background: "rgba(8, 8, 12, 0.7)",
+                    }}
+                  >
+                    <Package className="h-3.5 w-3.5" />
+                    {activeDlc.overviewImage ? copy.imageReady : copy.imagePending}
+                  </span>
+
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.24em] text-primary">{activeDlc.brand}</p>
+                    <h3 className="display-heading mt-2 text-3xl text-foreground">{activeDlc.label}</h3>
+                    <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">{activeDlc.description}</p>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -264,7 +317,7 @@ export function TripleTrailerDlcPage({ dlcId }: { dlcId: TripleTrailerDlcId }) {
                         slide={trailer.gallery[0]}
                         title={trailer.name}
                         badge={trailer.category}
-                        imagePending={copy.imagePending}
+                        imagePending={trailer.gallery[0]?.imageSrc ? copy.imageReady : copy.imagePending}
                         previewHint={copy.previewHint}
                         compact
                       />
@@ -383,7 +436,7 @@ export function TripleTrailerDlcPage({ dlcId }: { dlcId: TripleTrailerDlcId }) {
                     slide={activeSlide}
                     title={selectedTrailer.name}
                     badge={activeSlide.title}
-                    imagePending={copy.imagePending}
+                    imagePending={activeSlide.imageSrc ? copy.imageReady : copy.imagePending}
                     previewHint={copy.previewHint}
                   />
 
