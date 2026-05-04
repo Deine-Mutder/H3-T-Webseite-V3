@@ -26,7 +26,7 @@ type AssistantCopy = {
   welcome: string
   infoTitle: string
   infoText: string
-  holdToConfirm: string
+  continueButton: string
   closeLabel: string
   infoExamples: string[]
   quickPrompts: string[]
@@ -51,7 +51,7 @@ const assistantCopy: Record<Language, AssistantCopy> = {
       "Hi, ich bin dein H3°T Assistent! Ich kann dir bei Fragen zu H3°T, TruckersMP, Euro Truck Simulator 2, Save Editing, Triple Trailern, Konvois und vielem mehr helfen.",
     infoTitle: "Information",
     infoText: "Bitte nicht in ganzen Sätzen schreiben! Nutze einzelne Stichpunkte:",
-    holdToConfirm: "Gedrückt halten zum Bestätigen",
+    continueButton: "Fortfahren",
     closeLabel: "Schließen",
     infoExamples: [
       "Discord", "TruckersMP", "VTC", "VTC Rules", "Triple Trailer", "Save Edit", "Konvoi", "ETS2",
@@ -161,7 +161,7 @@ const assistantCopy: Record<Language, AssistantCopy> = {
       "Hi, I'm your H3°T assistant! I can help with questions about H3°T, TruckersMP, Euro Truck Simulator 2, save editing, triple trailers, convoys, and much more.",
     infoTitle: "Information",
     infoText: "Don't write full sentences! Use single keywords:",
-    holdToConfirm: "Hold to confirm",
+    continueButton: "Continue",
     closeLabel: "Close",
     infoExamples: [
       "Discord", "TruckersMP", "VTC", "VTC Rules", "Triple Trailer", "Save Edit", "Convoy", "ETS2",
@@ -271,7 +271,7 @@ const assistantCopy: Record<Language, AssistantCopy> = {
     welcome: "Pozdravljen! Pomagam ti pri vprasanjih o H3°T, TruckersMP, ETS2, save editingu, triple trailerjih, konvojih in vsem ostalim.",
     infoTitle: "Informacije",
     infoText: "Prosim, ne pisi v celih stavkih! Uporabi posamezne kljucne besede.",
-    holdToConfirm: "Drzi za potrditev",
+    continueButton: "Nadaljuj",
     closeLabel: "Zapri",
     infoExamples: ["Discord", "TruckersMP", "VTC", "VTC Rules", "Triple Trailer", "Save Edit", "Konvoj", "ETS2", "Pridruzitev H3°T", "Tag-System"],
     quickPrompts: ["Kako se pridruzim?", "Kaj je TruckersMP?", "Kaj je save editing?"],
@@ -346,7 +346,7 @@ const assistantCopy: Record<Language, AssistantCopy> = {
     welcome: "Bonjour ! Je peux t'aider avec des questions sur H3°T, TruckersMP, ETS2, le save editing, les triple remorques, les convois et bien plus encore.",
     infoTitle: "Information",
     infoText: "Merci de ne pas ecrire en phrases completes ! Utilise plutot des mots-cles courts.",
-    holdToConfirm: "Maintenir pour confirmer",
+    continueButton: "Continuer",
     closeLabel: "Fermer",
     infoExamples: ["Discord", "TruckersMP", "VTC", "VTC Rules", "Triple Remorque", "Save Edit", "Convoi", "ETS2", "Rejoindre H3°T", "Systeme de tags"],
     quickPrompts: ["Comment rejoindre H3°T ?", "C'est quoi TruckersMP ?", "C'est quoi le save editing ?"],
@@ -421,7 +421,7 @@ const assistantCopy: Record<Language, AssistantCopy> = {
     welcome: "Hola! Puedo ayudarte con preguntas sobre H3°T, TruckersMP, ETS2, save editing, triple remolques, convoyes y mucho mas.",
     infoTitle: "Informacion",
     infoText: "Por favor no escribas en oraciones completas! Usa palabras clave cortas en su lugar.",
-    holdToConfirm: "Mantener para confirmar",
+    continueButton: "Continuar",
     closeLabel: "Cerrar",
     infoExamples: ["Discord", "TruckersMP", "VTC", "VTC Rules", "Triple Remolque", "Save Edit", "Convoy", "ETS2", "Unirse a H3°T", "Sistema de tags"],
     quickPrompts: ["Como me uno a H3°T?", "Que es TruckersMP?", "Que es el save editing?"],
@@ -496,7 +496,7 @@ const assistantCopy: Record<Language, AssistantCopy> = {
     welcome: "Ciao! Posso aiutarti con domande su H3°T, TruckersMP, ETS2, save editing, triple trailer, convoglio e molto altro.",
     infoTitle: "Informazioni",
     infoText: "Per favore non scrivere frasi complete! Usa invece singole parole chiave.",
-    holdToConfirm: "Tieni premuto per confermare",
+    continueButton: "Continua",
     closeLabel: "Chiudi",
     infoExamples: ["Discord", "TruckersMP", "VTC", "VTC Rules", "Triple Trailer", "Save Edit", "Convoglio", "ETS2", "Unirsi a H3°T", "Sistema di tag"],
     quickPrompts: ["Come entro in H3°T?", "Cos'e TruckersMP?", "Cos'e il save editing?"],
@@ -571,7 +571,7 @@ const assistantCopy: Record<Language, AssistantCopy> = {
     welcome: "Czesc! Pomagam z pytaniami o H3°T, TruckersMP, ETS2, save editing, triple trailery, konwoje i wiele wiecej.",
     infoTitle: "Informacja",
     infoText: "Prosze nie pisac pelnymi zdaniami! Uzywaj pojedynczych slow kluczowych.",
-    holdToConfirm: "Przytrzymaj, aby potwierdzic",
+    continueButton: "Kontynuuj",
     closeLabel: "Zamknij",
     infoExamples: ["Discord", "TruckersMP", "VTC", "VTC Rules", "Triple Trailer", "Save Edit", "Konwoj", "ETS2", "Dolaczenie do H3°T", "System tagow"],
     quickPrompts: ["Jak dolaczyc do H3°T?", "Co to TruckersMP?", "Co to save editing?"],
@@ -646,7 +646,7 @@ const assistantCopy: Record<Language, AssistantCopy> = {
     welcome: "Merhaba! H3°T, TruckersMP, ETS2, save editing, triple trailer, konvoy ve cok daha fazlasi hakkinda sana yardimci olabilirim.",
     infoTitle: "Bilgi",
     infoText: "Lutfen tam cumlelerle yazmayin! Bunun yerine tek anahtar kelimeler kullanin.",
-    holdToConfirm: "Onaylamak icin basili tut",
+    continueButton: "Devam Et",
     closeLabel: "Kapat",
     infoExamples: ["Discord", "TruckersMP", "VTC", "VTC Rules", "Triple Trailer", "Save Edit", "Konvoy", "ETS2", "H3°T'ye Katilma", "Tag Sistemi"],
     quickPrompts: ["H3°T'ye nasil katilirim?", "TruckersMP nedir?", "Save editing nedir?"],
@@ -721,7 +721,7 @@ const assistantCopy: Record<Language, AssistantCopy> = {
     welcome: "你好！我可以帮助你解答关于 H3°T、TruckersMP、ETS2、存档编辑、Triple Trailer、车队等问题。",
     infoTitle: "信息",
     infoText: "请不要写完整的句子！请使用单个关键词。",
-    holdToConfirm: "按住确认",
+    continueButton: "继续",
     closeLabel: "关闭",
     infoExamples: ["Discord", "TruckersMP", "VTC", "VTC Rules", "Triple Trailer", "存档编辑", "车队", "ETS2", "加入 H3°T", "标签系统"],
     quickPrompts: ["如何加入 H3°T？", "TruckersMP 是什么？", "什么是存档编辑？"],
@@ -796,7 +796,7 @@ const assistantCopy: Record<Language, AssistantCopy> = {
     welcome: "Привет! Я помогу тебе с вопросами о H3°T, TruckersMP, ETS2, сейв-редактировании, тройных прицепах, конвоях и многом другом.",
     infoTitle: "Информация",
     infoText: "Пожалуйста, не пишите полными предложениями! Используйте отдельные ключевые слова.",
-    holdToConfirm: "Удерживай для подтверждения",
+    continueButton: "Продолжить",
     closeLabel: "Закрыть",
     infoExamples: ["Discord", "TruckersMP", "VTC", "VTC Rules", "Triple Trailer", "Save Edit", "Конвой", "ETS2", "Вступить в H3°T", "Тег-система"],
     quickPrompts: ["Как вступить в H3°T?", "Что такое TruckersMP?", "Что такое сейв-редактинг?"],
@@ -945,8 +945,6 @@ export function WebsiteAssistant() {
     { id: "welcome", role: "assistant", text: copy.welcome },
   ])
   const [showInfo, setShowInfo] = useState(true)
-  const [holdProgress, setHoldProgress] = useState(0) // 0-100
-  const holdIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -1196,79 +1194,15 @@ export function WebsiteAssistant() {
               </div>
             </div>
 
-            {/* OK hold-to-confirm button */}
+            {/* Continue button */}
             <div className="px-6 pb-6">
-              {(() => {
-                const HOLD_DURATION = 5000
-                const circumference = 2 * Math.PI * 20
-                const dashOffset = circumference * (1 - holdProgress / 100)
-                const secondsLeft = Math.ceil((HOLD_DURATION * (1 - holdProgress / 100)) / 1000)
-
-                const startHold = () => {
-                  if (holdIntervalRef.current) return
-                  const step = 100 / (HOLD_DURATION / 50)
-                  holdIntervalRef.current = setInterval(() => {
-                    setHoldProgress((prev) => {
-                      const next = prev + step
-                      if (next >= 100) {
-                        clearInterval(holdIntervalRef.current!)
-                        holdIntervalRef.current = null
-                        setShowInfo(false)
-                        return 0
-                      }
-                      return next
-                    })
-                  }, 50)
-                }
-
-                const stopHold = () => {
-                  if (holdIntervalRef.current) {
-                    clearInterval(holdIntervalRef.current)
-                    holdIntervalRef.current = null
-                  }
-                  setHoldProgress(0)
-                }
-
-                return (
-                  <button
-                    type="button"
-                    onMouseDown={startHold}
-                    onMouseUp={stopHold}
-                    onMouseLeave={stopHold}
-                    onTouchStart={startHold}
-                    onTouchEnd={stopHold}
-                    className="relative w-full select-none overflow-hidden rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-transform active:scale-[0.98]"
-                    style={{ WebkitUserSelect: "none" }}
-                  >
-                    {/* Progress fill */}
-                    <span
-                      className="pointer-events-none absolute inset-0 rounded-xl bg-primary-foreground/20 transition-none"
-                      style={{ width: `${holdProgress}%` }}
-                    />
-                    <span className="relative flex items-center justify-center gap-2">
-                      {holdProgress > 0 ? (
-                        <>
-                          <svg width="22" height="22" className="-rotate-90">
-                            <circle cx="11" cy="11" r="8" fill="none" stroke="currentColor" strokeOpacity="0.3" strokeWidth="2.5" />
-                            <circle
-                              cx="11" cy="11" r="8"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2.5"
-                              strokeDasharray={circumference * 0.63}
-                              strokeDashoffset={dashOffset * 0.63}
-                              strokeLinecap="round"
-                            />
-                          </svg>
-                          <span>{secondsLeft}s</span>
-                        </>
-                      ) : (
-                        <span>{copy.holdToConfirm}</span>
-                      )}
-                    </span>
-                  </button>
-                )
-              })()}
+              <button
+                type="button"
+                onClick={() => setShowInfo(false)}
+                className="w-full rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-transform hover:bg-primary/90 active:scale-[0.98]"
+              >
+                {copy.continueButton}
+              </button>
             </div>
           </div>
         </div>
