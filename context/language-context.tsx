@@ -3,114 +3,19 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
 
 export type Language = "de" | "en" | "sl" | "fr" | "es" | "it" | "pl" | "tr" | "zh" | "ru"
-type FlagVariant = "horizontal" | "vertical" | "uk" | "uk-us" | "china" | "turkey"
 
-export const languageOptions: Array<{
-  code: Language
-  name: string
-  nativeName: string
-  locale: string
-  flagColors: string[]
-  flagVariant: FlagVariant
-}> = [
-  {
-    code: "de",
-    name: "Deutsch",
-    nativeName: "German",
-    locale: "de-DE",
-    flagColors: ["#000000", "#DD0000", "#FFCE00"],
-    flagVariant: "horizontal",
-  },
-  {
-    code: "en",
-    name: "English",
-    nativeName: "English",
-    locale: "en-GB",
-    flagColors: ["#012169", "#C8102E", "#FFFFFF"],
-    flagVariant: "uk-us",
-  },
-  {
-    code: "sl",
-    name: "Slovenscina",
-    nativeName: "Slovenian",
-    locale: "sl-SI",
-    flagColors: ["#FFFFFF", "#0056A0", "#ED1C24"],
-    flagVariant: "horizontal",
-  },
-  {
-    code: "fr",
-    name: "Francais",
-    nativeName: "French",
-    locale: "fr-FR",
-    flagColors: ["#0055A4", "#FFFFFF", "#EF4135"],
-    flagVariant: "vertical",
-  },
-  {
-    code: "es",
-    name: "Espanol",
-    nativeName: "Spanish",
-    locale: "es-ES",
-    flagColors: ["#AA151B", "#F1BF00", "#AA151B"],
-    flagVariant: "horizontal",
-  },
-  {
-    code: "it",
-    name: "Italiano",
-    nativeName: "Italian",
-    locale: "it-IT",
-    flagColors: ["#009246", "#FFFFFF", "#CE2B37"],
-    flagVariant: "vertical",
-  },
-  {
-    code: "pl",
-    name: "Polski",
-    nativeName: "Polish",
-    locale: "pl-PL",
-    flagColors: ["#FFFFFF", "#DC143C"],
-    flagVariant: "horizontal",
-  },
-  {
-    code: "tr",
-    name: "Turkce",
-    nativeName: "Türkçe",
-    locale: "tr-TR",
-    flagColors: ["#E30A17", "#FFFFFF", "#E30A17"],
-    flagVariant: "turkey",
-  },
-  {
-    code: "zh",
-    name: "Chinese",
-    nativeName: "中文",
-    locale: "zh-CN",
-    flagColors: ["#DE2910", "#FFDE00", "#DE2910"],
-    flagVariant: "china",
-  },
-  {
-    code: "ru",
-    name: "Russian",
-    nativeName: "Русский",
-    locale: "ru-RU",
-    flagColors: ["#FFFFFF", "#0039A6", "#D52B1E"],
-    flagVariant: "horizontal",
-  },
-]
-
-const supportedLanguages = languageOptions.map((option) => option.code)
-const LANGUAGE_STORAGE_KEY = "h3t-language"
+const supportedLanguages = ["de", "en", "sl", "fr", "es", "it", "pl", "tr", "zh", "ru"] as const
+const DEFAULT_LANGUAGE: Language = "en"
+const LEGACY_LANGUAGE_STORAGE_KEY = "h3t-language"
 
 export const translations = {
   de: {
     meta: {
       locale: "de-DE",
     },
-    splash: {
-      title: "Waehle deine Sprache",
-      subtitle: "Die gesamte Website wird danach in deiner Sprache angezeigt.",
-    },
     header: {
       cta: "Beitreten",
       clockLabel: "Uhr",
-      backToMenu: "Zurueck zum Hauptmenue",
     },
     nav: {
       home: "Home",
@@ -289,14 +194,9 @@ export const translations = {
     meta: {
       locale: "en-GB",
     },
-    splash: {
-      title: "Choose your language",
-      subtitle: "The whole website will switch to the language you select.",
-    },
     header: {
       cta: "Join",
       clockLabel: "Time",
-      backToMenu: "Back to main menu",
     },
     nav: {
       home: "Home",
@@ -475,14 +375,9 @@ export const translations = {
     meta: {
       locale: "sl-SI",
     },
-    splash: {
-      title: "Izberi svoj jezik",
-      subtitle: "Celotna spletna stran se bo prikazala v izbranem jeziku.",
-    },
     header: {
       cta: "Pridruzi se",
       clockLabel: "Ura",
-      backToMenu: "Nazaj v glavni meni",
     },
     nav: {
       home: "Domov",
@@ -661,14 +556,9 @@ export const translations = {
     meta: {
       locale: "fr-FR",
     },
-    splash: {
-      title: "Choisis ta langue",
-      subtitle: "Tout le site s'affichera ensuite dans la langue selectionnee.",
-    },
     header: {
       cta: "Rejoindre",
       clockLabel: "Heure",
-      backToMenu: "Retour au menu principal",
     },
     nav: {
       home: "Accueil",
@@ -847,14 +737,9 @@ export const translations = {
     meta: {
       locale: "es-ES",
     },
-    splash: {
-      title: "Elige tu idioma",
-      subtitle: "Toda la web cambiara al idioma que selecciones.",
-    },
     header: {
       cta: "Unirse",
       clockLabel: "Hora",
-      backToMenu: "Volver al menu principal",
     },
     nav: {
       home: "Inicio",
@@ -1033,14 +918,9 @@ export const translations = {
     meta: {
       locale: "it-IT",
     },
-    splash: {
-      title: "Scegli la tua lingua",
-      subtitle: "L'intero sito verra mostrato nella lingua selezionata.",
-    },
     header: {
       cta: "Unisciti",
       clockLabel: "Ora",
-      backToMenu: "Torna al menu principale",
     },
     nav: {
       home: "Home",
@@ -1219,14 +1099,9 @@ export const translations = {
     meta: {
       locale: "tr-TR",
     },
-    splash: {
-      title: "Dilini sec",
-      subtitle: "Tum web sitesi sectigin dile gore degisecek.",
-    },
     header: {
       cta: "Katil",
       clockLabel: "Saat",
-      backToMenu: "Ana menuye don",
     },
     nav: {
       home: "Ana sayfa",
@@ -1405,14 +1280,9 @@ export const translations = {
     meta: {
       locale: "zh-CN",
     },
-    splash: {
-      title: "选择你的语言",
-      subtitle: "整个网站都会切换到你选择的语言。",
-    },
     header: {
       cta: "加入",
       clockLabel: "时间",
-      backToMenu: "返回主菜单",
     },
     nav: {
       home: "首页",
@@ -1591,14 +1461,9 @@ export const translations = {
     meta: {
       locale: "pl-PL",
     },
-    splash: {
-      title: "Wybierz swój język",
-      subtitle: "Cała strona internetowa zostanie wyświetlona w wybranym przez Ciebie języku.",
-    },
     header: {
       cta: "Dołącz",
       clockLabel: "Czas",
-      backToMenu: "Powrót do menu głównego",
     },
     nav: {
       home: "Start",
@@ -1777,14 +1642,9 @@ export const translations = {
     meta: {
       locale: "ru-RU",
     },
-    splash: {
-      title: "Выбери свой язык",
-      subtitle: "Весь сайт переключится на выбранный тобой язык.",
-    },
     header: {
       cta: "Присоединиться",
       clockLabel: "Время",
-      backToMenu: "Назад в главное меню",
     },
     nav: {
       home: "Главная",
@@ -1963,64 +1823,69 @@ export const translations = {
 
 type TranslationSet = (typeof translations)[Language]
 
+function isSupportedLanguage(value: string): value is Language {
+  return supportedLanguages.includes(value as Language)
+}
+
+function detectBrowserLanguage(): Language {
+  if (typeof navigator === "undefined") {
+    return DEFAULT_LANGUAGE
+  }
+
+  const browserLanguages = navigator.languages?.length ? navigator.languages : [navigator.language]
+
+  for (const locale of browserLanguages) {
+    const languageCode = locale.toLowerCase().replace("_", "-").split("-")[0]
+
+    if (isSupportedLanguage(languageCode)) {
+      return languageCode
+    }
+  }
+
+  return DEFAULT_LANGUAGE
+}
+
 interface LanguageContextType {
-  language: Language | null
-  setLanguage: (lang: Language) => void
-  resetLanguage: () => void
+  language: Language
   t: TranslationSet
-  hasSelectedLanguage: boolean
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language | null>(null)
+  const [language, setLanguageState] = useState<Language>(DEFAULT_LANGUAGE)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setLanguageState(detectBrowserLanguage())
     setMounted(true)
-    const savedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY) as Language | null
 
-    if (savedLanguage && supportedLanguages.includes(savedLanguage)) {
-      setLanguageState(savedLanguage)
-    }
+    localStorage.removeItem(LEGACY_LANGUAGE_STORAGE_KEY)
   }, [])
 
-  const setLanguage = (lang: Language) => {
-    setLanguageState(lang)
-  }
-
-  const resetLanguage = () => {
-    setLanguageState(null)
-    localStorage.removeItem(LANGUAGE_STORAGE_KEY)
-  }
-
   useEffect(() => {
-    if (!mounted || !language) {
+    if (!mounted) {
       return
     }
 
-    localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
+    document.documentElement.lang = translations[language].meta.locale
   }, [language, mounted])
 
-  useEffect(() => {
-    if (!mounted || language !== null) {
-      return
-    }
+  const t = translations[language]
 
-    localStorage.removeItem(LANGUAGE_STORAGE_KEY)
-  }, [language, mounted])
-
-  const t = language ? translations[language] : translations.en
+  if (!mounted) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background">
+        <div className="animate-pulse text-2xl font-bold text-primary">H3{"\u00B0"}T</div>
+      </div>
+    )
+  }
 
   return (
     <LanguageContext.Provider
       value={{
         language,
-        setLanguage,
-        resetLanguage,
         t,
-        hasSelectedLanguage: language !== null,
       }}
     >
       {children}

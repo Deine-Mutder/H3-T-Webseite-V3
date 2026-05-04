@@ -83,7 +83,7 @@ const assistantCopy: Record<Language, AssistantCopy> = {
       tutorial: "Das Tutorial erscheint nach der Sprachauswahl. Es hebt die wichtigsten Bereiche der Website nacheinander hervor und führt dich Schritt für Schritt durch die Seite.",
       features: "Im Features-Bereich zeigt H3°T vor allem Triple Trailer, die Discord Community sowie Konfiguration und Save Edit.",
       theme: "Oben im Header kannst du das Design wechseln – Midnight (Standard), Ocean, Forest oder Sunset. Die leuchtenden Header-Elemente passen sich dem gewählten Theme an.",
-      language: "Die Sprache kannst du über den Startbildschirm wählen. Danach werden Website und Tutorial in der gewählten Sprache angezeigt.",
+      language: "Die Sprache wird automatisch aus deiner Browser-Sprache erkannt. Wenn dein Browser z.B. Slowenisch nutzt, startet die Website direkt auf Slowenisch.",
       owner: "The real Plumz ist der Owner von H3°T. Im Team-Bereich kannst du sein Profil öffnen und direkt zu TruckersMP wechseln.",
       rollin: "Rollin Noodle ist als Trusted Member im Team gelistet. Seine Profilkarte enthält bereits einen TruckersMP-Link.",
       stats: "Auf der Startseite siehst du aktuell Kennzahlen wie 500+ Touren, 8 Fahrer und 100k+ gefahrene Kilometer.",
@@ -193,7 +193,7 @@ const assistantCopy: Record<Language, AssistantCopy> = {
       tutorial: "The tutorial appears after the language selection. It highlights the most important sections one by one and guides visitors through the website.",
       features: "The Features section focuses on triple trailers, the Discord community, and configuration plus save edit.",
       theme: "You can switch the design in the header – Midnight (default), Ocean, Forest or Sunset. The glowing header elements adapt to the selected theme.",
-      language: "You can choose the language on the splash screen. After that, the website and tutorial follow the selected language.",
+      language: "The language is detected automatically from your browser. For example, if your browser uses Slovenian, the website starts in Slovenian.",
       owner: "The real Plumz is the owner of H3°T. You can open the profile card in the Team section and jump to TruckersMP from there.",
       rollin: "Rollin Noodle is listed as a trusted member. The profile card already includes a TruckersMP link.",
       stats: "The home section currently shows stats like 500+ tours, 8 drivers, and 100k+ kilometers driven.",
@@ -285,7 +285,7 @@ const assistantCopy: Record<Language, AssistantCopy> = {
       tutorial: "Vodic se pokaze po izbiri jezika in postopoma predstavi najpomembnejse dele strani.",
       features: "Funkcije poudarjajo triple trailer, Discord skupnost ter konfiguracijo in save edit.",
       theme: "Dizajn lahko menjas v glavi strani.",
-      language: "Jezik izberes na zacetnem zaslonu.",
+      language: "Jezik se samodejno zazna iz jezika brskalnika.",
       owner: "The real Plumz je owner H3°T.",
       rollin: "Rollin Noodle je trusted member z lastno profilno kartico.",
       stats: "Na zacetku so 500+ tur, 8 voznikov in 100k+ km.",
@@ -360,7 +360,7 @@ const assistantCopy: Record<Language, AssistantCopy> = {
       tutorial: "Le tutoriel apparait apres le choix de la langue.",
       features: "Les fonctionnalites presentent triple remorque, Discord et save edit.",
       theme: "Change le design dans le header: Midnight, Ocean, Forest, Sunset.",
-      language: "Langue choisie sur l'ecran d'accueil.",
+      language: "La langue est detectee automatiquement depuis la langue du navigateur.",
       owner: "The real Plumz est l'owner de H3°T.",
       rollin: "Rollin Noodle est trusted member.",
       stats: "500+ tours, 8 drivers, 100k+ km sur la page d'accueil.",
@@ -435,7 +435,7 @@ const assistantCopy: Record<Language, AssistantCopy> = {
       tutorial: "El tutorial aparece tras elegir idioma.",
       features: "Funciones: triple remolque, Discord, configuracion y save edit.",
       theme: "Cambia el diseno en el header: Midnight, Ocean, Forest, Sunset.",
-      language: "El idioma se elige en la pantalla inicial.",
+      language: "El idioma se detecta automaticamente desde el navegador.",
       owner: "The real Plumz es el owner de H3°T.",
       rollin: "Rollin Noodle es trusted member.",
       stats: "500+ tours, 8 drivers, 100k+ km en la portada.",
@@ -510,7 +510,7 @@ const assistantCopy: Record<Language, AssistantCopy> = {
       tutorial: "Il tutorial appare dopo la scelta della lingua.",
       features: "Le funzioni mostrano triple trailer, Discord e save edit.",
       theme: "Cambia il design nell'header: Midnight, Ocean, Forest, Sunset.",
-      language: "La lingua si sceglie nella schermata iniziale.",
+      language: "La lingua viene rilevata automaticamente dal browser.",
       owner: "The real Plumz e l'owner di H3°T.",
       rollin: "Rollin Noodle e trusted member.",
       stats: "500+ tour, 8 driver, 100k+ km nella home.",
@@ -585,7 +585,7 @@ const assistantCopy: Record<Language, AssistantCopy> = {
       tutorial: "Tutorial po wyborze jezyka.",
       features: "Funkcje: triple trailer, Discord, konfiguracja i save edit.",
       theme: "Zmien motyw w headerze: Midnight, Ocean, Forest, Sunset.",
-      language: "Jezyk na ekranie startowym.",
+      language: "Jezyk jest automatycznie wykrywany z ustawien przegladarki.",
       owner: "The real Plumz jest ownerem H3°T.",
       rollin: "Rollin Noodle jest trusted member.",
       stats: "500+ tras, 8 kierowcow, 100k+ km na stronie glownej.",
@@ -660,7 +660,7 @@ const assistantCopy: Record<Language, AssistantCopy> = {
       tutorial: "Egitim dil seciminden sonra gosterilir.",
       features: "Ozellikler: triple trailer, Discord, konfigurasyon ve save edit.",
       theme: "Temayı header'dan degistir: Midnight, Ocean, Forest, Sunset.",
-      language: "Dil acilis ekraninda secilir.",
+      language: "Dil tarayici dilinden otomatik olarak algilanir.",
       owner: "The real Plumz H3°T'nin owneridir.",
       rollin: "Rollin Noodle trusted member olarak listelenir.",
       stats: "Ana sayfada 500+ tur, 8 surucu, 100k+ km.",
@@ -735,7 +735,7 @@ const assistantCopy: Record<Language, AssistantCopy> = {
       tutorial: "教程在选择语言后出现。",
       features: "功能：Triple Trailer、Discord、配置和存档编辑。",
       theme: "在顶部 header 切换主题：Midnight、Ocean、Forest、Sunset。",
-      language: "语言在开始页面选择。",
+      language: "语言会根据浏览器语言自动识别。",
       owner: "The real Plumz 是 H3°T 的 Owner。",
       rollin: "Rollin Noodle 是 Trusted Member。",
       stats: "首页显示 500+ tours、8 drivers、100k+ km。",
@@ -810,7 +810,7 @@ const assistantCopy: Record<Language, AssistantCopy> = {
       tutorial: "Обучение появляется после выбора языка.",
       features: "Возможности: тройные прицепы, Discord, конфигурация и сейв-редакт.",
       theme: "Смени тему в хедере: Midnight, Ocean, Forest, Sunset.",
-      language: "Язык выбирается на стартовом экране.",
+      language: "Язык автоматически определяется по языку браузера.",
       owner: "The real Plumz — owner H3°T.",
       rollin: "Rollin Noodle — trusted member.",
       stats: "На главной 500+ туров, 8 водителей, 100k+ км.",
@@ -938,7 +938,7 @@ const MarqueeRow = memo(function MarqueeRow({ items, reverse = false }: { items:
 
 export function WebsiteAssistant() {
   const { language } = useLanguage()
-  const copy = assistantCopy[(language ?? "en") as Language] ?? assistantCopy.en
+  const copy = assistantCopy[language] ?? assistantCopy.en
   const [open, setOpen] = useState(false)
   const [input, setInput] = useState("")
   const [messages, setMessages] = useState<ChatMessage[]>([

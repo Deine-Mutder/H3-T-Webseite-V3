@@ -14,9 +14,8 @@ import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { useLanguage, type Language } from "@/context/language-context"
 import { animateScrollToElement } from "@/lib/utils"
-import { SplashScreen } from "./splash-screen"
 
-const TUTORIAL_PROMPT_STORAGE_KEY = "h3t-tutorial-prompt"
+const TUTORIAL_SEEN_STORAGE_KEY = "h3t-tutorial-seen"
 const TUTORIAL_TARGET_SELECTOR = "[data-tutorial-id]"
 
 type TutorialStep = {
@@ -255,9 +254,9 @@ function TutorialPrompt({
   open: boolean
   onOpenChange: (open: boolean) => void
   onStart: () => void
-  language: string | null
+  language: Language
 }) {
-  const copy = tutorialCopy[(language ?? "en") as Language] ?? tutorialCopy.en
+  const copy = tutorialCopy[language] ?? tutorialCopy.en
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -291,9 +290,9 @@ function WebsiteTutorial({
 }: {
   active: boolean
   onClose: () => void
-  language: string | null
+  language: Language
 }) {
-  const copy = tutorialCopy[(language ?? "en") as Language] ?? tutorialCopy.en
+  const copy = tutorialCopy[language] ?? tutorialCopy.en
   const [step, setStep] = useState(0)
   const [spotlightRect, setSpotlightRect] = useState<{ top: number; left: number; width: number; height: number } | null>(null)
 
@@ -441,7 +440,7 @@ function WebsiteTutorial({
 }
 
 export function AppWrapper() {
-  const { hasSelectedLanguage, language } = useLanguage()
+  const { language } = useLanguage()
   const [mounted, setMounted] = useState(false)
   const [tutorialPromptOpen, setTutorialPromptOpen] = useState(false)
   const [tutorialActive, setTutorialActive] = useState(false)
@@ -492,15 +491,15 @@ export function AppWrapper() {
   }, [])
 
   useEffect(() => {
-    if (!mounted || !hasSelectedLanguage) {
+    if (!mounted) {
       return
     }
 
-    if (localStorage.getItem(TUTORIAL_PROMPT_STORAGE_KEY) === "true") {
-      localStorage.removeItem(TUTORIAL_PROMPT_STORAGE_KEY)
+    if (localStorage.getItem(TUTORIAL_SEEN_STORAGE_KEY) !== "true") {
+      localStorage.setItem(TUTORIAL_SEEN_STORAGE_KEY, "true")
       setTutorialPromptOpen(true)
     }
-  }, [mounted, hasSelectedLanguage])
+  }, [mounted])
 
   if (!mounted) {
     return (
@@ -508,10 +507,6 @@ export function AppWrapper() {
         <div className="animate-pulse text-2xl font-bold text-primary">H3{"\u00B0"}T</div>
       </div>
     )
-  }
-
-  if (!hasSelectedLanguage) {
-    return <SplashScreen />
   }
 
   return (

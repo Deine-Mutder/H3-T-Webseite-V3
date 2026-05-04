@@ -222,7 +222,7 @@ export function isTripleTrailerDlcId(value: string): value is TripleTrailerDlcId
   return tripleTrailerDlcIds.includes(value as TripleTrailerDlcId)
 }
 
-export function getTripleTrailerCopy(language: string | null): TripleTrailerCopy {
+export function getTripleTrailerCopy(language: string): TripleTrailerCopy {
   if (language === "de") {
     return {
       pageTitle: "Unsere Triple Trailer Angebote",

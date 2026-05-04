@@ -1,7 +1,7 @@
 "use client"
 
 import { useCallback, useState } from "react"
-import { ArrowRight, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { useLanguage } from "@/context/language-context"
 import { animateScrollToElement } from "@/lib/utils"
 import { LiveClock } from "./live-clock"
@@ -9,7 +9,7 @@ import { ThemeSwitcher } from "./theme-switcher"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const { resetLanguage, t } = useLanguage()
+  const { t } = useLanguage()
 
   const navLinks = [
     { id: "home", label: t.nav.home },
@@ -44,14 +44,10 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <button
-          onClick={() => resetLanguage()}
+          type="button"
+          onClick={() => scrollToSection("home")}
           className="group flex items-center gap-3"
         >
-          <span className="header-led-text hidden items-center gap-2 lg:inline-flex">
-            <span>{t.header.backToMenu}</span>
-            <ArrowRight className="header-led-arrow h-3.5 w-3.5 shrink-0" />
-          </span>
-
           <span className="header-logo-wrap">
             <span className="header-logo-snake" />
             <span

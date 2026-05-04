@@ -315,16 +315,6 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
   100% { background-position: 0% 50%; }
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@keyframes truck-drive {
-  0% { left: -50px; }
-  100% { left: calc(100% + 50px); }
-}
-
 /* ═══════════════════════════════════════
    COMPONENT CLASSES
    ═══════════════════════════════════════ */
@@ -688,14 +678,6 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
 }
 .team-marquee-group {
   flex: 0 0 auto;
-}
-
-/* --- Truck drive animation (splash) --- */
-.animate-truck-drive {
-  animation: truck-drive 8s linear infinite;
-}
-.animate-shimmer {
-  animation: shimmer 2s infinite;
 }
 
 /* --- Emblem pulse --- */
