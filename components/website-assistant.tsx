@@ -1199,7 +1199,7 @@ export function WebsiteAssistant() {
               <button
                 type="button"
                 onClick={() => setShowInfo(false)}
-                className="w-full rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-transform hover:bg-primary/90 active:scale-[0.98]"
+                className="w-full rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-transform hover:bg-primary/70 active:scale-[0.98]"
               >
                 {copy.continueButton}
               </button>
