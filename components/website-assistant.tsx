@@ -24,7 +24,10 @@ type AssistantCopy = {
   send: string
   open: string
   welcome: string
+  infoTitle: string
   infoText: string
+  holdToConfirm: string
+  closeLabel: string
   infoExamples: string[]
   quickPrompts: string[]
   actionLabels: {
@@ -46,7 +49,10 @@ const assistantCopy: Record<Language, AssistantCopy> = {
     open: "Assistent öffnen",
     welcome:
       "Hi, ich bin dein H3°T Assistent! Ich kann dir bei Fragen zu H3°T, TruckersMP, Euro Truck Simulator 2, Save Editing, Triple Trailern, Konvois und vielem mehr helfen.",
+    infoTitle: "Information",
     infoText: "Bitte nicht in ganzen Sätzen schreiben! Nutze einzelne Stichpunkte:",
+    holdToConfirm: "Gedrückt halten zum Bestätigen",
+    closeLabel: "Schließen",
     infoExamples: [
       "Discord", "TruckersMP", "VTC", "VTC Rules", "Triple Trailer", "Save Edit", "Konvoi", "ETS2",
       "Beitritt H3°T", "Tag-System", "Team", "Kontakt", "Tutorial", "Features", "Theme", "Sprache",
@@ -153,7 +159,10 @@ const assistantCopy: Record<Language, AssistantCopy> = {
     open: "Open assistant",
     welcome:
       "Hi, I'm your H3°T assistant! I can help with questions about H3°T, TruckersMP, Euro Truck Simulator 2, save editing, triple trailers, convoys, and much more.",
+    infoTitle: "Information",
     infoText: "Don't write full sentences! Use single keywords:",
+    holdToConfirm: "Hold to confirm",
+    closeLabel: "Close",
     infoExamples: [
       "Discord", "TruckersMP", "VTC", "VTC Rules", "Triple Trailer", "Save Edit", "Convoy", "ETS2",
       "Join H3°T", "Tag System", "Team", "Contact", "Tutorial", "Features", "Theme", "Language",
@@ -260,7 +269,10 @@ const assistantCopy: Record<Language, AssistantCopy> = {
     send: "Poslji",
     open: "Odpri pomocnika",
     welcome: "Pozdravljen! Pomagam ti pri vprasanjih o H3°T, TruckersMP, ETS2, save editingu, triple trailerjih, konvojih in vsem ostalim.",
+    infoTitle: "Informacije",
     infoText: "Prosim, ne pisi v celih stavkih! Uporabi posamezne kljucne besede.",
+    holdToConfirm: "Drzi za potrditev",
+    closeLabel: "Zapri",
     infoExamples: ["Discord", "TruckersMP", "VTC", "VTC Rules", "Triple Trailer", "Save Edit", "Konvoj", "ETS2", "Pridruzitev H3°T", "Tag-System"],
     quickPrompts: ["Kako se pridruzim?", "Kaj je TruckersMP?", "Kaj je save editing?"],
     actionLabels: { team: "Do ekipe", contact: "Do kontakta", features: "Do funkcij", tutorial: "Na zacetek", home: "Domov" },
@@ -332,7 +344,10 @@ const assistantCopy: Record<Language, AssistantCopy> = {
     send: "Envoyer",
     open: "Ouvrir l'assistant",
     welcome: "Bonjour ! Je peux t'aider avec des questions sur H3°T, TruckersMP, ETS2, le save editing, les triple remorques, les convois et bien plus encore.",
+    infoTitle: "Information",
     infoText: "Merci de ne pas ecrire en phrases completes ! Utilise plutot des mots-cles courts.",
+    holdToConfirm: "Maintenir pour confirmer",
+    closeLabel: "Fermer",
     infoExamples: ["Discord", "TruckersMP", "VTC", "VTC Rules", "Triple Remorque", "Save Edit", "Convoi", "ETS2", "Rejoindre H3°T", "Systeme de tags"],
     quickPrompts: ["Comment rejoindre H3°T ?", "C'est quoi TruckersMP ?", "C'est quoi le save editing ?"],
     actionLabels: { team: "Vers equipe", contact: "Vers contact", features: "Vers fonctions", tutorial: "Vers debut", home: "Accueil" },
@@ -404,7 +419,10 @@ const assistantCopy: Record<Language, AssistantCopy> = {
     send: "Enviar",
     open: "Abrir asistente",
     welcome: "Hola! Puedo ayudarte con preguntas sobre H3°T, TruckersMP, ETS2, save editing, triple remolques, convoyes y mucho mas.",
+    infoTitle: "Informacion",
     infoText: "Por favor no escribas en oraciones completas! Usa palabras clave cortas en su lugar.",
+    holdToConfirm: "Mantener para confirmar",
+    closeLabel: "Cerrar",
     infoExamples: ["Discord", "TruckersMP", "VTC", "VTC Rules", "Triple Remolque", "Save Edit", "Convoy", "ETS2", "Unirse a H3°T", "Sistema de tags"],
     quickPrompts: ["Como me uno a H3°T?", "Que es TruckersMP?", "Que es el save editing?"],
     actionLabels: { team: "Ir al equipo", contact: "Ir a contacto", features: "Ir a funciones", tutorial: "Ir al inicio", home: "Ir al home" },
@@ -476,7 +494,10 @@ const assistantCopy: Record<Language, AssistantCopy> = {
     send: "Invia",
     open: "Apri assistente",
     welcome: "Ciao! Posso aiutarti con domande su H3°T, TruckersMP, ETS2, save editing, triple trailer, convoglio e molto altro.",
+    infoTitle: "Informazioni",
     infoText: "Per favore non scrivere frasi complete! Usa invece singole parole chiave.",
+    holdToConfirm: "Tieni premuto per confermare",
+    closeLabel: "Chiudi",
     infoExamples: ["Discord", "TruckersMP", "VTC", "VTC Rules", "Triple Trailer", "Save Edit", "Convoglio", "ETS2", "Unirsi a H3°T", "Sistema di tag"],
     quickPrompts: ["Come entro in H3°T?", "Cos'e TruckersMP?", "Cos'e il save editing?"],
     actionLabels: { team: "Vai al team", contact: "Vai ai contatti", features: "Vai alle funzioni", tutorial: "Vai all'inizio", home: "Vai alla home" },
@@ -548,7 +569,10 @@ const assistantCopy: Record<Language, AssistantCopy> = {
     send: "Wyslij",
     open: "Otworz asystenta",
     welcome: "Czesc! Pomagam z pytaniami o H3°T, TruckersMP, ETS2, save editing, triple trailery, konwoje i wiele wiecej.",
+    infoTitle: "Informacja",
     infoText: "Prosze nie pisac pelnymi zdaniami! Uzywaj pojedynczych slow kluczowych.",
+    holdToConfirm: "Przytrzymaj, aby potwierdzic",
+    closeLabel: "Zamknij",
     infoExamples: ["Discord", "TruckersMP", "VTC", "VTC Rules", "Triple Trailer", "Save Edit", "Konwoj", "ETS2", "Dolaczenie do H3°T", "System tagow"],
     quickPrompts: ["Jak dolaczyc do H3°T?", "Co to TruckersMP?", "Co to save editing?"],
     actionLabels: { team: "Do zespolu", contact: "Do kontaktu", features: "Do funkcji", tutorial: "Na start", home: "Do home" },
@@ -620,7 +644,10 @@ const assistantCopy: Record<Language, AssistantCopy> = {
     send: "Gonder",
     open: "Asistani ac",
     welcome: "Merhaba! H3°T, TruckersMP, ETS2, save editing, triple trailer, konvoy ve cok daha fazlasi hakkinda sana yardimci olabilirim.",
+    infoTitle: "Bilgi",
     infoText: "Lutfen tam cumlelerle yazmayin! Bunun yerine tek anahtar kelimeler kullanin.",
+    holdToConfirm: "Onaylamak icin basili tut",
+    closeLabel: "Kapat",
     infoExamples: ["Discord", "TruckersMP", "VTC", "VTC Rules", "Triple Trailer", "Save Edit", "Konvoy", "ETS2", "H3°T'ye Katilma", "Tag Sistemi"],
     quickPrompts: ["H3°T'ye nasil katilirim?", "TruckersMP nedir?", "Save editing nedir?"],
     actionLabels: { team: "Ekibe git", contact: "Iletisime git", features: "Ozelliklere git", tutorial: "Basa git", home: "Ana sayfa" },
@@ -692,7 +719,10 @@ const assistantCopy: Record<Language, AssistantCopy> = {
     send: "发送",
     open: "打开助手",
     welcome: "你好！我可以帮助你解答关于 H3°T、TruckersMP、ETS2、存档编辑、Triple Trailer、车队等问题。",
+    infoTitle: "信息",
     infoText: "请不要写完整的句子！请使用单个关键词。",
+    holdToConfirm: "按住确认",
+    closeLabel: "关闭",
     infoExamples: ["Discord", "TruckersMP", "VTC", "VTC Rules", "Triple Trailer", "存档编辑", "车队", "ETS2", "加入 H3°T", "标签系统"],
     quickPrompts: ["如何加入 H3°T？", "TruckersMP 是什么？", "什么是存档编辑？"],
     actionLabels: { team: "前往团队", contact: "前往联系", features: "前往功能", tutorial: "前往开头", home: "前往首页" },
@@ -764,7 +794,10 @@ const assistantCopy: Record<Language, AssistantCopy> = {
     send: "Отправить",
     open: "Открыть ассистента",
     welcome: "Привет! Я помогу тебе с вопросами о H3°T, TruckersMP, ETS2, сейв-редактировании, тройных прицепах, конвоях и многом другом.",
+    infoTitle: "Информация",
     infoText: "Пожалуйста, не пишите полными предложениями! Используйте отдельные ключевые слова.",
+    holdToConfirm: "Удерживай для подтверждения",
+    closeLabel: "Закрыть",
     infoExamples: ["Discord", "TruckersMP", "VTC", "VTC Rules", "Triple Trailer", "Save Edit", "Конвой", "ETS2", "Вступить в H3°T", "Тег-система"],
     quickPrompts: ["Как вступить в H3°T?", "Что такое TruckersMP?", "Что такое сейв-редактинг?"],
     actionLabels: { team: "К команде", contact: "К контактам", features: "К возможностям", tutorial: "К началу", home: "На главную" },
@@ -1147,7 +1180,7 @@ export function WebsiteAssistant() {
               <div className="mb-3 flex h-13 w-13 items-center justify-center rounded-full bg-primary/20 text-primary">
                 <MessageCircle className="h-6 w-6" />
               </div>
-              <h3 className="mb-1 text-center text-base font-semibold text-foreground">Information</h3>
+              <h3 className="mb-1 text-center text-base font-semibold text-foreground">{copy.infoTitle}</h3>
               <p className="text-center text-sm leading-relaxed text-muted-foreground">
                 {copy.infoText}
               </p>
@@ -1230,7 +1263,7 @@ export function WebsiteAssistant() {
                           <span>{secondsLeft}s</span>
                         </>
                       ) : (
-                        <span>Gedrückt halten zum Bestätigen</span>
+                        <span>{copy.holdToConfirm}</span>
                       )}
                     </span>
                   </button>
@@ -1260,7 +1293,7 @@ export function WebsiteAssistant() {
                 type="button"
                 onClick={() => setOpen(false)}
                 className="rounded-full border border-border bg-background/70 p-2 text-muted-foreground transition-colors hover:text-foreground"
-                aria-label="Close"
+                aria-label={copy.closeLabel}
               >
                 <X className="h-4 w-4" />
               </button>

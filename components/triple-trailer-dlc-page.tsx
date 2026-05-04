@@ -416,7 +416,7 @@ export function TripleTrailerDlcPage({ dlcId }: { dlcId: TripleTrailerDlcId }) {
                           type="button"
                           onClick={showPreviousSlide}
                           className="flex h-11 w-11 items-center justify-center rounded-full border border-border/80 bg-background/70 text-foreground transition-colors hover:border-primary/40 hover:text-primary"
-                          aria-label="Previous image"
+                          aria-label={copy.previousImageLabel}
                         >
                           <ChevronLeft className="h-5 w-5" />
                         </button>
@@ -424,7 +424,7 @@ export function TripleTrailerDlcPage({ dlcId }: { dlcId: TripleTrailerDlcId }) {
                           type="button"
                           onClick={showNextSlide}
                           className="flex h-11 w-11 items-center justify-center rounded-full border border-border/80 bg-background/70 text-foreground transition-colors hover:border-primary/40 hover:text-primary"
-                          aria-label="Next image"
+                          aria-label={copy.nextImageLabel}
                         >
                           <ChevronRight className="h-5 w-5" />
                         </button>
@@ -499,7 +499,7 @@ export function TripleTrailerDlcPage({ dlcId }: { dlcId: TripleTrailerDlcId }) {
                         {selectedTrailer.trailerPositions.map((position, index) => (
                           <div key={`${selectedTrailer.id}-slot-${index}`} className="rounded-[1rem] border border-white/10 p-3">
                             <p className="text-[0.7rem] uppercase tracking-[0.22em] text-primary">
-                              {copy.slotLabels[index] ?? `Trailer ${index + 1}`}
+                              {copy.slotLabels[index] ?? copy.trailerFallbackLabel(index + 1)}
                             </p>
                             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{position}</p>
                           </div>
