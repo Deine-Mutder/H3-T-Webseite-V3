@@ -1,0 +1,68 @@
+<svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+  <!-- Scania Truck Silhouette -->
+  <defs>
+    <filter id="blur">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1" />
+    </filter>
+  </defs>
+  
+  <!-- Main cabin (Scania characteristic shape) -->
+  <rect x="50" y="180" width="180" height="140" rx="20" fill="currentColor" opacity="0.6"/>
+  
+  <!-- Windshield area -->
+  <polygon points="80,190 200,190 190,260 90,260" fill="currentColor" opacity="0.4"/>
+  
+  <!-- Headlights -->
+  <circle cx="70" cy="210" r="12" fill="currentColor" opacity="0.7"/>
+  <circle cx="70" cy="240" r="12" fill="currentColor" opacity="0.7"/>
+  
+  <!-- Scania logo area (upper grille) -->
+  <rect x="80" y="280" width="120" height="35" rx="8" fill="currentColor" opacity="0.5"/>
+  
+  <!-- Main cargo container -->
+  <rect x="240" y="160" width="620" height="180" rx="15" fill="currentColor" opacity="0.5"/>
+  
+  <!-- Container sections/panels -->
+  <line x1="340" y1="160" x2="340" y2="340" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+  <line x1="440" y1="160" x2="440" y2="340" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+  <line x1="540" y1="160" x2="540" y2="340" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+  <line x1="640" y1="160" x2="640" y2="340" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+  <line x1="740" y1="160" x2="740" y2="340" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Axles and wheels -->
+  <!-- Front axle -->
+  <circle cx="140" cy="360" r="35" fill="currentColor" opacity="0.6"/>
+  <circle cx="140" cy="360" r="28" fill="none" stroke="currentColor" stroke-width="3" opacity="0.4"/>
+  
+  <!-- Middle dual wheels (left) -->
+  <circle cx="420" cy="360" r="30" fill="currentColor" opacity="0.5"/>
+  <circle cx="420" cy="360" r="23" fill="none" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+  <circle cx="420" cy="390" r="30" fill="currentColor" opacity="0.5"/>
+  <circle cx="420" cy="390" r="23" fill="none" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Middle dual wheels (right) -->
+  <circle cx="480" cy="360" r="30" fill="currentColor" opacity="0.5"/>
+  <circle cx="480" cy="360" r="23" fill="none" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+  <circle cx="480" cy="390" r="30" fill="currentColor" opacity="0.5"/>
+  <circle cx="480" cy="390" r="23" fill="none" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Rear dual wheels (left) -->
+  <circle cx="750" cy="360" r="30" fill="currentColor" opacity="0.5"/>
+  <circle cx="750" cy="360" r="23" fill="none" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+  <circle cx="750" cy="390" r="30" fill="currentColor" opacity="0.5"/>
+  <circle cx="750" cy="390" r="23" fill="none" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Rear dual wheels (right) -->
+  <circle cx="810" cy="360" r="30" fill="currentColor" opacity="0.5"/>
+  <circle cx="810" cy="360" r="23" fill="none" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+  <circle cx="810" cy="390" r="30" fill="currentColor" opacity="0.5"/>
+  <circle cx="810" cy="390" r="23" fill="none" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Bumper bar -->
+  <rect x="35" y="345" width="900" height="8" fill="currentColor" opacity="0.4"/>
+  
+  <!-- Chrome reflections/highlights -->
+  <ellipse cx="120" cy="200" rx="25" ry="35" fill="white" opacity="0.08"/>
+  <ellipse cx="450" cy="220" rx="80" ry="40" fill="white" opacity="0.06"/>
+  <path d="M 240 170 Q 450 150 860 180" stroke="white" stroke-width="2" fill="none" opacity="0.05"/>
+</svg>

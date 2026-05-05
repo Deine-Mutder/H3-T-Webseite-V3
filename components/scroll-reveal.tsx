@@ -43,8 +43,11 @@ export function ScrollReveal({ children, delay = 0, direction = "up" }: ScrollRe
       ref={ref}
       style={{
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? "translate(0)" : getInitialTransform(),
+        transform: isVisible ? "translate(0, 0)" : getInitialTransform(),
         transition: `opacity 0.6s ease ${delay}ms, transform 0.6s ease ${delay}ms`,
+        willChange: "transform, opacity",
+        backfaceVisibility: "hidden",
+        perspective: "1000px",
       }}
     >
       {children}

@@ -16,7 +16,8 @@ export function ParticleBackground() {
 
   useEffect(() => {
     const newParticles: Particle[] = []
-    for (let i = 0; i < 20; i++) {
+    // Reduce particles from 20 to 12 for better performance
+    for (let i = 0; i < 12; i++) {
       newParticles.push({
         id: i,
         x: Math.random() * 100,
@@ -42,6 +43,9 @@ export function ParticleBackground() {
             height: particle.size,
             animation: `float ${particle.duration}s ease-in-out infinite`,
             animationDelay: `${particle.delay}s`,
+            willChange: "transform",
+            backfaceVisibility: "hidden",
+            perspective: "1000px",
           }}
         />
       ))}

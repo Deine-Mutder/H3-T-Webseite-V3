@@ -364,6 +364,9 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
   border-radius: 1px;
   background: linear-gradient(90deg, transparent, var(--primary), transparent);
   animation: speedLine linear infinite;
+  willChange: transform;
+  backfaceVisibility: hidden;
+  perspective: 1000px;
 }
 
 /* --- Scan Line Overlay --- */
@@ -387,6 +390,8 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
   background: var(--surface-1);
   border: 1px solid var(--border);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  willChange: border-color, box-shadow;
+  backfaceVisibility: hidden;
 }
 .glow-card:hover {
   border-color: color-mix(in oklab, var(--primary) 50%, transparent);
@@ -425,6 +430,8 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
+  willChange: opacity;
+  backfaceVisibility: hidden;
 }
 .holo-card:hover::before {
   opacity: 1;
@@ -437,6 +444,7 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  willChange: transform;
 }
 .radar-ping::before,
 .radar-ping::after {
@@ -446,6 +454,7 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
   border-radius: 50%;
   border: 1.5px solid currentColor;
   opacity: 0;
+  backfaceVisibility: hidden;
 }
 .radar-ping::before {
   animation: radarPing 2s ease-out infinite;
@@ -458,6 +467,8 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
 .btn-wipe {
   position: relative;
   overflow: hidden;
+  willChange: background-color, box-shadow;
+  backfaceVisibility: hidden;
 }
 .btn-wipe::after {
   content: '';
@@ -469,6 +480,8 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
   transform: skewX(-20deg);
   transition: none;
+  willChange: transform;
+  backfaceVisibility: hidden;
 }
 .btn-wipe:hover::after {
   animation: lightWipe 0.6s ease forwards;
@@ -536,6 +549,8 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200% 100%;
+  willChange: auto;
+  backfaceVisibility: hidden;
 }
 
 /* --- Bordered stat card --- */
@@ -571,6 +586,8 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
   transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
   position: relative;
   overflow: hidden;
+  willChange: transform, border-color, background-color;
+  backfaceVisibility: hidden;
 }
 .feature-stripe:hover {
   background: var(--surface-2);
@@ -604,6 +621,8 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
   text-transform: uppercase;
   font-size: 0.8rem;
   animation: ledPulse 1.8s ease-in-out infinite;
+  willChange: "text-shadow, opacity, filter";
+  backfaceVisibility: hidden;
 }
 .led-credit-name {
   color: #ffd3d3;
@@ -633,6 +652,8 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
 .header-led-arrow {
   color: var(--primary);
   animation: headerArrowWobble 1.2s ease-in-out infinite;
+  willChange: transform;
+  backfaceVisibility: hidden;
 }
 .header-logo-wrap {
   position: relative;
@@ -661,6 +682,7 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
   filter: drop-shadow(0 0 6px color-mix(in oklab, var(--primary) 62%, transparent));
   pointer-events: none;
   will-change: transform;
+  backfaceVisibility: hidden;
   animation: headerSnakeGlow 2.4s linear infinite;
 }
 
@@ -672,6 +694,7 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
 .team-marquee-track {
   animation: teamMarqueeTrack 45s linear infinite;
   will-change: transform;
+  backfaceVisibility: hidden;
 }
 .team-marquee-track:hover {
   animation-play-state: paused;
@@ -683,6 +706,8 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
 /* --- Emblem pulse --- */
 .emblem-pulse {
   animation: emblemPulse 3s ease-in-out infinite;
+  willChange: "text-shadow, filter";
+  backfaceVisibility: hidden;
 }
 
 /* --- Hexagon bg texture --- */

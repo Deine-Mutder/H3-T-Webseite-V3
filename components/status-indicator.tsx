@@ -34,7 +34,9 @@ export function StatusIndicator() {
           background: `color-mix(in oklab, ${statusColor} 5%, var(--surface-1))`,
           borderColor: `color-mix(in oklab, ${statusColor} 35%, var(--border))`,
           boxShadow: `0 0 20px color-mix(in oklab, ${statusColor} 12%, transparent), 0 0 60px color-mix(in oklab, ${statusColor} 5%, transparent)`,
-          transition: "all 0.5s ease",
+          transition: "border-color 0.5s ease, background-color 0.5s ease, box-shadow 0.5s ease",
+          willChange: "border-color, background-color, box-shadow",
+          backfaceVisibility: "hidden",
         }}
       >
         {/* Top accent line */}
@@ -100,11 +102,12 @@ export function StatusIndicator() {
             <span className="text-xl text-foreground">H3°T</span>
             <span className="text-xl" style={{ color: "var(--muted-foreground)" }}>|</span>
             <span
-              className="text-xl transition-all duration-500"
+              className="text-xl transition-opacity duration-500"
               style={{
                 color: statusColor,
                 textShadow: `0 0 10px ${statusColor}`,
                 opacity: isFlipping ? 0 : 1,
+                willChange: "opacity",
               }}
             >
               {isOn ? t.status.onTitle : t.status.offTitle}
@@ -115,12 +118,13 @@ export function StatusIndicator() {
 
       {/* Description */}
       <div
-        className="text-xs font-light transition-all duration-300"
+        className="text-xs font-light transition-opacity duration-300"
         style={{
           color: "var(--muted-foreground)",
           opacity: isFlipping ? 0 : 1,
           fontFamily: "'Space Mono', monospace",
           fontSize: "0.65rem",
+          willChange: "opacity",
         }}
       >
         {isOn ? (
