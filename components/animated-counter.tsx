@@ -1,6 +1,7 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer"
 
 interface AnimatedCounterProps {
   end: number
@@ -11,30 +12,17 @@ interface AnimatedCounterProps {
 export function AnimatedCounter({ end, duration = 2000, suffix = "" }: AnimatedCounterProps) {
   const [count, setCount] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLSpanElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.3 }
-    )
-
-    if (ref.current) {
-      observer.observe(ref.current)
+  const ref = useIntersectionObserver((isVisible) => {
+    if (isVisible && !isVisible) {
+      setIsVisible(true)
     }
-
-    return () => observer.disconnect()
-  }, [isVisible])
+  })
+  const animationFrame = useRef<number | null>(null)
 
   useEffect(() => {
     if (!isVisible) return
 
     let startTime: number
-    let animationFrame: number
 
     const animate = (currentTime: number) => {
       if (!startTime) startTime = currentTime
@@ -45,14 +33,28 @@ export function AnimatedCounter({ end, duration = 2000, suffix = "" }: AnimatedC
       setCount(Math.floor(easeOutQuart * end))
 
       if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate)
+        animationFrame.current = requestAnimationFrame(animate)
       }
     }
 
-    animationFrame = requestAnimationFrame(animate)
+    animationFrame.current = requestAnimationFrame(animate)
 
-    return () => cancelAnimationFrame(animationFrame)
+    return () => {
+      if (animationFrame.current) {
+        cancelAnimationFrame(animationFrame.current)
+      }
+    }
   }, [isVisible, end, duration])
+
+  // Set isVisible when element is in view
+  useEffect(() => {
+    if (!ref.current) return
+    // Check if element is already in view
+    const rect = ref.current.getBoundingClientRect()
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setIsVisible(true)
+    }
+  }, [ref])
 
   return (
     <span ref={ref} className="tabular-nums">

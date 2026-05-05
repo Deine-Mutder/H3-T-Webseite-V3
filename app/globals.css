@@ -325,6 +325,7 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
   inset: 0;
   pointer-events: none;
   overflow: hidden;
+  contain: layout style paint;
 }
 .road-grid::before {
   content: '';
@@ -339,6 +340,8 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
   transform: perspective(800px) rotateX(55deg) scale(2.5) translateY(18%);
   transform-origin: 50% 100%;
   opacity: 0.55;
+  will-change: transform;
+  backfaceVisibility: hidden;
 }
 .road-grid::after {
   content: '';
@@ -382,6 +385,8 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
     rgba(0, 0, 0, 0.03) 2px,
     rgba(0, 0, 0, 0.03) 4px
   );
+  contain: layout style paint;
+  will-change: auto;
 }
 
 /* --- Glowing border card --- */
