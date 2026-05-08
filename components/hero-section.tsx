@@ -15,7 +15,20 @@ export function HeroSection({
   animationsEnabled: boolean
   onAnimationsChange: (enabled: boolean) => void
 }) {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
+
+  const animationLabel: Record<typeof language, string> = {
+    de: "Animation",
+    en: "Animation",
+    sl: "Animacija",
+    fr: "Animation",
+    es: "Animacion",
+    it: "Animazione",
+    pl: "Animacje",
+    tr: "Animasyon",
+    zh: "动画",
+    ru: "Анимация",
+  }
 
   const scrollToContact = () => {
     const element = document.getElementById("contact")
@@ -170,7 +183,7 @@ export function HeroSection({
                   className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-muted-foreground"
                   style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
                 >
-                  Animation
+                  {animationLabel[language]}
                 </span>
                 <Switch checked={animationsEnabled} onCheckedChange={onAnimationsChange} />
                 <span

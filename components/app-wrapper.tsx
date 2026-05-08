@@ -447,19 +447,85 @@ function AnimationPrompt({
   onOpenChange,
   animationsEnabled,
   onAnimationsChange,
+  language,
 }: {
   open: boolean
   onOpenChange: (open: boolean) => void
   animationsEnabled: boolean
   onAnimationsChange: (enabled: boolean) => void
+  language: Language
 }) {
+  const animationPromptCopy: Record<Language, { title: string; description: string; label: string; continue: string }> = {
+    de: {
+      title: "Hi, laeuft die Website bei dir etwas laggy?",
+      description: "Du kannst Animationen jederzeit umschalten. Wenn es ruckelt, stelle auf OFF fuer mehr FPS.",
+      label: "Animationen",
+      continue: "Weiter",
+    },
+    en: {
+      title: "Hi, is the website a bit laggy?",
+      description: "You can switch animations anytime. If it stutters, set it to OFF for more FPS.",
+      label: "Animations",
+      continue: "Continue",
+    },
+    sl: {
+      title: "Zivjo, je spletna stran malo pocasna?",
+      description: "Animacije lahko kadar koli preklopis. Ce zatika, nastavi na OFF za vec FPS.",
+      label: "Animacije",
+      continue: "Nadaljuj",
+    },
+    fr: {
+      title: "Salut, le site est-il un peu lent ?",
+      description: "Tu peux changer les animations a tout moment. Si ca rame, mets OFF pour plus de FPS.",
+      label: "Animations",
+      continue: "Continuer",
+    },
+    es: {
+      title: "Hola, el sitio va algo lento?",
+      description: "Puedes cambiar las animaciones cuando quieras. Si va con tirones, pon OFF para mas FPS.",
+      label: "Animaciones",
+      continue: "Continuar",
+    },
+    it: {
+      title: "Ciao, il sito e un po lento?",
+      description: "Puoi cambiare le animazioni in qualsiasi momento. Se scatta, metti OFF per piu FPS.",
+      label: "Animazioni",
+      continue: "Continua",
+    },
+    pl: {
+      title: "Czesc, czy strona troche laguje?",
+      description: "Animacje mozesz przelaczac w kazdej chwili. Jesli tnie, ustaw OFF dla wiekszej liczby FPS.",
+      label: "Animacje",
+      continue: "Kontynuuj",
+    },
+    tr: {
+      title: "Merhaba, site biraz kasiyor mu?",
+      description: "Animasyonlari istedigin zaman degistirebilirsin. Kasma varsa daha fazla FPS icin OFF yap.",
+      label: "Animasyonlar",
+      continue: "Devam et",
+    },
+    zh: {
+      title: "你好，网站有点卡吗？",
+      description: "你可以随时切换动画。如果卡顿，关闭动画可获得更高 FPS。",
+      label: "动画",
+      continue: "继续",
+    },
+    ru: {
+      title: "Привет, сайт немного лагает?",
+      description: "Ты можешь переключать анимации в любое время. Если тормозит, выбери OFF для большего FPS.",
+      label: "Анимации",
+      continue: "Продолжить",
+    },
+  }
+  const copy = animationPromptCopy[language] ?? animationPromptCopy.en
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="border-border bg-card/95 backdrop-blur-xl sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>Hi, laeuft die Website bei dir etwas laggy?</DialogTitle>
+          <DialogTitle>{copy.title}</DialogTitle>
           <DialogDescription>
-            Du kannst Animationen jederzeit umschalten. Wenn es ruckelt, stelle auf OFF fuer mehr FPS.
+            {copy.description}
           </DialogDescription>
         </DialogHeader>
 
@@ -467,7 +533,7 @@ function AnimationPrompt({
           className="mt-2 flex items-center justify-between border px-4 py-3"
           style={{ borderColor: "var(--border)", background: "var(--surface-1)" }}
         >
-          <span className="text-sm font-medium text-foreground">Animationen</span>
+          <span className="text-sm font-medium text-foreground">{copy.label}</span>
           <div className="flex items-center gap-3">
             <span className="text-xs uppercase tracking-widest text-muted-foreground">OFF</span>
             <Switch checked={animationsEnabled} onCheckedChange={onAnimationsChange} />
@@ -476,7 +542,7 @@ function AnimationPrompt({
         </div>
 
         <DialogFooter>
-          <Button onClick={() => onOpenChange(false)}>Weiter</Button>
+          <Button onClick={() => onOpenChange(false)}>{copy.continue}</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
@@ -584,6 +650,7 @@ export function AppWrapper() {
         onOpenChange={setAnimationPromptOpen}
         animationsEnabled={animationsEnabled}
         onAnimationsChange={handleAnimationsChange}
+        language={language}
       />
       <TutorialPrompt
         open={tutorialPromptOpen}
