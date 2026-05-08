@@ -88,7 +88,7 @@ export const translations = {
           description: "Aktiver Discord Server zum Austausch, Planen und Quatschen.",
         },
         {
-          title: "Konfiguration & Save Edit",
+          title: "Save Edit & Local Mods",
           description: "Wir konfigurieren Trucks, Trailer und besonders Triple Trailer individuell. Mit Save Edit und Local Modding koennen wir Auflieger anpassen, nahezu alle Ladungen nutzen und DLC-unabhaengige Setups erstellen.",
         },
       ],
@@ -276,7 +276,7 @@ export const translations = {
           description: "An active Discord server for chatting, planning and hanging out.",
         },
         {
-          title: "Configuration & Save Edit",
+          title: "Save Edit & Local Mods",
           description: "We customize trucks, trailers, and especially triple trailers individually. With save edit and local modding, we can adjust trailers, use almost any cargo, and create setups that work independently of DLC ownership.",
         },
       ],
@@ -470,7 +470,7 @@ export const translations = {
           description: "Aktiven Discord streznik za klepet, nacrtovanje in druzenje.",
         },
         {
-          title: "Konfiguracija in Save Edit",
+          title: "Save Edit & Local Mods",
           description: "Trucke, prikolice in predvsem triple trailer prilagodimo individualno. S save editom in local moddingom lahko urejamo prikolice, uporabljamo skoraj vse tovore in pripravljamo postavitve ne glede na DLC-je.",
         },
       ],
@@ -670,7 +670,7 @@ export const translations = {
           description: "Un serveur Discord actif pour discuter, organiser et passer du temps ensemble.",
         },
         {
-          title: "Configuration et Save Edit",
+          title: "Save Edit & Local Mods",
           description: "Nous configurons les camions, les remorques et surtout les triples remorques de maniere individuelle. Avec le save edit et le local modding, nous pouvons modifier les remorques, utiliser presque toutes les cargaisons et creer des configurations independantes des DLC.",
         },
       ],
@@ -876,7 +876,7 @@ export const translations = {
           description: "Servidor activo de Discord para charlar, planificar y pasar el rato.",
         },
         {
-          title: "Configuracion y Save Edit",
+          title: "Save Edit & Local Mods",
           description: "Configuramos camiones, remolques y especialmente triple remolque de forma individual. Con save edit y local modding podemos editar remolques, usar casi cualquier carga y crear configuraciones que funcionan sin depender de los DLC.",
         },
       ],
@@ -1088,7 +1088,7 @@ export const translations = {
           description: "Server Discord attivo per parlare, organizzare e stare insieme.",
         },
         {
-          title: "Configurazione e Save Edit",
+          title: "Save Edit & Local Mods",
           description: "Configuriamo camion, rimorchi e soprattutto triple trailer in modo personalizzato. Con save edit e local modding possiamo modificare i rimorchi, usare quasi tutti i carichi e creare setup che funzionano indipendentemente dai DLC.",
         },
       ],
@@ -1306,7 +1306,7 @@ export const translations = {
           description: "Sohbet etmek, plan yapmak ve vakit gecirmek icin aktif bir Discord sunucusu.",
         },
         {
-          title: "Konfigurasyon ve Save Edit",
+          title: "Save Edit & Local Mods",
           description: "Truck, trailer ve ozellikle triple trailer araclarini ozel olarak ayarliyoruz. Save edit ve local modding ile trailer duzenleyebilir, neredeyse tum yukleri kullanabilir ve DLC'den bagimsiz kurulumlar yapabiliriz.",
         },
       ],
@@ -1530,7 +1530,7 @@ export const translations = {
           description: "一个活跃的 Discord 服务器，用于聊天、计划和交流。",
         },
         {
-          title: "配置与 Save Edit",
+          title: "Save Edit & Local Mods",
           description: "我们会个性化配置卡车、挂车，尤其是 Triple Trailer。通过 Save Edit 和 Local Modding，我们可以编辑挂车、使用几乎所有货物，并创建不受 DLC 限制的配置。",
         },
       ],
@@ -1760,7 +1760,7 @@ export const translations = {
           description: "Aktywny serwer Discord do rozmów, planowania i wspólnego spędzania czasu.",
         },
         {
-          title: "Konfiguracja i Save Edit",
+          title: "Save Edit & Local Mods",
           description: "Indywidualnie konfigurujemy ciężarówki, naczepy, a szczególnie Triple Trailer. Dzięki save edit i local modding możemy dostosowywać naczepy, używać prawie każdego ładunku i tworzyć zestawy niezależne od posiadanych DLC.",
         },
       ],
@@ -1996,7 +1996,7 @@ export const translations = {
           description: "Активный Discord сервер для общения, планирования и совместного времяпрепровождения.",
         },
         {
-          title: "Настройка и Save Edit",
+          title: "Save Edit & Local Mods",
           description: "Мы индивидуально настраиваем грузовики, прицепы и особенно Triple Trailer. С помощью Save Edit и Local Modding мы можем редактировать прицепы, использовать почти любые грузы и создавать сборки независимо от DLC.",
         },
       ],
