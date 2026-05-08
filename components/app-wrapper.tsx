@@ -8,6 +8,7 @@ import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
 import { ParticleBackground } from "@/components/particle-background"
+import { PartnerSection } from "@/components/partner-section"
 import { TeamSection } from "@/components/team-section"
 import { WebsiteAssistant } from "@/components/website-assistant"
 import { Button } from "@/components/ui/button"
@@ -526,6 +527,7 @@ export function AppWrapper() {
         <AboutSection />
         <FeaturesSection />
         <TeamSection />
+        <PartnerSection />
         <ContactSection />
       </main>
       <Footer />

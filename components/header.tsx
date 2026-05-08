@@ -16,6 +16,7 @@ export function Header() {
     { id: "about", label: t.nav.about },
     { id: "features", label: t.nav.features },
     { id: "team", label: t.nav.team },
+    { id: "partner", label: t.nav.partner },
     { id: "contact", label: t.nav.contact },
   ]
 

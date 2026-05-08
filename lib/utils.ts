@@ -11,6 +11,24 @@ function easeInOutCubic(value: number) {
     : 1 - Math.pow(-2 * value + 2, 3) / 2
 }
 
+let activeScrollAnimationFrame: number | null = null
+
+function prefersReducedMotion() {
+  if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
+    return false
+  }
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches
+}
+
+function getAdaptiveDuration(distance: number, fallbackDuration: number) {
+  if (fallbackDuration !== 900) {
+    return fallbackDuration
+  }
+
+  const adaptiveDuration = Math.abs(distance) * 0.32
+  return Math.max(280, Math.min(650, adaptiveDuration))
+}
+
 export function animateScrollTo(targetY: number, duration = 900) {
   if (typeof window === "undefined") {
     return
@@ -18,8 +36,19 @@ export function animateScrollTo(targetY: number, duration = 900) {
 
   const startY = window.scrollY
   const distance = targetY - startY
+  const targetDuration = getAdaptiveDuration(distance, duration)
 
   if (Math.abs(distance) < 4) {
+    window.scrollTo(0, targetY)
+    return
+  }
+
+  if (activeScrollAnimationFrame !== null) {
+    window.cancelAnimationFrame(activeScrollAnimationFrame)
+    activeScrollAnimationFrame = null
+  }
+
+  if (prefersReducedMotion()) {
     window.scrollTo(0, targetY)
     return
   }
@@ -28,17 +57,19 @@ export function animateScrollTo(targetY: number, duration = 900) {
 
   const step = (currentTime: number) => {
     const elapsed = currentTime - startTime
-    const progress = Math.min(elapsed / duration, 1)
+    const progress = Math.min(elapsed / targetDuration, 1)
     const easedProgress = easeInOutCubic(progress)
 
     window.scrollTo(0, startY + distance * easedProgress)
 
     if (progress < 1) {
-      window.requestAnimationFrame(step)
+      activeScrollAnimationFrame = window.requestAnimationFrame(step)
+    } else {
+      activeScrollAnimationFrame = null
     }
   }
 
-  window.requestAnimationFrame(step)
+  activeScrollAnimationFrame = window.requestAnimationFrame(step)
 }
 
 export function animateScrollToElement(element: HTMLElement, offset = 88, duration = 900) {

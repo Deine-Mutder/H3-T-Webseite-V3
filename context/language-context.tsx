@@ -23,6 +23,7 @@ export const translations = {
       features: "Features",
       team: "Team",
       contact: "Kontakt",
+      partner: "Partner",
       join: "Beitreten",
     },
     hero: {
@@ -181,6 +182,12 @@ export const translations = {
       discordConfirmCancel: "Abbrechen",
       truckersmp: "TruckersMP Profil",
     },
+    partner: {
+      eyebrow: "Partner",
+      title: "Unsere VTC Partner",
+      subtitle: "Gemeinsam auf den Strassen Europas. Unsere offiziellen Partner-VTCs.",
+    },
+
     footer: {
       description: "Eine Virtual Trucking Company fuer TruckersMP. Gemeinsam auf den Strassen Europas.",
       navigation: "Navigation",
@@ -204,6 +211,7 @@ export const translations = {
       features: "Features",
       team: "Team",
       contact: "Contact",
+      partner: "Partners",
       join: "Join",
     },
     hero: {
@@ -362,6 +370,18 @@ export const translations = {
       discordConfirmCancel: "Cancel",
       truckersmp: "TruckersMP Profile",
     },
+    partner: {
+      eyebrow: "Partner",
+      title: "Unsere VTC Partner",
+      subtitle: "Gemeinsam auf den Strassen Europas. Unsere offiziellen Partner-VTCs.",
+    },
+    partner: {
+      eyebrow: "Partners",
+      title: "Our VTC Partners",
+      subtitle: "Together on the roads of Europe. Our official partner VTCs.",
+    },
+
+
     footer: {
       description: "A Virtual Trucking Company for TruckersMP. Together on the roads of Europe.",
       navigation: "Navigation",
@@ -385,6 +405,7 @@ export const translations = {
       features: "Funkcije",
       team: "Ekipa",
       contact: "Kontakt",
+      partner: "Partnerji",
       join: "Pridruzi se",
     },
     hero: {
@@ -543,6 +564,24 @@ export const translations = {
       discordConfirmCancel: "Preklici",
       truckersmp: "TruckersMP profil",
     },
+    partner: {
+      eyebrow: "Partner",
+      title: "Unsere VTC Partner",
+      subtitle: "Gemeinsam auf den Strassen Europas. Unsere offiziellen Partner-VTCs.",
+    },
+    partner: {
+      eyebrow: "Partners",
+      title: "Our VTC Partners",
+      subtitle: "Together on the roads of Europe. Our official partner VTCs.",
+    },
+    partner: {
+      eyebrow: "Partnerji",
+      title: "Nasi VTC Partnerji",
+      subtitle: "Skupaj po evropskih cestah. Nasi uradni VTC partnerji.",
+    },
+
+
+
     footer: {
       description: "Virtualno prevoznisko podjetje za TruckersMP. Skupaj na evropskih cestah.",
       navigation: "Navigacija",
@@ -566,6 +605,7 @@ export const translations = {
       features: "Fonctions",
       team: "Equipe",
       contact: "Contact",
+      partner: "Partenaires",
       join: "Rejoindre",
     },
     hero: {
@@ -724,6 +764,30 @@ export const translations = {
       discordConfirmCancel: "Annuler",
       truckersmp: "Profil TruckersMP",
     },
+    partner: {
+      eyebrow: "Partner",
+      title: "Unsere VTC Partner",
+      subtitle: "Gemeinsam auf den Strassen Europas. Unsere offiziellen Partner-VTCs.",
+    },
+    partner: {
+      eyebrow: "Partners",
+      title: "Our VTC Partners",
+      subtitle: "Together on the roads of Europe. Our official partner VTCs.",
+    },
+    partner: {
+      eyebrow: "Partnerji",
+      title: "Nasi VTC Partnerji",
+      subtitle: "Skupaj po evropskih cestah. Nasi uradni VTC partnerji.",
+    },
+    partner: {
+      eyebrow: "Partenaires",
+      title: "Nos Partenaires VTC",
+      subtitle: "Ensemble sur les routes d'Europe. Nos VTC partenaires officiels.",
+    },
+
+
+
+
     footer: {
       description: "Une entreprise virtuelle de transport pour TruckersMP. Ensemble sur les routes d'Europe.",
       navigation: "Navigation",
@@ -747,6 +811,7 @@ export const translations = {
       features: "Funciones",
       team: "Equipo",
       contact: "Contacto",
+      partner: "Socios",
       join: "Unirse",
     },
     hero: {
@@ -905,6 +970,36 @@ export const translations = {
       discordConfirmCancel: "Cancelar",
       truckersmp: "Perfil de TruckersMP",
     },
+    partner: {
+      eyebrow: "Partner",
+      title: "Unsere VTC Partner",
+      subtitle: "Gemeinsam auf den Strassen Europas. Unsere offiziellen Partner-VTCs.",
+    },
+    partner: {
+      eyebrow: "Partners",
+      title: "Our VTC Partners",
+      subtitle: "Together on the roads of Europe. Our official partner VTCs.",
+    },
+    partner: {
+      eyebrow: "Partnerji",
+      title: "Nasi VTC Partnerji",
+      subtitle: "Skupaj po evropskih cestah. Nasi uradni VTC partnerji.",
+    },
+    partner: {
+      eyebrow: "Partenaires",
+      title: "Nos Partenaires VTC",
+      subtitle: "Ensemble sur les routes d'Europe. Nos VTC partenaires officiels.",
+    },
+    partner: {
+      eyebrow: "Socios",
+      title: "Nuestros Socios VTC",
+      subtitle: "Juntos por las carreteras de Europa. Nuestros VTC socios oficiales.",
+    },
+
+
+
+
+
     footer: {
       description: "Una empresa virtual de transporte para TruckersMP. Juntos en las carreteras de Europa.",
       navigation: "Navegacion",
@@ -928,6 +1023,7 @@ export const translations = {
       features: "Funzioni",
       team: "Team",
       contact: "Contatto",
+      partner: "Partner",
       join: "Unisciti",
     },
     hero: {
@@ -1086,6 +1182,42 @@ export const translations = {
       discordConfirmCancel: "Annulla",
       truckersmp: "Profilo TruckersMP",
     },
+    partner: {
+      eyebrow: "Partner",
+      title: "Unsere VTC Partner",
+      subtitle: "Gemeinsam auf den Strassen Europas. Unsere offiziellen Partner-VTCs.",
+    },
+    partner: {
+      eyebrow: "Partners",
+      title: "Our VTC Partners",
+      subtitle: "Together on the roads of Europe. Our official partner VTCs.",
+    },
+    partner: {
+      eyebrow: "Partnerji",
+      title: "Nasi VTC Partnerji",
+      subtitle: "Skupaj po evropskih cestah. Nasi uradni VTC partnerji.",
+    },
+    partner: {
+      eyebrow: "Partenaires",
+      title: "Nos Partenaires VTC",
+      subtitle: "Ensemble sur les routes d'Europe. Nos VTC partenaires officiels.",
+    },
+    partner: {
+      eyebrow: "Socios",
+      title: "Nuestros Socios VTC",
+      subtitle: "Juntos por las carreteras de Europa. Nuestros VTC socios oficiales.",
+    },
+    partner: {
+      eyebrow: "Partner",
+      title: "I Nostri Partner VTC",
+      subtitle: "Insieme sulle strade d'Europa. Le nostre VTC partner ufficiali.",
+    },
+
+
+
+
+
+
     footer: {
       description: "Una Virtual Trucking Company per TruckersMP. Insieme sulle strade d'Europa.",
       navigation: "Navigazione",
@@ -1109,6 +1241,7 @@ export const translations = {
       features: "Ozellikler",
       team: "Ekip",
       contact: "Iletisim",
+      partner: "Ortaklar",
       join: "Katil",
     },
     hero: {
@@ -1267,6 +1400,48 @@ export const translations = {
       discordConfirmCancel: "Iptal",
       truckersmp: "TruckersMP Profili",
     },
+    partner: {
+      eyebrow: "Partner",
+      title: "Unsere VTC Partner",
+      subtitle: "Gemeinsam auf den Strassen Europas. Unsere offiziellen Partner-VTCs.",
+    },
+    partner: {
+      eyebrow: "Partners",
+      title: "Our VTC Partners",
+      subtitle: "Together on the roads of Europe. Our official partner VTCs.",
+    },
+    partner: {
+      eyebrow: "Partnerji",
+      title: "Nasi VTC Partnerji",
+      subtitle: "Skupaj po evropskih cestah. Nasi uradni VTC partnerji.",
+    },
+    partner: {
+      eyebrow: "Partenaires",
+      title: "Nos Partenaires VTC",
+      subtitle: "Ensemble sur les routes d'Europe. Nos VTC partenaires officiels.",
+    },
+    partner: {
+      eyebrow: "Socios",
+      title: "Nuestros Socios VTC",
+      subtitle: "Juntos por las carreteras de Europa. Nuestros VTC socios oficiales.",
+    },
+    partner: {
+      eyebrow: "Partner",
+      title: "I Nostri Partner VTC",
+      subtitle: "Insieme sulle strade d'Europa. Le nostre VTC partner ufficiali.",
+    },
+    partner: {
+      eyebrow: "Ortaklar",
+      title: "VTC Ortaklarimiz",
+      subtitle: "Avrupa yollarinda birlikte. Resmi VTC ortaklarimiz.",
+    },
+
+
+
+
+
+
+
     footer: {
       description: "TruckersMP icin bir Virtual Trucking Company. Avrupa yollarinda birlikteyiz.",
       navigation: "Navigasyon",
@@ -1290,6 +1465,7 @@ export const translations = {
       features: "特色",
       team: "团队",
       contact: "联系",
+      partner: "合作伙伴",
       join: "加入",
     },
     hero: {
@@ -1448,6 +1624,54 @@ export const translations = {
       discordConfirmCancel: "取消",
       truckersmp: "TruckersMP 主页",
     },
+    partner: {
+      eyebrow: "Partner",
+      title: "Unsere VTC Partner",
+      subtitle: "Gemeinsam auf den Strassen Europas. Unsere offiziellen Partner-VTCs.",
+    },
+    partner: {
+      eyebrow: "Partners",
+      title: "Our VTC Partners",
+      subtitle: "Together on the roads of Europe. Our official partner VTCs.",
+    },
+    partner: {
+      eyebrow: "Partnerji",
+      title: "Nasi VTC Partnerji",
+      subtitle: "Skupaj po evropskih cestah. Nasi uradni VTC partnerji.",
+    },
+    partner: {
+      eyebrow: "Partenaires",
+      title: "Nos Partenaires VTC",
+      subtitle: "Ensemble sur les routes d'Europe. Nos VTC partenaires officiels.",
+    },
+    partner: {
+      eyebrow: "Socios",
+      title: "Nuestros Socios VTC",
+      subtitle: "Juntos por las carreteras de Europa. Nuestros VTC socios oficiales.",
+    },
+    partner: {
+      eyebrow: "Partner",
+      title: "I Nostri Partner VTC",
+      subtitle: "Insieme sulle strade d'Europa. Le nostre VTC partner ufficiali.",
+    },
+    partner: {
+      eyebrow: "Ortaklar",
+      title: "VTC Ortaklarimiz",
+      subtitle: "Avrupa yollarinda birlikte. Resmi VTC ortaklarimiz.",
+    },
+    partner: {
+      eyebrow: "合作伙伴",
+      title: "我们的 VTC 合作伙伴",
+      subtitle: "相聚欧洲之路。我们的官方 VTC 合作伙伴。",
+    },
+
+
+
+
+
+
+
+
     footer: {
       description: "TruckersMP 的虚拟运输公司。我们一起驰骋在欧洲公路上。",
       navigation: "导航",
@@ -1471,6 +1695,7 @@ export const translations = {
       features: "Funkcje",
       team: "Zespół",
       contact: "Kontakt",
+      partner: "Partnerzy",
       join: "Dołącz",
     },
     hero: {
@@ -1629,6 +1854,60 @@ export const translations = {
       discordConfirmCancel: "Anuluj",
       truckersmp: "Profil TruckersMP",
     },
+    partner: {
+      eyebrow: "Partner",
+      title: "Unsere VTC Partner",
+      subtitle: "Gemeinsam auf den Strassen Europas. Unsere offiziellen Partner-VTCs.",
+    },
+    partner: {
+      eyebrow: "Partners",
+      title: "Our VTC Partners",
+      subtitle: "Together on the roads of Europe. Our official partner VTCs.",
+    },
+    partner: {
+      eyebrow: "Partnerji",
+      title: "Nasi VTC Partnerji",
+      subtitle: "Skupaj po evropskih cestah. Nasi uradni VTC partnerji.",
+    },
+    partner: {
+      eyebrow: "Partenaires",
+      title: "Nos Partenaires VTC",
+      subtitle: "Ensemble sur les routes d'Europe. Nos VTC partenaires officiels.",
+    },
+    partner: {
+      eyebrow: "Socios",
+      title: "Nuestros Socios VTC",
+      subtitle: "Juntos por las carreteras de Europa. Nuestros VTC socios oficiales.",
+    },
+    partner: {
+      eyebrow: "Partner",
+      title: "I Nostri Partner VTC",
+      subtitle: "Insieme sulle strade d'Europa. Le nostre VTC partner ufficiali.",
+    },
+    partner: {
+      eyebrow: "Partnerzy",
+      title: "Nasi Partnerzy VTC",
+      subtitle: "Razem na drogach Europy. Nasi oficjalni partnerzy VTC.",
+    },
+
+    partner: {
+      eyebrow: "Ortaklar",
+      title: "VTC Ortaklarimiz",
+      subtitle: "Avrupa yollarinda birlikte. Resmi VTC ortaklarimiz.",
+    },
+    partner: {
+      eyebrow: "合作伙伴",
+      title: "我们的 VTC 合作伙伴",
+      subtitle: "相聚欧洲之路。我们的官方 VTC 合作伙伴。",
+    },
+
+
+
+
+
+
+
+
     footer: {
       description: "Virtual Trucking Company dla TruckersMP. Razem na drogach Europy.",
       navigation: "Nawigacja",
@@ -1652,6 +1931,7 @@ export const translations = {
       features: "Особенности",
       team: "Команда",
       contact: "Контакт",
+      partner: "Партнеры",
       join: "Присоединиться",
     },
     hero: {
@@ -1810,6 +2090,66 @@ export const translations = {
       discordConfirmCancel: "Отмена",
       truckersmp: "Профиль TruckersMP",
     },
+    partner: {
+      eyebrow: "Partner",
+      title: "Unsere VTC Partner",
+      subtitle: "Gemeinsam auf den Strassen Europas. Unsere offiziellen Partner-VTCs.",
+    },
+    partner: {
+      eyebrow: "Partners",
+      title: "Our VTC Partners",
+      subtitle: "Together on the roads of Europe. Our official partner VTCs.",
+    },
+    partner: {
+      eyebrow: "Partnerji",
+      title: "Nasi VTC Partnerji",
+      subtitle: "Skupaj po evropskih cestah. Nasi uradni VTC partnerji.",
+    },
+    partner: {
+      eyebrow: "Partenaires",
+      title: "Nos Partenaires VTC",
+      subtitle: "Ensemble sur les routes d'Europe. Nos VTC partenaires officiels.",
+    },
+    partner: {
+      eyebrow: "Socios",
+      title: "Nuestros Socios VTC",
+      subtitle: "Juntos por las carreteras de Europa. Nuestros VTC socios oficiales.",
+    },
+    partner: {
+      eyebrow: "Partner",
+      title: "I Nostri Partner VTC",
+      subtitle: "Insieme sulle strade d'Europa. Le nostre VTC partner ufficiali.",
+    },
+    partner: {
+      eyebrow: "Partnerzy",
+      title: "Nasi Partnerzy VTC",
+      subtitle: "Razem na drogach Europy. Nasi oficjalni partnerzy VTC.",
+    },
+
+    partner: {
+      eyebrow: "Ortaklar",
+      title: "VTC Ortaklarimiz",
+      subtitle: "Avrupa yollarinda birlikte. Resmi VTC ortaklarimiz.",
+    },
+    partner: {
+      eyebrow: "合作伙伴",
+      title: "我们的 VTC 合作伙伴",
+      subtitle: "相聚欧洲之路。我们的官方 VTC 合作伙伴。",
+    },
+    partner: {
+      eyebrow: "Партнеры",
+      title: "Наши VTC Партнеры",
+      subtitle: "Вместе на дорогах Европы. Наши официальные VTC партнеры.",
+    },
+
+
+
+
+
+
+
+
+
     footer: {
       description: "Virtual Trucking Company для TruckersMP. Вместе на дорогах Европы.",
       navigation: "Навигация",

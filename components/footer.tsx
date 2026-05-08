@@ -11,6 +11,7 @@ export function Footer() {
     { label: t.nav.about, href: "#about" },
     { label: t.nav.features, href: "#features" },
     { label: t.nav.team, href: "#team" },
+    { label: t.nav.partner, href: "#partner" },
     { label: t.nav.contact, href: "#contact" },
   ]
 

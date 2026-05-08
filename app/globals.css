@@ -182,7 +182,7 @@
     overflow-x: hidden;
   }
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     overflow-x: hidden;
   }
   h1, h2, h3, .display {
@@ -736,8 +736,76 @@ body.tutorial-mode [data-tutorial-id].tutorial-active-target * {
   background: var(--border);
 }
 
+/* ═══════════════════════════════════════
+   ULTRA SMOOTH MODE (always on)
+   ═══════════════════════════════════════ */
+.header-led-arrow,
+.led-credit,
+.team-marquee-track,
+.emblem-pulse,
+.radar-ping::before,
+.radar-ping::after,
+.road-grid::before,
+.speed-line,
+.holo-card::before,
+.btn-wipe::after,
+.header-logo-snake {
+  animation: none !important;
+}
+
+.feature-stripe:hover {
+  transform: none;
+}
+
+.glow-card,
+.feature-stripe,
+.btn-wipe,
+[data-tutorial-id] {
+  transition-duration: 0.18s !important;
+}
+
+/* Hardcore performance profile: reduce expensive paint/compositing effects */
+.scanlines {
+  display: none !important;
+}
+
+.glow-card,
+.glow-card:hover,
+.stat-card,
+.feature-stripe,
+.holo-card::before {
+  box-shadow: none !important;
+}
+
+.hex-bg,
+.road-grid,
+.road-grid::before,
+.road-grid::after {
+  background-image: none !important;
+  background: transparent !important;
+}
+
+header[data-tutorial-id="header"] {
+  backdrop-filter: none !important;
+  background: var(--background) !important;
+}
+
+[data-tutorial-id] {
+  filter: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .header-led-arrow, .led-credit, .team-marquee-track,
   .emblem-pulse, .radar-ping::before, .radar-ping::after,
   .road-grid::before { animation: none; }
+
+  .speed-line,
+  .holo-card:hover::before,
+  .btn-wipe:hover::after {
+    animation: none !important;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+  }
 }
