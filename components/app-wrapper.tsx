@@ -13,10 +13,12 @@ import { TeamSection } from "@/components/team-section"
 import { WebsiteAssistant } from "@/components/website-assistant"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Switch } from "@/components/ui/switch"
 import { useLanguage, type Language } from "@/context/language-context"
 import { animateScrollToElement } from "@/lib/utils"
 
 const TUTORIAL_SEEN_STORAGE_KEY = "h3t-tutorial-seen"
+const ANIMATIONS_ENABLED_STORAGE_KEY = "h3t-animations-enabled"
 const TUTORIAL_TARGET_SELECTOR = "[data-tutorial-id]"
 
 type TutorialStep = {
@@ -440,11 +442,69 @@ function WebsiteTutorial({
   )
 }
 
+function AnimationPrompt({
+  open,
+  onOpenChange,
+  animationsEnabled,
+  onAnimationsChange,
+}: {
+  open: boolean
+  onOpenChange: (open: boolean) => void
+  animationsEnabled: boolean
+  onAnimationsChange: (enabled: boolean) => void
+}) {
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="border-border bg-card/95 backdrop-blur-xl sm:max-w-lg">
+        <DialogHeader>
+          <DialogTitle>Hi, laeuft die Website bei dir etwas laggy?</DialogTitle>
+          <DialogDescription>
+            Du kannst Animationen jederzeit umschalten. Wenn es ruckelt, stelle auf OFF fuer mehr FPS.
+          </DialogDescription>
+        </DialogHeader>
+
+        <div
+          className="mt-2 flex items-center justify-between border px-4 py-3"
+          style={{ borderColor: "var(--border)", background: "var(--surface-1)" }}
+        >
+          <span className="text-sm font-medium text-foreground">Animationen</span>
+          <div className="flex items-center gap-3">
+            <span className="text-xs uppercase tracking-widest text-muted-foreground">OFF</span>
+            <Switch checked={animationsEnabled} onCheckedChange={onAnimationsChange} />
+            <span className="text-xs uppercase tracking-widest text-primary">ON</span>
+          </div>
+        </div>
+
+        <DialogFooter>
+          <Button onClick={() => onOpenChange(false)}>Weiter</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  )
+}
+
 export function AppWrapper() {
   const { language } = useLanguage()
   const [mounted, setMounted] = useState(false)
   const [tutorialPromptOpen, setTutorialPromptOpen] = useState(false)
   const [tutorialActive, setTutorialActive] = useState(false)
+  const [animationPromptOpen, setAnimationPromptOpen] = useState(false)
+  const [animationsEnabled, setAnimationsEnabled] = useState(true)
+
+  const applyAnimationPreference = useCallback((enabled: boolean) => {
+    if (typeof document === "undefined") {
+      return
+    }
+    document.documentElement.setAttribute("data-animations", enabled ? "on" : "off")
+  }, [])
+
+  const handleAnimationsChange = useCallback((enabled: boolean) => {
+    setAnimationsEnabled(enabled)
+    if (typeof window !== "undefined") {
+      localStorage.setItem(ANIMATIONS_ENABLED_STORAGE_KEY, enabled ? "true" : "false")
+    }
+    applyAnimationPreference(enabled)
+  }, [applyAnimationPreference])
 
   const closeTutorial = useCallback(() => {
     setTutorialActive(false)
@@ -496,11 +556,17 @@ export function AppWrapper() {
       return
     }
 
+    const storedAnimationPreference = localStorage.getItem(ANIMATIONS_ENABLED_STORAGE_KEY)
+    const initialAnimationsEnabled = storedAnimationPreference !== "false"
+    setAnimationsEnabled(initialAnimationsEnabled)
+    applyAnimationPreference(initialAnimationsEnabled)
+    setAnimationPromptOpen(true)
+
     if (localStorage.getItem(TUTORIAL_SEEN_STORAGE_KEY) !== "true") {
       localStorage.setItem(TUTORIAL_SEEN_STORAGE_KEY, "true")
       setTutorialPromptOpen(true)
     }
-  }, [mounted])
+  }, [applyAnimationPreference, mounted])
 
   if (!mounted) {
     return (
@@ -513,6 +579,12 @@ export function AppWrapper() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-background">
       <ParticleBackground />
+      <AnimationPrompt
+        open={animationPromptOpen}
+        onOpenChange={setAnimationPromptOpen}
+        animationsEnabled={animationsEnabled}
+        onAnimationsChange={handleAnimationsChange}
+      />
       <TutorialPrompt
         open={tutorialPromptOpen}
         onOpenChange={setTutorialPromptOpen}
@@ -523,7 +595,7 @@ export function AppWrapper() {
       <WebsiteAssistant />
       <Header />
       <main>
-        <HeroSection />
+        <HeroSection animationsEnabled={animationsEnabled} onAnimationsChange={handleAnimationsChange} />
         <AboutSection />
         <FeaturesSection />
         <TeamSection />

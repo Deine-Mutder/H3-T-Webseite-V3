@@ -2,13 +2,19 @@
 
 import { MapPin, Truck, Users } from "lucide-react"
 import { useLanguage } from "@/context/language-context"
-import { Button } from "@/components/ui/button"
 import { animateScrollToElement } from "@/lib/utils"
 import { AnimatedCounter } from "./animated-counter"
 import { ScrollReveal } from "./scroll-reveal"
 import { StatusIndicator } from "./status-indicator"
+import { Switch } from "./ui/switch"
 
-export function HeroSection() {
+export function HeroSection({
+  animationsEnabled,
+  onAnimationsChange,
+}: {
+  animationsEnabled: boolean
+  onAnimationsChange: (enabled: boolean) => void
+}) {
   const { t } = useLanguage()
 
   const scrollToContact = () => {
@@ -153,6 +159,27 @@ export function HeroSection() {
             {/* Status Indicator */}
             <ScrollReveal delay={300}>
               <StatusIndicator />
+            </ScrollReveal>
+
+            <ScrollReveal delay={340}>
+              <div
+                className="mt-6 flex items-center gap-3 border px-4 py-2.5"
+                style={{ borderColor: "var(--border)", background: "color-mix(in oklab, var(--surface-1) 92%, transparent)" }}
+              >
+                <span
+                  className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-muted-foreground"
+                  style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
+                >
+                  Animation
+                </span>
+                <Switch checked={animationsEnabled} onCheckedChange={onAnimationsChange} />
+                <span
+                  className="text-[0.65rem] font-bold uppercase tracking-[0.2em]"
+                  style={{ color: animationsEnabled ? "var(--primary)" : "var(--muted-foreground)", fontFamily: "'Barlow Condensed', sans-serif" }}
+                >
+                  {animationsEnabled ? "ON" : "OFF"}
+                </span>
+              </div>
             </ScrollReveal>
           </div>
 
