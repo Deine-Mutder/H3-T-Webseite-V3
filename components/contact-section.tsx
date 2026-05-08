@@ -1,12 +1,10 @@
 "use client"
 
-import { useState } from "react"
 import { ExternalLink, MessageCircle } from "lucide-react"
 import { useLanguage } from "@/context/language-context"
 
 export function ContactSection() {
   const { t } = useLanguage()
-  const [showDiscordConfirm, setShowDiscordConfirm] = useState(false)
 
   return (
     <section id="contact" data-tutorial-id="contact" className="relative overflow-hidden py-24 lg:py-32">
@@ -52,11 +50,12 @@ export function ContactSection() {
           >
             <div className="grid grid-cols-1 divide-y sm:grid-cols-2 sm:divide-x sm:divide-y-0" style={{ borderColor: "var(--border)" }}>
               {/* Discord */}
-              <button
-                type="button"
-                onClick={() => setShowDiscordConfirm((c) => !c)}
+              <a
+                href="https://discord.gg/q95veU4DQe"
+                target="_blank"
+                rel="noreferrer"
                 className="btn-wipe group relative flex flex-col items-center gap-4 p-10 text-center transition-all duration-300"
-                style={{ background: "transparent" }}
+                style={{ background: "transparent", textDecoration: "none" }}
               >
                 <div
                   className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -84,7 +83,7 @@ export function ContactSection() {
                     discord.gg <ExternalLink className="h-2.5 w-2.5" />
                   </div>
                 </div>
-              </button>
+              </a>
 
               {/* TruckersMP */}
               <a
@@ -124,64 +123,6 @@ export function ContactSection() {
             </div>
           </div>
 
-          {/* Discord Confirmation */}
-          {showDiscordConfirm && (
-            <div
-              className="clip-card overflow-hidden text-left"
-              style={{
-                background: "var(--surface-2)",
-                border: "1px solid color-mix(in oklab, #5865F2 30%, var(--border))",
-                boxShadow: "0 0 40px color-mix(in oklab, #5865F2 8%, transparent)",
-              }}
-            >
-              <div className="p-8">
-                <p
-                  className="section-label mb-3"
-                  style={{ color: "#7289DA" }}
-                >
-                  {t.contact.discordConfirmTitle}
-                </p>
-                <p className="mb-8 text-sm font-light leading-relaxed text-muted-foreground">
-                  {t.contact.discordConfirmText}
-                </p>
-                <div className="flex flex-col gap-3 sm:flex-row">
-                  <a
-                    href="https://discord.gg/q95veU4DQe"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn-wipe clip-card-sm flex items-center justify-center gap-3 px-6 py-4 font-bold uppercase tracking-widest text-white transition-colors"
-                    style={{
-                      background: "#5865F2",
-                      fontFamily: "'Barlow Condensed', sans-serif",
-                      letterSpacing: "0.15em",
-                      fontSize: "0.8rem",
-                      textDecoration: "none",
-                    }}
-                  >
-                    <MessageCircle className="h-4 w-4" />
-                    {t.contact.discordConfirmOpen}
-                    <ExternalLink className="h-3.5 w-3.5" />
-                  </a>
-                  <button
-                    type="button"
-                    onClick={() => setShowDiscordConfirm(false)}
-                    className="btn-wipe flex items-center justify-center border px-6 py-4 font-bold uppercase tracking-widest transition-all duration-300 hover:border-muted-foreground/50 hover:text-foreground"
-                    style={{
-                      borderColor: "var(--border)",
-                      color: "var(--muted-foreground)",
-                      background: "transparent",
-                      fontFamily: "'Barlow Condensed', sans-serif",
-                      letterSpacing: "0.15em",
-                      fontSize: "0.8rem",
-                      cursor: "pointer",
-                    }}
-                  >
-                    {t.contact.discordConfirmCancel}
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </section>
