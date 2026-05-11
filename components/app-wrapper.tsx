@@ -7,6 +7,7 @@ import { FeaturesSection } from "@/components/features-section"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
+import { NewsSection } from "@/components/news-section"
 import { ParticleBackground } from "@/components/particle-background"
 import { PartnerSection } from "@/components/partner-section"
 import { TeamSection } from "@/components/team-section"
@@ -663,6 +664,7 @@ export function AppWrapper() {
       <Header />
       <main>
         <HeroSection animationsEnabled={animationsEnabled} onAnimationsChange={handleAnimationsChange} />
+        <NewsSection />
         <AboutSection />
         <FeaturesSection />
         <TeamSection />
