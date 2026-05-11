@@ -664,12 +664,12 @@ export function AppWrapper() {
       <Header />
       <main>
         <HeroSection animationsEnabled={animationsEnabled} onAnimationsChange={handleAnimationsChange} />
-        <NewsSection />
         <AboutSection />
         <FeaturesSection />
         <TeamSection />
         <PartnerSection />
         <ContactSection />
+        <NewsSection />
       </main>
       <Footer />
     </div>
