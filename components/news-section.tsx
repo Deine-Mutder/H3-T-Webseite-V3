@@ -1,9 +1,16 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Calendar, ChevronRight, Newspaper } from "lucide-react"
+import { Calendar, ChevronRight, Newspaper, X } from "lucide-react"
 import { useLanguage } from "@/context/language-context"
 import { ScrollReveal } from "./scroll-reveal"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog"
 import type { NewsItem } from "@/lib/redis"
 
 const newsTranslations = {
@@ -14,6 +21,7 @@ const newsTranslations = {
     readMore: "Mehr lesen",
     noNews: "Noch keine News vorhanden",
     loading: "Lade News...",
+    close: "Schliessen",
   },
   en: {
     label: "Latest",
@@ -22,6 +30,7 @@ const newsTranslations = {
     readMore: "Read more",
     noNews: "No news available yet",
     loading: "Loading news...",
+    close: "Close",
   },
   sl: {
     label: "Aktualno",
@@ -30,6 +39,7 @@ const newsTranslations = {
     readMore: "Preberi vec",
     noNews: "Se ni novic",
     loading: "Nalaganje novic...",
+    close: "Zapri",
   },
   fr: {
     label: "Actualites",
@@ -38,6 +48,7 @@ const newsTranslations = {
     readMore: "Lire la suite",
     noNews: "Pas encore de news",
     loading: "Chargement...",
+    close: "Fermer",
   },
   es: {
     label: "Actualidad",
@@ -46,6 +57,7 @@ const newsTranslations = {
     readMore: "Leer mas",
     noNews: "Sin noticias disponibles",
     loading: "Cargando...",
+    close: "Cerrar",
   },
   it: {
     label: "Attualita",
@@ -54,6 +66,7 @@ const newsTranslations = {
     readMore: "Leggi di piu",
     noNews: "Nessuna news disponibile",
     loading: "Caricamento...",
+    close: "Chiudi",
   },
   pl: {
     label: "Aktualnosci",
@@ -62,6 +75,7 @@ const newsTranslations = {
     readMore: "Czytaj wiecej",
     noNews: "Brak wiadomosci",
     loading: "Ladowanie...",
+    close: "Zamknij",
   },
   tr: {
     label: "Guncel",
@@ -70,6 +84,7 @@ const newsTranslations = {
     readMore: "Devamini oku",
     noNews: "Henuz haber yok",
     loading: "Yukleniyor...",
+    close: "Kapat",
   },
   zh: {
     label: "最新",
@@ -78,6 +93,7 @@ const newsTranslations = {
     readMore: "阅读更多",
     noNews: "暂无新闻",
     loading: "加载中...",
+    close: "关闭",
   },
   ru: {
     label: "Новости",
@@ -86,6 +102,7 @@ const newsTranslations = {
     readMore: "Читать далее",
     noNews: "Пока нет новостей",
     loading: "Загрузка...",
+    close: "Закрыть",
   },
 }
 
@@ -93,7 +110,7 @@ export function NewsSection() {
   const { language } = useLanguage()
   const [news, setNews] = useState<NewsItem[]>([])
   const [isLoading, setIsLoading] = useState(true)
-  const [expandedId, setExpandedId] = useState<string | null>(null)
+  const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null)
 
   const t = newsTranslations[language] || newsTranslations.en
 
@@ -184,7 +201,8 @@ export function NewsSection() {
             {news.slice(0, 6).map((item, index) => (
               <ScrollReveal key={item.id} delay={240 + index * 100}>
                 <article
-                  className="glow-card holo-card group relative flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card transition-all duration-300"
+                  onClick={() => setSelectedNews(item)}
+                  className="glow-card holo-card group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-lg border border-border bg-card transition-all duration-300 hover:border-primary/50"
                 >
                   {/* Image */}
                   {item.imageUrl && (
@@ -211,31 +229,16 @@ export function NewsSection() {
                       {item.title}
                     </h3>
 
-                    {/* Message */}
-                    <p
-                      className={`flex-1 text-sm leading-relaxed text-muted-foreground ${
-                        expandedId === item.id ? "" : "line-clamp-3"
-                      }`}
-                    >
+                    {/* Message - Preview */}
+                    <p className="flex-1 text-sm leading-relaxed text-muted-foreground line-clamp-3">
                       {item.message}
                     </p>
 
-                    {/* Read More Button */}
-                    {item.message.length > 150 && (
-                      <button
-                        onClick={() =>
-                          setExpandedId(expandedId === item.id ? null : item.id)
-                        }
-                        className="mt-4 flex items-center gap-1 text-sm font-semibold text-primary transition-all hover:gap-2"
-                      >
-                        {expandedId === item.id ? "Weniger" : t.readMore}
-                        <ChevronRight
-                          className={`h-4 w-4 transition-transform ${
-                            expandedId === item.id ? "rotate-90" : ""
-                          }`}
-                        />
-                      </button>
-                    )}
+                    {/* Read More Hint */}
+                    <div className="mt-4 flex items-center gap-1 text-sm font-semibold text-primary transition-all group-hover:gap-2">
+                      {t.readMore}
+                      <ChevronRight className="h-4 w-4" />
+                    </div>
                   </div>
 
                   {/* Decorative corner */}
@@ -252,6 +255,53 @@ export function NewsSection() {
           </div>
         )}
       </div>
+
+      {/* News Detail Dialog */}
+      <Dialog open={!!selectedNews} onOpenChange={(open) => !open && setSelectedNews(null)}>
+        <DialogContent className="max-h-[90vh] max-w-3xl overflow-hidden border-border bg-card p-0">
+          {selectedNews && (
+            <>
+              {/* Large Image */}
+              {selectedNews.imageUrl && (
+                <div className="relative h-64 w-full overflow-hidden sm:h-80">
+                  <img
+                    src={selectedNews.imageUrl}
+                    alt={selectedNews.title}
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+                </div>
+              )}
+
+              {/* Content */}
+              <div className="p-6">
+                <DialogHeader className="mb-4">
+                  {/* Date */}
+                  <div className="mb-2 flex items-center gap-2 text-xs text-muted-foreground">
+                    <Calendar className="h-3.5 w-3.5" />
+                    <span className="font-mono">{formatDate(selectedNews.createdAt)}</span>
+                  </div>
+                  
+                  <DialogTitle className="text-2xl font-bold tracking-wide text-foreground">
+                    {selectedNews.title}
+                  </DialogTitle>
+                </DialogHeader>
+
+                {/* Full Message */}
+                <DialogDescription asChild>
+                  <div className="max-h-[40vh] overflow-y-auto pr-2 text-base leading-relaxed text-muted-foreground">
+                    {selectedNews.message.split('\n').map((paragraph, i) => (
+                      <p key={i} className={i > 0 ? 'mt-4' : ''}>
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                </DialogDescription>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   )
 }
