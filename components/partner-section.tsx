@@ -19,6 +19,12 @@ const partnerVtcs = [
     href: "https://truckersmp.com/vtc/82495",
     profileImage: "/partners/galaxy-profile.png",
   },
+  {
+    name: "RT LOGISTICS",
+    role: "Partner VTC",
+    href: "https://truckersmp.com/vtc/89274",
+    profileImage: "/partners/rt-logistics-profile.png",
+  },
 ]
 
 export function PartnerSection() {
@@ -51,7 +57,7 @@ export function PartnerSection() {
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
           {partnerVtcs.map((partner, index) => (
             <ScrollReveal key={partner.name} delay={index * 80}>
               <a
