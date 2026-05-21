@@ -182,7 +182,10 @@
     overflow-x: hidden;
   }
   html {
+    font-size: 100%;
     scroll-behavior: auto;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
     overflow-x: hidden;
   }
   h1, h2, h3, .display {
