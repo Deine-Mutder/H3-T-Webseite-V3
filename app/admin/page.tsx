@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Label } from "@/components/ui/label"
 import { Lock, LogOut, Plus, Trash2, Image as ImageIcon, Loader2, Newspaper } from "lucide-react"
 import type { NewsItem } from "@/lib/redis"
+import { AdminModsUploadForms } from "@/components/admin-mods-upload-forms"
 
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -224,7 +225,7 @@ export default function AdminPage() {
             </div>
             <div>
               <h1 className="text-lg font-bold tracking-wide">H3°T Admin</h1>
-              <p className="text-xs text-muted-foreground">News-Verwaltung</p>
+              <p className="text-xs text-muted-foreground">News & Downloads</p>
             </div>
           </div>
           <Button variant="outline" size="sm" onClick={handleLogout}>
@@ -412,6 +413,8 @@ export default function AdminPage() {
             </CardContent>
           </Card>
         </div>
+
+        <AdminModsUploadForms />
       </main>
     </div>
   )

@@ -1,0 +1,3 @@
+H3T Local Mod link placeholder
+
+Use the admin panel to add the final external download link for local mods.

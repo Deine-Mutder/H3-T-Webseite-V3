@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useState } from "react"
 import { MessageSquare, Truck, Wrench } from "lucide-react"
 import { useLanguage } from "@/context/language-context"
@@ -137,6 +138,30 @@ export function FeaturesSection() {
                           />
                         </svg>
                       </a>
+                    ) : index === 2 ? (
+                      <Link
+                        href="/mods"
+                        className="btn-wipe relative z-10 mt-6 flex items-center gap-2 self-start border px-4 py-2 text-xs uppercase tracking-widest transition-all duration-300 hover:border-primary/60 hover:text-primary"
+                        style={{
+                          fontFamily: "'Barlow Condensed', sans-serif",
+                          letterSpacing: "0.2em",
+                          fontSize: "0.7rem",
+                          borderColor: "var(--border)",
+                          color: "var(--muted-foreground)",
+                          background: "transparent",
+                        }}
+                      >
+                        Explore
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                          <path
+                            d="M5 12H19M13 6L19 12L13 18"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </Link>
                     ) : (
                       <button
                         type="button"
