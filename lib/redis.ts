@@ -43,3 +43,12 @@ export async function getMods(): Promise<ModItem[]> {
 export async function addMod(item: ModItem): Promise<void> {
   await redis.lpush(MODS_KEY, item)
 }
+
+export async function deleteMod(id: string): Promise<void> {
+  const mods = await getMods()
+  const filtered = mods.filter((item) => item.id !== id)
+  await redis.del(MODS_KEY)
+  for (const item of filtered.reverse()) {
+    await redis.lpush(MODS_KEY, item)
+  }
+}

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
-import { put } from "@vercel/blob"
-import { addMod, getMods } from "@/lib/redis"
+import { del, put } from "@vercel/blob"
+import { addMod, deleteMod, getMods } from "@/lib/redis"
 import { MOD_BRANDS, MOD_TYPES, type ModBrand, type ModItem, type ModKind, type ModType } from "@/lib/mods-data"
 
 function isModKind(value: FormDataEntryValue | null): value is ModKind {
@@ -110,5 +110,46 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Error creating mod:", error)
     return NextResponse.json({ error: "Failed to create mod" }, { status: 500 })
+  }
+}
+
+export async function DELETE(request: Request) {
+  try {
+    const authHeader = request.headers.get("Authorization")
+    if (!authHeader || authHeader !== `Bearer ${process.env.ADMIN_PASSWORD}`) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    }
+
+    const { id, downloadUrl, imageUrls } = (await request.json()) as {
+      id?: string
+      downloadUrl?: string
+      imageUrls?: string[]
+    }
+
+    if (!id) {
+      return NextResponse.json({ error: "Mod ID is required" }, { status: 400 })
+    }
+
+    const blobUrls = [...(imageUrls || [])]
+    if (downloadUrl?.includes(".vercel-storage.com/")) {
+      blobUrls.push(downloadUrl)
+    }
+
+    await Promise.all(
+      blobUrls.map(async (url) => {
+        try {
+          await del(url)
+        } catch (error) {
+          console.error("Error deleting mod blob:", error)
+        }
+      }),
+    )
+
+    await deleteMod(id)
+
+    return NextResponse.json({ success: true })
+  } catch (error) {
+    console.error("Error deleting mod:", error)
+    return NextResponse.json({ error: "Failed to delete mod" }, { status: 500 })
   }
 }
