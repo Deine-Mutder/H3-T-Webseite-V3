@@ -9,8 +9,12 @@ import { Label } from "@/components/ui/label"
 import { Lock, LogOut, Plus, Trash2, Image as ImageIcon, Loader2, Newspaper } from "lucide-react"
 import type { NewsItem } from "@/lib/redis"
 import { AdminModsUploadForms } from "@/components/admin-mods-upload-forms"
+import { useLanguage } from "@/context/language-context"
+import { getAdminCopy } from "@/lib/localized-copy"
 
 export default function AdminPage() {
+  const { language } = useLanguage()
+  const copy = getAdminCopy(language)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [password, setPassword] = useState("")
   const [authError, setAuthError] = useState("")
@@ -73,7 +77,7 @@ export default function AdminPage() {
       })
 
       if (res.status === 401) {
-        setAuthError("Falsches Passwort")
+        setAuthError(copy.wrongPassword)
         setIsLoading(false)
         return
       }
@@ -82,7 +86,7 @@ export default function AdminPage() {
       sessionStorage.setItem("admin-auth", password)
       setIsAuthenticated(true)
     } catch {
-      setAuthError("Verbindungsfehler")
+      setAuthError(copy.connectionError)
     } finally {
       setIsLoading(false)
     }
@@ -145,7 +149,7 @@ export default function AdminPage() {
   }
 
   const handleDelete = async (id: string, imageUrl: string | null) => {
-    if (!confirm("News-Eintrag wirklich loeschen?")) return
+    if (!confirm(copy.confirmDeleteNews)) return
 
     setDeletingId(id)
     try {
@@ -178,19 +182,19 @@ export default function AdminPage() {
             <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
               <Lock className="h-8 w-8 text-primary" />
             </div>
-            <CardTitle className="text-2xl">Admin Login</CardTitle>
-            <CardDescription>Gib das Passwort ein, um fortzufahren</CardDescription>
+            <CardTitle className="text-2xl">{copy.loginTitle}</CardTitle>
+            <CardDescription>{copy.loginDescription}</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="password">Passwort</Label>
+                <Label htmlFor="password">{copy.passwordLabel}</Label>
                 <Input
                   id="password"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Admin-Passwort eingeben"
+                  placeholder={copy.passwordPlaceholder}
                   className="border-border bg-background"
                   disabled={isLoading}
                 />
@@ -200,10 +204,10 @@ export default function AdminPage() {
                 {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Wird geprueft...
+                    {copy.checkingPassword}
                   </>
                 ) : (
-                  "Anmelden"
+                  copy.signIn
                 )}
               </Button>
             </form>
@@ -225,12 +229,12 @@ export default function AdminPage() {
             </div>
             <div>
               <h1 className="text-lg font-bold tracking-wide">H3°T Admin</h1>
-              <p className="text-xs text-muted-foreground">News & Downloads</p>
+              <p className="text-xs text-muted-foreground">{copy.dashboardSubtitle}</p>
             </div>
           </div>
           <Button variant="outline" size="sm" onClick={handleLogout}>
             <LogOut className="mr-2 h-4 w-4" />
-            Abmelden
+            {copy.logout}
           </Button>
         </div>
       </header>
@@ -242,45 +246,45 @@ export default function AdminPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Plus className="h-5 w-5 text-primary" />
-                Neue News erstellen
+                {copy.newsCreateTitle}
               </CardTitle>
-              <CardDescription>Erstelle einen neuen News-Eintrag fuer die Webseite</CardDescription>
+              <CardDescription>{copy.newsCreateDescription}</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="title">Titel</Label>
+                  <Label htmlFor="title">{copy.titleLabel}</Label>
                   <Input
                     id="title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    placeholder="News-Titel eingeben"
+                    placeholder={copy.newsTitlePlaceholder}
                     className="border-border bg-background"
                     required
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message">Nachricht</Label>
+                  <Label htmlFor="message">{copy.messageLabel}</Label>
                   <Textarea
                     id="message"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="News-Inhalt eingeben..."
+                    placeholder={copy.newsMessagePlaceholder}
                     className="min-h-32 border-border bg-background"
                     required
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="image">Bild (optional)</Label>
+                  <Label htmlFor="image">{copy.imageOptionalLabel}</Label>
                   <div className="flex items-center gap-4">
                     <label
                       htmlFor="image"
                       className="flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-border bg-background px-4 py-3 text-sm text-muted-foreground transition-colors hover:border-primary hover:text-primary"
                     >
                       <ImageIcon className="h-5 w-5" />
-                      {image ? image.name : "Bild auswaehlen"}
+                      {image ? image.name : copy.chooseImage}
                     </label>
                     <input
                       id="image"
@@ -299,7 +303,7 @@ export default function AdminPage() {
                           setImagePreview(null)
                         }}
                       >
-                        Entfernen
+                        {copy.remove}
                       </Button>
                     )}
                   </div>
@@ -322,19 +326,19 @@ export default function AdminPage() {
                   {isSubmitting ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Wird erstellt...
+                      {copy.creatingNews}
                     </>
                   ) : (
                     <>
                       <Plus className="mr-2 h-4 w-4" />
-                      News erstellen
+                      {copy.createNews}
                     </>
                   )}
                 </Button>
 
                 {submitSuccess && (
                   <p className="text-center text-sm text-green-500">
-                    News erfolgreich erstellt!
+                    {copy.newsCreated}
                   </p>
                 )}
               </form>
@@ -346,9 +350,9 @@ export default function AdminPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Newspaper className="h-5 w-5 text-primary" />
-                Aktuelle News ({newsList.length})
+                {copy.currentNews} ({newsList.length})
               </CardTitle>
-              <CardDescription>Verwalte bestehende News-Eintraege</CardDescription>
+              <CardDescription>{copy.manageNews}</CardDescription>
             </CardHeader>
             <CardContent>
               {isLoadingNews ? (
@@ -358,7 +362,7 @@ export default function AdminPage() {
               ) : newsList.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-12 text-center">
                   <Newspaper className="mb-4 h-12 w-12 text-muted-foreground/50" />
-                  <p className="text-muted-foreground">Noch keine News vorhanden</p>
+                  <p className="text-muted-foreground">{copy.noNews}</p>
                 </div>
               ) : (
                 <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2">
@@ -383,7 +387,7 @@ export default function AdminPage() {
                             {news.message}
                           </p>
                           <p className="mt-2 text-xs text-muted-foreground">
-                            {new Date(news.createdAt).toLocaleDateString("de-DE", {
+                            {new Date(news.createdAt).toLocaleDateString(copy.dateLocale, {
                               day: "2-digit",
                               month: "2-digit",
                               year: "numeric",

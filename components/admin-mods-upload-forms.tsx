@@ -18,13 +18,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea"
 import {
   MOD_BRANDS,
-  MOD_KIND_LABELS,
   MOD_TYPES,
   type ModBrand,
   type ModItem,
   type ModKind,
   type ModType,
 } from "@/lib/mods-data"
+import { useLanguage } from "@/context/language-context"
+import { getAdminCopy } from "@/lib/localized-copy"
 
 type ModFormState = {
   title: string
@@ -52,6 +53,8 @@ const initialState: ModFormState = {
 }
 
 export function AdminModsUploadForms() {
+  const { language } = useLanguage()
+  const copy = getAdminCopy(language)
   const [modsList, setModsList] = useState<ModItem[]>([])
   const [isLoadingMods, setIsLoadingMods] = useState(false)
   const [deletingModId, setDeletingModId] = useState<string | null>(null)
@@ -81,7 +84,8 @@ export function AdminModsUploadForms() {
   }
 
   const handleDeleteMod = async (mod: ModItem) => {
-    if (!confirm(`${MOD_KIND_LABELS[mod.kind]}-Eintrag wirklich loeschen?`)) return
+    const label = mod.kind === "save-edit" ? "Save Edits" : "Local Mods"
+    if (!confirm(copy.entryDeleteConfirm(label))) return
 
     setDeletingModId(mod.id)
     try {
@@ -112,36 +116,36 @@ export function AdminModsUploadForms() {
   return (
     <section className="mt-8 space-y-10">
       <div>
-        <h2 className="text-2xl font-bold tracking-wide">Save Edits & Local Mods</h2>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Uploads mit Typ, Marke, Bildern und Download-Ziel fuer die neue Mods-Seite.
-        </p>
+        <h2 className="text-2xl font-bold tracking-wide">{copy.modsSectionTitle}</h2>
+        <p className="mt-1 text-sm text-muted-foreground">{copy.modsSectionSubtitle}</p>
       </div>
 
       <ModManagementArea
         kind="save-edit"
         title="Save Edits"
-        uploadDescription="Nur .txt-Dateien fuer Save-Edit Downloads."
-        previewDescription="Verwalte bestehende Save-Edit Eintraege"
-        emptyText="Noch keine Save Edits vorhanden"
+        uploadDescription={copy.saveEditUploadDescription}
+        previewDescription={copy.saveEditPreviewDescription}
+        emptyText={copy.saveEditEmpty}
         mods={saveEdits}
         isLoading={isLoadingMods}
         deletingId={deletingModId}
         onCreated={handleModCreated}
         onDelete={handleDeleteMod}
+        copy={copy}
       />
 
       <ModManagementArea
         kind="local-mod"
         title="Local Mods"
-        uploadDescription="Local Mods nutzen einen externen Download-Link statt lokaler ZIP-Uploads."
-        previewDescription="Verwalte bestehende Local-Mod Eintraege"
-        emptyText="Noch keine Local Mods vorhanden"
+        uploadDescription={copy.localModUploadDescription}
+        previewDescription={copy.localModPreviewDescription}
+        emptyText={copy.localModEmpty}
         mods={localMods}
         isLoading={isLoadingMods}
         deletingId={deletingModId}
         onCreated={handleModCreated}
         onDelete={handleDeleteMod}
+        copy={copy}
       />
     </section>
   )
@@ -158,6 +162,7 @@ function ModManagementArea({
   deletingId,
   onCreated,
   onDelete,
+  copy,
 }: {
   kind: ModKind
   title: string
@@ -169,6 +174,7 @@ function ModManagementArea({
   deletingId: string | null
   onCreated: (mod: ModItem) => void
   onDelete: (mod: ModItem) => void
+  copy: ReturnType<typeof getAdminCopy>
 }) {
   const Icon = kind === "save-edit" ? FileText : Package
 
@@ -180,21 +186,22 @@ function ModManagementArea({
         </div>
         <div>
           <h3 className="text-xl font-bold tracking-wide">{title}</h3>
-          <p className="text-xs text-muted-foreground">Upload und Vorschau getrennt verwalten</p>
+          <p className="text-xs text-muted-foreground">{copy.manageHint}</p>
         </div>
       </div>
 
       <div className="grid gap-8 xl:grid-cols-2">
-        <ModUploadForm kind={kind} title={title} description={uploadDescription} onCreated={onCreated} />
+        <ModUploadForm kind={kind} title={title} description={uploadDescription} onCreated={onCreated} copy={copy} />
         <ModPreviewPanel
           kind={kind}
-          title={`Aktuelle ${title}`}
+          title={copy.currentLabel(title)}
           description={previewDescription}
           emptyText={emptyText}
           mods={mods}
           isLoading={isLoading}
           deletingId={deletingId}
           onDelete={onDelete}
+          copy={copy}
         />
       </div>
     </div>
@@ -206,11 +213,13 @@ function ModUploadForm({
   title,
   description,
   onCreated,
+  copy,
 }: {
   kind: ModKind
   title: string
   description: string
   onCreated: (mod: ModItem) => void
+  copy: ReturnType<typeof getAdminCopy>
 }) {
   const formRef = useRef<HTMLFormElement | null>(null)
   const [form, setForm] = useState<ModFormState>(initialState)
@@ -241,7 +250,7 @@ function ModUploadForm({
     updateField("images", limitedImages)
 
     if (selectedImages.length > 3) {
-      setStatus({ variant: "error", message: "Es werden maximal 3 Bilder gespeichert." })
+      setStatus({ variant: "error", message: copy.maxImages })
     } else {
       setStatus({ variant: "idle", message: "" })
     }
@@ -253,7 +262,7 @@ function ModUploadForm({
     if (file && !file.name.toLowerCase().endsWith(".txt")) {
       event.target.value = ""
       updateField("saveFile", null)
-      setStatus({ variant: "error", message: "Save Edits duerfen nur .txt-Dateien sein." })
+      setStatus({ variant: "error", message: copy.txtOnly })
       return
     }
 
@@ -263,7 +272,7 @@ function ModUploadForm({
 
   const resetForm = () => {
     setForm(initialState)
-    setStatus({ variant: "success", message: `${title} erfolgreich gespeichert.` })
+    setStatus({ variant: "success", message: copy.saved(title) })
     setInputKey((current) => current + 1)
     formRef.current?.reset()
   }
@@ -272,12 +281,12 @@ function ModUploadForm({
     event.preventDefault()
 
     if (isSaveEdit && !form.saveFile) {
-      setStatus({ variant: "error", message: "Bitte eine .txt-Datei fuer den Save Edit auswaehlen." })
+      setStatus({ variant: "error", message: copy.selectTxtFile })
       return
     }
 
     if (!isSaveEdit && !form.downloadLink.trim()) {
-      setStatus({ variant: "error", message: "Bitte einen Download-Link fuer den Local Mod eintragen." })
+      setStatus({ variant: "error", message: copy.downloadLinkRequired })
       return
     }
 
@@ -312,7 +321,7 @@ function ModUploadForm({
       const data = (await response.json().catch(() => ({}))) as { error?: string; mod?: ModItem }
 
       if (!response.ok || !data.mod) {
-        throw new Error(data.error || "Upload fehlgeschlagen")
+        throw new Error(copy.uploadFailed)
       }
 
       resetForm()
@@ -320,7 +329,7 @@ function ModUploadForm({
     } catch (error) {
       setStatus({
         variant: "error",
-        message: error instanceof Error ? error.message : "Upload fehlgeschlagen",
+        message: error instanceof Error ? error.message : copy.uploadFailed,
       })
     } finally {
       setIsSubmitting(false)
@@ -332,31 +341,31 @@ function ModUploadForm({
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Icon className="h-5 w-5 text-primary" />
-          {title} Upload
+          {copy.uploadTitle(title)}
         </CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
-            <Label htmlFor={`${formId}-title`}>Titel</Label>
+            <Label htmlFor={`${formId}-title`}>{copy.titleLabel}</Label>
             <Input
               id={`${formId}-title`}
               value={form.title}
               onChange={(event) => updateField("title", event.target.value)}
-              placeholder="Titel eingeben"
+              placeholder={copy.titlePlaceholder}
               className="border-border bg-background"
               required
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor={`${formId}-description`}>Beschreibung</Label>
+            <Label htmlFor={`${formId}-description`}>{copy.descriptionLabel}</Label>
             <Textarea
               id={`${formId}-description`}
               value={form.description}
               onChange={(event) => updateField("description", event.target.value)}
-              placeholder="Beschreibung eingeben..."
+              placeholder={copy.descriptionPlaceholder}
               className="min-h-28 border-border bg-background"
               required
             />
@@ -364,10 +373,10 @@ function ModUploadForm({
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <Label>Typ</Label>
+              <Label>{copy.typeLabel}</Label>
               <Select value={form.type} onValueChange={(value) => updateField("type", value as ModType)}>
                 <SelectTrigger className="w-full border-border bg-background">
-                  <SelectValue placeholder="Typ auswaehlen" />
+                  <SelectValue placeholder={copy.typePlaceholder} />
                 </SelectTrigger>
                 <SelectContent>
                   {MOD_TYPES.map((type) => (
@@ -380,10 +389,10 @@ function ModUploadForm({
             </div>
 
             <div className="space-y-2">
-              <Label>Marke</Label>
+              <Label>{copy.brandLabel}</Label>
               <Select value={form.brand} onValueChange={(value) => updateField("brand", value as ModBrand)}>
                 <SelectTrigger className="w-full border-border bg-background">
-                  <SelectValue placeholder="Marke auswaehlen" />
+                  <SelectValue placeholder={copy.brandPlaceholder} />
                 </SelectTrigger>
                 <SelectContent>
                   {MOD_BRANDS.map((brand) => (
@@ -397,13 +406,13 @@ function ModUploadForm({
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor={`${formId}-images`}>Bilder (bis zu 3)</Label>
+            <Label htmlFor={`${formId}-images`}>{copy.imagesLabel}</Label>
             <label
               htmlFor={`${formId}-images`}
               className="flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-border bg-background px-4 py-3 text-sm text-muted-foreground transition-colors hover:border-primary hover:text-primary"
             >
               <ImageIcon className="h-5 w-5" />
-              {form.images.length > 0 ? `${form.images.length} Bild(er) ausgewaehlt` : "Bilder auswaehlen"}
+              {form.images.length > 0 ? copy.imagesSelected(form.images.length) : copy.chooseImages}
             </label>
             <input
               key={`${inputKey}-images`}
@@ -427,13 +436,13 @@ function ModUploadForm({
 
           {isSaveEdit ? (
             <div className="space-y-2">
-              <Label htmlFor={`${formId}-save-file`}>Save-Edit Datei (.txt)</Label>
+              <Label htmlFor={`${formId}-save-file`}>{copy.saveFileLabel}</Label>
               <label
                 htmlFor={`${formId}-save-file`}
                 className="flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-border bg-background px-4 py-3 text-sm text-muted-foreground transition-colors hover:border-primary hover:text-primary"
               >
                 <Upload className="h-5 w-5" />
-                {form.saveFile ? form.saveFile.name : ".txt-Datei auswaehlen"}
+                {form.saveFile ? form.saveFile.name : copy.chooseTxtFile}
               </label>
               <input
                 key={`${inputKey}-save-file`}
@@ -447,7 +456,7 @@ function ModUploadForm({
             </div>
           ) : (
             <div className="space-y-2">
-              <Label htmlFor={`${formId}-download-link`}>Download-Link</Label>
+              <Label htmlFor={`${formId}-download-link`}>{copy.downloadLinkLabel}</Label>
               <div className="relative">
                 <LinkIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                 <Input
@@ -467,12 +476,12 @@ function ModUploadForm({
             {isSubmitting ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Wird gespeichert...
+                {copy.saving}
               </>
             ) : (
               <>
                 <Upload className="mr-2 h-4 w-4" />
-                {title} speichern
+                {copy.saveButton(title)}
               </>
             )}
           </Button>
@@ -497,6 +506,7 @@ function ModPreviewPanel({
   isLoading,
   deletingId,
   onDelete,
+  copy,
 }: {
   kind: ModKind
   title: string
@@ -506,6 +516,7 @@ function ModPreviewPanel({
   isLoading: boolean
   deletingId: string | null
   onDelete: (mod: ModItem) => void
+  copy: ReturnType<typeof getAdminCopy>
 }) {
   const Icon = kind === "save-edit" ? FileText : Package
 
@@ -553,7 +564,7 @@ function ModPreviewPanel({
                       </span>
                     </div>
                     <p className="mt-2 text-xs text-muted-foreground">
-                      {new Date(mod.createdAt).toLocaleDateString("de-DE", {
+                      {new Date(mod.createdAt).toLocaleDateString(copy.dateLocale, {
                         day: "2-digit",
                         month: "2-digit",
                         year: "numeric",
