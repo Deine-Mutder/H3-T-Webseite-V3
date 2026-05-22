@@ -4,13 +4,15 @@ import Link from "next/link"
 import { useState } from "react"
 import { MessageSquare, Truck, Wrench } from "lucide-react"
 import { useLanguage } from "@/context/language-context"
+import { getFeatureCopy } from "@/lib/localized-copy"
 import { animateScrollToElement } from "@/lib/utils"
 import { ScrollReveal } from "./scroll-reveal"
 
 const featureIcons = [Truck, MessageSquare, Wrench]
 
 export function FeaturesSection() {
-  const { t } = useLanguage()
+  const { language, t } = useLanguage()
+  const copy = getFeatureCopy(language)
   const [showUnavailableModal, setShowUnavailableModal] = useState(false)
 
   const handleFeatureAction = (index: number) => {
@@ -127,7 +129,7 @@ export function FeaturesSection() {
                           background: "transparent",
                         }}
                       >
-                        Explore
+                        {copy.explore}
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
                           <path
                             d="M5 12H19M13 6L19 12L13 18"
@@ -151,7 +153,7 @@ export function FeaturesSection() {
                           background: "transparent",
                         }}
                       >
-                        Explore
+                        {copy.explore}
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
                           <path
                             d="M5 12H19M13 6L19 12L13 18"
@@ -176,7 +178,7 @@ export function FeaturesSection() {
                           background: "transparent",
                         }}
                       >
-                        Explore
+                        {copy.explore}
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
                           <path
                             d="M5 12H19M13 6L19 12L13 18"

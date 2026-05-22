@@ -1,6 +1,8 @@
 "use client"
 
 import { useTheme, type ThemeName } from "@/context/theme-context"
+import { useLanguage } from "@/context/language-context"
+import { getThemeCopy } from "@/lib/localized-copy"
 import { cn } from "@/lib/utils"
 
 const themes: { name: ThemeName; label: string; color: string }[] = [
@@ -12,10 +14,12 @@ const themes: { name: ThemeName; label: string; color: string }[] = [
 
 export function ThemeSwitcher() {
   const { theme, setTheme } = useTheme()
+  const { language } = useLanguage()
+  const copy = getThemeCopy(language)
 
   return (
     <div className="flex items-center gap-2">
-      <span className="text-sm text-muted-foreground hidden sm:inline">Theme:</span>
+      <span className="text-sm text-muted-foreground hidden sm:inline">{copy.label}</span>
       <div className="flex gap-1.5">
         {themes.map((t) => (
           <button

@@ -96,6 +96,7 @@ export function NewsSection() {
   const [expandedId, setExpandedId] = useState<string | null>(null)
 
   const t = newsTranslations[language] || newsTranslations.en
+  const lessLabel = language === "de" ? "Weniger" : "Less"
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -228,7 +229,7 @@ export function NewsSection() {
                         }
                         className="mt-4 flex items-center gap-1 text-sm font-semibold text-primary transition-all hover:gap-2"
                       >
-                        {expandedId === item.id ? "Weniger" : t.readMore}
+                        {expandedId === item.id ? lessLabel : t.readMore}
                         <ChevronRight
                           className={`h-4 w-4 transition-transform ${
                             expandedId === item.id ? "rotate-90" : ""
